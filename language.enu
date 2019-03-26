@@ -1,0 +1,63 @@
+[enu default]
+
+CD_MAIN_TITLE = "Ultimate Custom Doom";
+
+CD_GENERAL_OPTIONS_TITLE = "General Options";
+CD_OPTION_UPDATE_CAPTION = "Options update";
+
+CD_UPDATE_NEVER       = "\cmNever";
+CD_UPDATE_IMMEDIATELY = "\ciImmediately";
+CD_UPDATE_1S          = "Every second";
+CD_UPDATE_3S          = "Every three seconds";
+
+CD_KEYS_TITLE = "Ultimate Custom Doom Keys";
+CD_KEYS_MENU  = "Open Configuration Menu";
+
+CD_PLAYER_WEAPON_MULTIPLIER_CAPTION       = "Weapon damage multiplier";
+CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION = "Damage taken multiplier";
+
+CD_START_TYPE_OPTION_GAME  = "Per game";
+CD_START_TYPE_OPTION_LEVEL = "Per level/respawn";
+CD_START_TYPE_OPTION_NEVER = "Never";
+
+CD_START_HEALTH_CAPTION = "Start health";
+CD_START_ARMOR_CAPTION  = "Start armor";
+
+CD_MAX_HEALTH_CAPTION        = "Max health";
+CD_SPEED_MULTIPLIER_CAPTION  = "Speed multiplier";
+CD_JUMP_Z_MULTIPLIER_CAPTION = "Jump multiplier";
+
+CD_AIR_CONTROL_CAPTION = "Air control multiplier";
+CD_FRICTION_CAPTION    = "Friction multiplier";
+
+// Monster Options Menu ////////////////////////////////////////////////////////
+
+CD_MONSTER_OPTIONS_TITLE = "Monster Options";
+
+CD_MONSTER_HEALTH        = "Health multiplier";
+CD_MONSTER_SPEED         = "Speed multiplier";
+CD_APPLY_MONSTER_CAPTION = "Apply Monster Options now";
+
+// Common /////////////////////////////////////////////////////////////////////
+
+CD_ON_LEVEL_OR_MANUAL_1 = "All modifiers are zero-terminated and applied once per level,";
+CD_ON_LEVEL_OR_MANUAL_2 = "or manually by the command below.";
+
+CD_LINE_LONG  = "=======================================================================";
+CD_LINE_SHORT = "========================================";
+
+CD_ENABLED_CAPTION    = "Enabled";
+CD_AMOUNT_CAPTION     = "Amount";
+CD_PERIOD_CAPTION     = "Period";
+CD_LIMIT_CAPTION      = "Limit";
+CD_CAP_AMOUNT_CAPTION = "Cap amount";
+CD_MIN_AMOUNT_CAPTION = "Min amount";
+
+CD_NEGATIVE_FIXED_MESSAGE = " cannot be negative. Fixed.";
+CD_ZERO_FIXED_MESSAGE     = " cannot be zero. Fixed.";
+
+// Regeneration ////////////////////////////////////////////////////////////////
+
+CD_REGENERATION_TITLE = "Regeneration Options";
+
+CD_HEALTH_REGENERATION_CAPTION = "Health Regeneration";

@@ -1,0 +1,4 @@
+Regeneration/Heartbeat  "sounds/cd_heartbeat.ogg"
+Regeneration/Armor      "sounds/cd_armor_regen.ogg"
+
+Randomizer/Notification "sounds/cd_randomizer_notification.ogg"

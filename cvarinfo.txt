@@ -1,0 +1,207 @@
+// =============================================================================
+// Ultimate Custom Doom configuration variables
+// =============================================================================
+
+server int   cd_update_period = 35; // tics
+
+// Player menu CVARs ///////////////////////////////////////////////////////////
+
+server float cd_player_weapon_damage_mult = 0;
+server float cd_player_damage_taken_mult  = 0;
+
+server int   cd_player_start_type = 2;
+
+server int   cd_player_start_health      = 0;
+server int   cd_player_start_armor       = 0;
+server int   cd_player_start_savepercent = 33;
+
+server int   cd_player_max_health = 0;
+server float cd_player_speed_mult = 0;
+server float cd_player_jump_mult  = 0;
+
+server bool  cd_player_misc_enabled    = false;
+server float cd_player_aircontrol_mult = 1;
+server float cd_player_friction_mult   = 1;
+
+// Monster menu CVARs //////////////////////////////////////////////////////////
+
+server float cd_monster_health_mult = 0;
+server float cd_monster_speed_mult  = 0;
+
+// Health regeneration menu CVARs //////////////////////////////////////////////
+
+server bool  cd_health_regen_enabled = false;
+server int   cd_health_regen_amount  = 5;
+server int   cd_health_regen_freq    = 5;
+server int   cd_health_regen_cap     = 100;
+
+user   bool  cd_health_sound_enabled   = false;
+user   bool  cd_health_regen_pulse     = false;
+user   int   cd_health_blend_color_r   = 255;  // Red
+user   int   cd_health_blend_color_g   =   0;  // Green
+user   int   cd_health_blend_color_b   =   0;  // Blue
+user   float cd_health_blend_color_int = 0.25; // Intensity
+
+// Armor regeneration menu CVARs ///////////////////////////////////////////////
+
+server bool  cd_armor_regen_enabled = false;
+server int   cd_armor_regen_amount  = 5;
+server int   cd_armor_regen_freq    = 5;
+server int   cd_armor_regen_min     = 25;
+server int   cd_armor_regen_cap     = 100;
+
+user   bool  cd_armor_sound_enabled   = false;
+user   bool  cd_armor_regen_pulse     = false;
+user   int   cd_armor_blend_color_r   =   0;  // Red
+user   int   cd_armor_blend_color_g   =   0;  // Green
+user   int   cd_armor_blend_color_b   = 255;  // Blue
+user   float cd_armor_blend_color_int = 0.25; // Intensity
+
+// Ammo regeneration menu CVARs ////////////////////////////////////////////////
+
+server bool  cd_ammo_regen_enabled      = false;
+server bool  cd_ammo_regen_backpack_req = true;
+server int   cd_ammo_regen_amount       = 1;
+server int   cd_ammo_regen_freq         = 30;
+
+user   bool  cd_ammo_regen_pulse     = false;
+user   int   cd_ammo_blend_color_r   =   0;  // Red
+user   int   cd_ammo_blend_color_g   = 255;  // Green
+user   int   cd_ammo_blend_color_b   =   0;  // Blue
+user   float cd_ammo_blend_color_int = 0.25; // Intensity
+
+// Health degeneration menu CVARs //////////////////////////////////////////////
+
+server bool  cd_health_degen_enabled = false;
+server int   cd_health_degen_amount  = 1;
+server int   cd_health_degen_freq    = 1;
+server int   cd_health_degen_limit   = 25;
+
+// Armor degeneration menu CVARs ///////////////////////////////////////////////
+
+server bool  cd_armor_degen_enabled = false;
+server int   cd_armor_degen_amount  = 1;
+server int   cd_armor_degen_freq    = 1;
+server int   cd_armor_degen_limit   = 0;
+
+// =============================================================================
+// Powerup menu CVARs
+// =============================================================================
+
+server bool  cd_power_invisibility_permanent      = false;
+server bool  cd_power_invulnerability_permanent   = false;
+server bool  cd_power_ironfeet_permanent          = false;
+server bool  cd_power_lightamp_permanent          = false;
+server bool  cd_power_drain_permanent             = false;
+server bool  cd_power_highjump_permanent          = false;
+server bool  cd_power_infiniteammo_permanent      = false;
+server bool  cd_power_protecton_permanent         = false;
+server bool  cd_power_regeneraton_permanent       = false;
+server bool  cd_power_speed_permanent             = false;
+server bool  cd_power_strength_permanent          = false;
+server bool  cd_power_timefreezer_permanent       = false;
+server bool  cd_power_doublefiringspeed_permanent = false;
+server bool  cd_power_flight_permanent            = false;
+server bool  cd_power_frightener_permanent        = false;
+server bool  cd_power_scanner_permanent           = false;
+server bool  cd_power_damage_permanent            = false;
+server bool  cd_power_ghost_permanent             = false;
+server bool  cd_power_shadow_permanent            = false;
+server bool  cd_power_torch_permanent             = false;
+server bool  cd_power_minotaur_permanent          = false;
+server bool  cd_power_morph_permanent             = false;
+server bool  cd_power_mask_permanent              = false;
+server bool  cd_power_weaponlevel2_permanent      = false;
+server bool  cd_power_targeter_permanent          = false;
+server bool  cd_power_buddha_permanent            = false;
+
+// =============================================================================
+// RANDOMIZATION CVARs. Mother of God!
+// =============================================================================
+
+// Main ////////////////////////////////////////////////////////////////////////
+
+server bool  cd_random_enabled   = false;
+server int   cd_random_frequency = 30;
+
+user   bool  cd_random_timer_enabled              = true;
+user   int   cd_random_notification_type          = 1;
+user   bool  cd_random_notification_sound_enabled = true;
+user   float cd_random_notification_volume        = 0.5;
+
+// Basic Options ///////////////////////////////////////////////////////////////
+
+server float cd_random_player_weapon_damage_mult_min;
+server float cd_random_player_weapon_damage_mult_max;
+
+server float cd_random_player_damage_taken_mult_min;
+server float cd_random_player_damage_taken_mult_max;
+
+// Advanced Options ////////////////////////////////////////////////////////////
+
+server int   cd_random_player_start_health_min;
+server int   cd_random_player_start_health_max;
+
+server int   cd_random_player_start_armor_min;
+server int   cd_random_player_start_armor_max;
+
+server int   cd_random_player_start_savepercent_min;
+server int   cd_random_player_start_savepercent_max;
+
+server int   cd_random_player_max_health_min;
+server int   cd_random_player_max_health_max;
+
+server float cd_random_player_speed_mult_min;
+server float cd_random_player_speed_mult_max;
+
+server float cd_random_player_jump_mult_min;
+server float cd_random_player_jump_mult_max;
+
+// Regeneration ////////////////////////////////////////////////////////////////
+
+server int   cd_random_health_regen_amount_min;
+server int   cd_random_health_regen_amount_max;
+
+server int   cd_random_health_regen_freq_min;
+server int   cd_random_health_regen_freq_max;
+
+server int   cd_random_health_regen_cap_min;
+server int   cd_random_health_regen_cap_max;
+
+server int   cd_random_armor_regen_amount_min;
+server int   cd_random_armor_regen_amount_max;
+
+server int   cd_random_armor_regen_freq_min;
+server int   cd_random_armor_regen_freq_max;
+
+server int   cd_random_armor_regen_min_min;
+server int   cd_random_armor_regen_min_max;
+
+server int   cd_random_armor_regen_cap_min;
+server int   cd_random_armor_regen_cap_max;
+
+server int   cd_random_ammo_regen_amount_min;
+server int   cd_random_ammo_regen_amount_max;
+
+server int   cd_random_ammo_regen_freq_min;
+server int   cd_random_ammo_regen_freq_max;
+
+// Degeneration ////////////////////////////////////////////////////////////////
+
+server int   cd_random_health_degen_amount_min;
+server int   cd_random_health_degen_amount_max;
+
+server int   cd_random_health_degen_freq_min;
+server int   cd_random_health_degen_freq_max;
+
+server int   cd_random_health_degen_limit_min;
+server int   cd_random_health_degen_limit_max;
+
+server int   cd_random_armor_degen_amount_min;
+server int   cd_random_armor_degen_amount_max;
+
+server int   cd_random_armor_degen_freq_min;
+server int   cd_random_armor_degen_freq_max;
+
+server int   cd_random_armor_degen_limit_min;
+server int   cd_random_armor_degen_limit_max;
