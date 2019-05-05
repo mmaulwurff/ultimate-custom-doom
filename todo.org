@@ -1,7 +1,7 @@
 * DONE Convert WAD to PK3
 * DONE Change license to GPLv3
 * DONE Add Custom Doom Options menu to Options Menu
-* PROGRESS Convert ACS to ZScript
+* DONE Convert ACS to ZScript
 ** DONE Create ZScript files
 ** DONE Create CD_Settings class
 ** DONE Create CD_EventHandler class
@@ -26,13 +26,14 @@
 ** DONE randomize.acs/Script "CDTimer" (void)
 ** DONE custom/script "CDResetCVARs" (void)
 ** DONE custom/Script "CDResetRandomCVARs" (void)
-** PROGRESS randomize.acs/script "CDRandomizer" ENTER
-** TODO check default CVar values for sanity
+** DONE randomize.acs/script "CDRandomizer" ENTER
 ** DONE move classes from items.zs to separate files
 * DONE Add IDCLEVer Starter compatibility
 * DONE optimize images
 * DONE Convert mp3 to ogg
-* TODO review cvar validation
+* TODO Publish v0.1
+* TODO check default CVar values for sanity
+* TODO implement cvar validation
 * TODO check with a mod that changes max health of the player
 * TODO check with a Dehacked mod that changes max health of the player
 * TODO implement NashGore-like option hint system
@@ -40,7 +41,7 @@
 * TODO Move all strings to language.enu
 * TODO review the code
 * TODO playtest
-* TODO Publish v0.1
+* TODO publish v0.2
 * TODO Merge with Armament Tuning
 * TODO Add 10x functionality
-* TODO remove cd_player_misc_enabled CVar
+* TODO publish 0.3
