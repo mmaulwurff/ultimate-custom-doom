@@ -25,22 +25,12 @@ class cd_SettingsPack : cd_SettingsBase
   // public: ///////////////////////////////////////////////////////////////////
 
   override
-  void read(PlayerInfo p)
+  void resetCvarsToDefaults()
   {
     int nSettings = _settings.size();
     for (int i = 0; i < nSettings; ++i)
     {
-      _settings[i].read(p);
-    }
-  }
-
-  override
-  void resetCvarsToDefaults(PlayerInfo p)
-  {
-    int nSettings = _settings.size();
-    for (int i = 0; i < nSettings; ++i)
-    {
-      _settings[i].resetCvarsToDefaults(p);
+      _settings[i].resetCvarsToDefaults();
     }
   }
 

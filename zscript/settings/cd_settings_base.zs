@@ -25,19 +25,10 @@ class cd_SettingsBase
   // public: ///////////////////////////////////////////////////////////////////
 
   /**
-   * Read settings from the corresponding CVARs.
-   */
-  virtual
-  void read(PlayerInfo p)
-  {
-    console.printf("%s: read is not implemented!", GetClassName());
-  }
-
-  /**
    * Reset CVars to their default values.
    */
   virtual
-  void resetCvarsToDefaults(PlayerInfo p)
+  void resetCvarsToDefaults()
   {
     console.printf("%s: reset is not implemented!", GetClassName());
   }

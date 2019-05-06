@@ -24,26 +24,27 @@ class cd_CvarSetting : cd_SettingsBase
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_CvarSetting init(string cvarName)
+  cd_CvarSetting init(string cvarName, PlayerInfo p)
   {
-    _cvarName = cvarName;
+    _cvar = CVar.GetCvar(cvarName, p);
     return self;
   }
 
   // public: ///////////////////////////////////////////////////////////////////
 
   override
-  void resetCvarsToDefaults(PlayerInfo p)
+  void resetCvarsToDefaults()
   {
-    Cvar.GetCvar(_cvarName, p).ResetToDefault();
+    _cvar.ResetToDefault();
   }
 
   // protected: ////////////////////////////////////////////////////////////////
 
-  string cvarName() { return _cvarName; }
+  protected
+  Cvar variable() { return _cvar; }
 
   // private: //////////////////////////////////////////////////////////////////
 
-  private string _cvarName;
+  private transient CVar _cvar;
 
 } // class cd_CvarSetting

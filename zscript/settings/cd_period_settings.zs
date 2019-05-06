@@ -31,10 +31,10 @@ class cd_PeriodSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_PeriodSettings init(string isEnabledCvar, string periodCvar)
+  cd_PeriodSettings init(string isEnabledCvar, string periodCvar, PlayerInfo p)
   {
-    push(_isEnabled = new("cd_BoolSetting").init(isEnabledCvar));
-    push(_period    = new("cd_IntSetting" ).init(periodCvar   ));
+    push(_isEnabled = new("cd_BoolSetting").init(isEnabledCvar, p));
+    push(_period    = new("cd_IntSetting" ).init(periodCvar   , p));
 
     return self;
   }

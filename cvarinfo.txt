@@ -2,8 +2,6 @@
 // Ultimate Custom Doom configuration variables
 // =============================================================================
 
-server int   cd_update_period = 35; // tics
-
 // Player menu CVARs ///////////////////////////////////////////////////////////
 
 server float cd_player_weapon_damage_mult = 0;

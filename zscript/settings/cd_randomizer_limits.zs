@@ -35,16 +35,16 @@ class cd_RandomizerLimits : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_RandomizerLimits init()
+  cd_RandomizerLimits init(PlayerInfo p)
   {
-    push(_player             = new("cd_PlayerLimits"            ).init());
+    push(_player             = new("cd_PlayerLimits"            ).init(p));
 
-    push(_healthRegeneration = new("cd_HealthRegenerationLimits").init());
-    push(_armorRegeneration  = new("cd_ArmorRegenerationLimits" ).init());
-    push(_ammoRegeneration   = new("cd_AmmoRegenerationLimits"  ).init());
+    push(_healthRegeneration = new("cd_HealthRegenerationLimits").init(p));
+    push(_armorRegeneration  = new("cd_ArmorRegenerationLimits" ).init(p));
+    push(_ammoRegeneration   = new("cd_AmmoRegenerationLimits"  ).init(p));
 
-    push(_healthDegeneration = new("cd_HealthDegenerationLimits").init());
-    push(_armorDegeneration  = new("cd_ArmorDegenerationLimits" ).init());
+    push(_healthDegeneration = new("cd_HealthDegenerationLimits").init(p));
+    push(_armorDegeneration  = new("cd_ArmorDegenerationLimits" ).init(p));
 
     return self;
   }

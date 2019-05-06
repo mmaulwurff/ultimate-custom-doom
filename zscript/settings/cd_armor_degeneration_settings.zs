@@ -24,12 +24,13 @@ class cd_ArmorDegenerationSettings : cd_DegenerationSettings
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_ArmorDegenerationSettings init()
+  cd_ArmorDegenerationSettings init(PlayerInfo p)
   {
     super.init( "cd_armor_degen_enabled"
               , "cd_armor_degen_freq"
               , "cd_armor_degen_amount"
               , "cd_armor_degen_limit"
+              , p
               );
 
     return self;

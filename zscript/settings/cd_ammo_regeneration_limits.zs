@@ -29,10 +29,10 @@ class cd_AmmoRegenerationLimits : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_AmmoRegenerationLimits init()
+  cd_AmmoRegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_ammo_regen_amount_min", "cd_random_ammo_regen_amount_max"));
-    push(_period = newSetting("cd_random_ammo_regen_freq_min"  , "cd_random_ammo_regen_freq_max"  ));
+    push(_amount = newSetting("cd_random_ammo_regen_amount_min", "cd_random_ammo_regen_amount_max", p));
+    push(_period = newSetting("cd_random_ammo_regen_freq_min"  , "cd_random_ammo_regen_freq_max"  , p));
 
     return self;
   }
@@ -40,9 +40,9 @@ class cd_AmmoRegenerationLimits : cd_SettingsPack
   // private: //////////////////////////////////////////////////////////////////
 
   private
-  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar)
+  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
-    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar);
+    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
 
   // private: //////////////////////////////////////////////////////////////////

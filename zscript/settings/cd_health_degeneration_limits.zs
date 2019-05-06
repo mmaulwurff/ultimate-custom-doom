@@ -24,11 +24,11 @@ class cd_HealthDegenerationLimits : cd_DegenerationLimits
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_HealthDegenerationLimits init()
+  cd_HealthDegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_health_degen_amount_min", "cd_random_health_degen_amount_max"));
-    push(_period = newSetting("cd_random_health_degen_freq_min"  , "cd_random_health_degen_freq_max"  ));
-    push(_limit  = newSetting("cd_random_health_degen_limit_min" , "cd_random_health_degen_limit_max" ));
+    push(_amount = newSetting("cd_random_health_degen_amount_min", "cd_random_health_degen_amount_max", p));
+    push(_period = newSetting("cd_random_health_degen_freq_min"  , "cd_random_health_degen_freq_max"  , p));
+    push(_limit  = newSetting("cd_random_health_degen_limit_min" , "cd_random_health_degen_limit_max" , p));
 
     return self;
   }

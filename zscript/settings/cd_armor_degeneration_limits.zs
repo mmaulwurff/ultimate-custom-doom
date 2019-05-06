@@ -24,11 +24,11 @@ class cd_ArmorDegenerationLimits : cd_DegenerationLimits
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_ArmorDegenerationLimits init()
+  cd_ArmorDegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_armor_degen_amount_min", "cd_random_armor_degen_amount_max"));
-    push(_period = newSetting("cd_random_armor_degen_freq_min"  , "cd_random_armor_degen_freq_max"  ));
-    push(_limit  = newSetting("cd_random_armor_degen_limit_min" , "cd_random_armor_degen_limit_max" ));
+    push(_amount = newSetting("cd_random_armor_degen_amount_min", "cd_random_armor_degen_amount_max", p));
+    push(_period = newSetting("cd_random_armor_degen_freq_min"  , "cd_random_armor_degen_freq_max"  , p));
+    push(_limit  = newSetting("cd_random_armor_degen_limit_min" , "cd_random_armor_degen_limit_max" , p));
 
     return self;
   }

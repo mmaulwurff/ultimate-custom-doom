@@ -38,13 +38,14 @@ class cd_BlendSettings : cd_SettingsPack
                        , string greenCvar
                        , string blueCvar
                        , string intensityCvar
+                       , PlayerInfo p
                        )
   {
-    push(_isEnabled = new("cd_BoolSetting"  ).init(enabledCvar  ));
-    push(_red       = new("cd_IntSetting"   ).init(redCvar      ));
-    push(_green     = new("cd_IntSetting"   ).init(greenCvar    ));
-    push(_blue      = new("cd_IntSetting"   ).init(blueCvar     ));
-    push(_intensity = new("cd_DoubleSetting").init(intensityCvar));
+    push(_isEnabled = new("cd_BoolSetting"  ).init(enabledCvar  , p));
+    push(_red       = new("cd_IntSetting"   ).init(redCvar      , p));
+    push(_green     = new("cd_IntSetting"   ).init(greenCvar    , p));
+    push(_blue      = new("cd_IntSetting"   ).init(blueCvar     , p));
+    push(_intensity = new("cd_DoubleSetting").init(intensityCvar, p));
 
     return self;
   }

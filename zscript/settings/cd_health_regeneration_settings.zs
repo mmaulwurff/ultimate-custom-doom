@@ -37,18 +37,19 @@ class cd_HealthRegenerationSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_HealthRegenerationSettings init()
+  cd_HealthRegenerationSettings init(PlayerInfo p)
   {
-    push(_amount         = new("cd_IntSetting")    .init("cd_health_regen_amount" ));
-    push(_cap            = new("cd_IntSetting")    .init("cd_health_regen_cap"    ));
-    push(_isSoundEnabled = new("cd_BoolSetting")   .init("cd_health_sound_enabled"));
+    push(_amount         = new("cd_IntSetting")    .init("cd_health_regen_amount" , p));
+    push(_cap            = new("cd_IntSetting")    .init("cd_health_regen_cap"    , p));
+    push(_isSoundEnabled = new("cd_BoolSetting")   .init("cd_health_sound_enabled", p));
 
-    push(_period         = new("cd_PeriodSettings").init("cd_health_regen_enabled", "cd_health_regen_freq"));
+    push(_period         = new("cd_PeriodSettings").init("cd_health_regen_enabled", "cd_health_regen_freq", p));
     push(_blend          = new("cd_BlendSettings" ).init( "cd_health_regen_pulse"
                                                         , "cd_health_blend_color_r"
                                                         , "cd_health_blend_color_g"
                                                         , "cd_health_blend_color_b"
                                                         , "cd_health_blend_color_int"
+                                                        , p
                                                         ));
     return self;
   }

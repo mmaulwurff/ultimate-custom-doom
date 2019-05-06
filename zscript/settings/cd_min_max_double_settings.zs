@@ -29,10 +29,10 @@ class cd_MinMaxDoubleSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_MinMaxDoubleSettings init(string minCvar, string maxCvar)
+  cd_MinMaxDoubleSettings init(string minCvar, string maxCvar, PlayerInfo p)
   {
-    push(_min = new("cd_DoubleSetting").init(minCvar));
-    push(_max = new("cd_DoubleSetting").init(maxCvar));
+    push(_min = new("cd_DoubleSetting").init(minCvar, p));
+    push(_max = new("cd_DoubleSetting").init(maxCvar, p));
 
     return self;
   }

@@ -31,9 +31,9 @@ class cd_DegenerationLimits : cd_SettingsPack
   // protected: ////////////////////////////////////////////////////////////////
 
   protected
-  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar)
+  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
-    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar);
+    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
 
   // protected: ////////////////////////////////////////////////////////////////

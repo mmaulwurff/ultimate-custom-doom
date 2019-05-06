@@ -2,14 +2,6 @@
 
 CD_MAIN_TITLE = "Ultimate Custom Doom";
 
-CD_GENERAL_OPTIONS_TITLE = "General Options";
-CD_OPTION_UPDATE_CAPTION = "Options update";
-
-CD_UPDATE_NEVER       = "\cmNever";
-CD_UPDATE_IMMEDIATELY = "\ciImmediately";
-CD_UPDATE_1S          = "Every second";
-CD_UPDATE_3S          = "Every three seconds";
-
 CD_KEYS_TITLE = "Ultimate Custom Doom Keys";
 CD_KEYS_MENU  = "Open Configuration Menu";
 

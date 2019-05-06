@@ -30,20 +30,20 @@ class cd_HealthRegenerationLimits : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_HealthRegenerationLimits init()
+  cd_HealthRegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_health_regen_amount_min", "cd_random_health_regen_amount_max"));
-    push(_period = newSetting("cd_random_health_regen_freq_min"  , "cd_random_health_regen_freq_max"  ));
-    push(_cap    = newSetting("cd_random_health_regen_cap_min"   , "cd_random_health_regen_cap_max"   ));
+    push(_amount = newSetting("cd_random_health_regen_amount_min", "cd_random_health_regen_amount_max", p));
+    push(_period = newSetting("cd_random_health_regen_freq_min"  , "cd_random_health_regen_freq_max"  , p));
+    push(_cap    = newSetting("cd_random_health_regen_cap_min"   , "cd_random_health_regen_cap_max"   , p));
 
     return self;
   }
 
   // private: //////////////////////////////////////////////////////////////////
 
-  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar)
+  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
-    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar);
+    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
 
   // private: //////////////////////////////////////////////////////////////////

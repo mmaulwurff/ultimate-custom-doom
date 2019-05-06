@@ -24,11 +24,11 @@ class cd_IntSetting : cd_CvarSetting
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  int value() { return _setting; }
+  int value() { return variable().GetInt(); }
 
-  cd_IntSetting init(string cvarName)
+  cd_IntSetting init(string cvarName, PlayerInfo p)
   {
-    super.init(cvarName);
+    super.init(cvarName, p);
     return self;
   }
 
@@ -42,19 +42,7 @@ class cd_IntSetting : cd_CvarSetting
 
     int newValue = random(min, max);
 
-    Cvar.GetCvar(cvarName(), p).SetInt(newValue);
+    variable().SetInt(newValue);
   }
-
-  // public: ///////////////////////////////////////////////////////////////////
-
-  override
-  void read(PlayerInfo p)
-  {
-    _setting = Cvar.GetCvar(cvarName(), p).GetInt();
-  }
-
-  // private: //////////////////////////////////////////////////////////////////
-
-  private int _setting;
 
 } // class cd_IntSetting

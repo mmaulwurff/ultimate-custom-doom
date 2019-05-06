@@ -13,13 +13,11 @@ OptionMenu CustomDoomMenu
 
   Title       "$CD_MAIN_TITLE"
 
-  StaticText  "$CD_LINE_LONG"                                 , CDLightBlue
-  StaticText  "Welcome to Ultimate Custom Doom!"              , CDLightBlue
-  StaticText  "Set options update period in General Options." , CDLightBlue
-  StaticText  "$CD_LINE_LONG"                                 , CDLightBlue
+  StaticText  "$CD_LINE_LONG"                    , CDLightBlue
+  StaticText  "Welcome to Ultimate Custom Doom!" , CDLightBlue
+  StaticText  "$CD_LINE_LONG"                    , CDLightBlue
   StaticText  ""
 
-  SubMenu     "$CD_GENERAL_OPTIONS_TITLE" , GeneralOptionsMenu
   SubMenu     "Player Options"            , PlayerOptionsMenu
   SubMenu     "$CD_MONSTER_OPTIONS_TITLE" , MonsterOptionsMenu
   SubMenu     "$CD_REGENERATION_TITLE"    , RegenerationMenu
@@ -38,16 +36,6 @@ OptionMenu CustomDoomMenu
   SafeCommand "Reset to defaults", cd_reset_to_defaults, "This will reset all values to their defaults."
 
 } // OptionMenu CustomDoomMenu
-
-OptionMenu GeneralOptionsMenu
-{
-
-  Title       "$CD_GENERAL_OPTIONS_TITLE"
-
-  StaticText  ""
-  Option      "$CD_OPTION_UPDATE_CAPTION", cd_update_period, cd_update_period_values
-
-} // OptionMenu GeneralOptionsMenu
 
 OptionMenu PlayerOptionsMenu
 {
@@ -509,14 +497,6 @@ OptionMenu ManualMenu
 } // OptionMenu ManualMenu
 
 // Option Values ///////////////////////////////////////////////////////////////
-
-OptionValue cd_update_period_values
-{
-   -1, "$CD_UPDATE_NEVER"
-    0, "$CD_UPDATE_IMMEDIATELY"
-   35, "$CD_UPDATE_1S"
-  105, "$CD_UPDATE_3S"
-}
 
 OptionValue NotificationType
 {

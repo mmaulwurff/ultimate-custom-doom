@@ -41,14 +41,14 @@ class cd_RandomizerSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_RandomizerSettings init()
+  cd_RandomizerSettings init(PlayerInfo p)
   {
-    push(_period                     = new("cd_PeriodSettings").init("cd_random_enabled", "cd_random_frequency"));
+    push(_period                     = new("cd_PeriodSettings").init("cd_random_enabled", "cd_random_frequency", p));
 
-    push(_isTimerEnabled             = new("cd_BoolSetting"   ).init("cd_random_timer_enabled"             ));
-    push(_notificationType           = new("cd_IntSetting"    ).init("cd_random_notification_type"         ));
-    push(_isNotificationSoundEnabled = new("cd_BoolSetting"   ).init("cd_random_notification_sound_enabled"));
-    push(_notificationVolume         = new("cd_DoubleSetting" ).init("cd_random_notification_volume"       ));
+    push(_isTimerEnabled             = new("cd_BoolSetting"   ).init("cd_random_timer_enabled"             , p));
+    push(_notificationType           = new("cd_IntSetting"    ).init("cd_random_notification_type"         , p));
+    push(_isNotificationSoundEnabled = new("cd_BoolSetting"   ).init("cd_random_notification_sound_enabled", p));
+    push(_notificationVolume         = new("cd_DoubleSetting" ).init("cd_random_notification_volume"       , p));
 
     return self;
   }

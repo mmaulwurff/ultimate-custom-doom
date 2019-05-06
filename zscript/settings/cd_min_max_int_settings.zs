@@ -29,10 +29,10 @@ class cd_MinMaxIntSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_MinMaxIntSettings init(string minCvar, string maxCvar)
+  cd_MinMaxIntSettings init(string minCvar, string maxCvar, PlayerInfo p)
   {
-    push(_min = new("cd_IntSetting").init(minCvar));
-    push(_max = new("cd_IntSetting").init(maxCvar));
+    push(_min = new("cd_IntSetting").init(minCvar, p));
+    push(_max = new("cd_IntSetting").init(maxCvar, p));
 
     return self;
   }

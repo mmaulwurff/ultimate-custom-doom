@@ -45,26 +45,4 @@ class cd_Time
     return pawn;
   }
 
-  /**
-   * Shows if setting should be Read from the corresponding CVARs if it's time
-   * to do so.
-   *
-   * @returns true if the settings are read, and false otherwise.
-   */
-  static
-  bool maybeRead()
-  {
-    int optionsUpdatePeriod = CVar.GetCVar("cd_update_period").GetInt();
-
-    if (optionsUpdatePeriod == -1) { return false; } // never
-
-    if ((optionsUpdatePeriod ==  0) // always
-      || ((level.time % optionsUpdatePeriod) == 0)) // at the specified period
-    {
-      return true;
-    }
-
-    return false;
-  }
-
 } // class cd_Time

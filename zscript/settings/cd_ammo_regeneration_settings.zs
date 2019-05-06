@@ -32,16 +32,17 @@ class cd_AmmoRegenerationSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_AmmoRegenerationSettings init()
+  cd_AmmoRegenerationSettings init(PlayerInfo p)
   {
-    push(_isBackpackRequired = new("cd_BoolSetting"   ).init("cd_ammo_regen_backpack_req"));
-    push(_amount             = new("cd_IntSetting"    ).init("cd_ammo_regen_amount"      ));
-    push(_period             = new("cd_PeriodSettings").init("cd_ammo_regen_enabled", "cd_ammo_regen_freq"));
+    push(_isBackpackRequired = new("cd_BoolSetting"   ).init("cd_ammo_regen_backpack_req", p));
+    push(_amount             = new("cd_IntSetting"    ).init("cd_ammo_regen_amount"      , p));
+    push(_period             = new("cd_PeriodSettings").init("cd_ammo_regen_enabled", "cd_ammo_regen_freq", p));
     push(_blend              = new("cd_BlendSettings" ).init( "cd_ammo_regen_pulse"
                                                             , "cd_ammo_blend_color_r"
                                                             , "cd_ammo_blend_color_g"
                                                             , "cd_ammo_blend_color_b"
                                                             , "cd_ammo_blend_color_int"
+                                                            , p
                                                             ));
     return self;
   }

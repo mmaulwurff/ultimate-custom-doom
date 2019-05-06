@@ -24,11 +24,11 @@ class cd_DoubleSetting : cd_CvarSetting
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  double value() { return _setting; }
+  double value() { return variable().GetFloat(); }
 
-  cd_DoubleSetting init(string cvarName)
+  cd_DoubleSetting init(string cvarName, PlayerInfo p)
   {
-    super.init(cvarName);
+    super.init(cvarName, p);
     return self;
   }
 
@@ -42,19 +42,12 @@ class cd_DoubleSetting : cd_CvarSetting
 
     double newValue = randomDouble(min, max);
 
-    Cvar.GetCvar(cvarName(), p).SetFloat(newValue);
-  }
-
-  // public: ///////////////////////////////////////////////////////////////////
-
-  override
-  void read(PlayerInfo p)
-  {
-    _setting = Cvar.GetCvar(cvarName(), p).GetFloat();
+    variable().SetFloat(newValue);
   }
 
   // private: //////////////////////////////////////////////////////////////////
 
+  private
   double randomDouble(double min, double max)
   {
     int intMin = int(ceil(min * RANDOM_PRECISION));
@@ -64,10 +57,6 @@ class cd_DoubleSetting : cd_CvarSetting
 
     return r;
   }
-
-  // private: //////////////////////////////////////////////////////////////////
-
-  private double _setting;
 
   // private: //////////////////////////////////////////////////////////////////
 

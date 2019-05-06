@@ -24,8 +24,8 @@ class cd_EventHandler : EventHandler
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  override void PlayerEntered  (PlayerEvent event) { init(event); }
-  override void PlayerRespawned(PlayerEvent event) { init(event); }
+  override void PlayerEntered  (PlayerEvent event) { initEvent(event); }
+  override void PlayerRespawned(PlayerEvent event) { initEvent(event); }
 
   override
   void WorldTick()
@@ -33,14 +33,9 @@ class cd_EventHandler : EventHandler
     PlayerInfo player = players[consolePlayer];
     if (player == null) { return; }
 
-    bool isSettingsUpdated = cd_Time.maybeRead();
-    if (isSettingsUpdated)
-    {
-      _settings.read(player);
-      updateProperties(player);
+    if (isJustLoadedGame()) { init(player); }
 
-      _randomizerLimits.read(player);
-    }
+    updateProperties(player);
 
     bool isTimeToPulse = ((level.time % Thinker.TICRATE) == 0);
     if (isTimeToPulse) { pulse(player); }
@@ -89,33 +84,45 @@ class cd_EventHandler : EventHandler
   private
   void resetCvarsToDefaults()
   {
-    _settings.resetCvarsToDefaults(players[consolePlayer]);
+    _settings.resetCvarsToDefaults();
   }
 
   private
   void resetRandomizerCvars()
   {
-    _randomizerLimits.resetCvarsToDefaults(players[consolePlayer]);
+    _randomizerLimits.resetCvarsToDefaults();
   }
 
   private
-  void init(PlayerEvent event)
+  void initEvent(PlayerEvent event)
   {
     if (event == null) { return; }
     if (event.playerNumber != consolePlayer) { return; }
 
     PlayerInfo player = players[consolePlayer];
 
-    _settings         = new("cd_Settings"        ).init();
+    init(player);
+  }
+
+  private
+  void init(PlayerInfo player)
+  {
+    initSettings(player);
+
     _playerProperties = new("cd_PlayerProperties").init(_settings.player(), player);
     _miscProperties   = new("cd_MiscProperties"  ).init(_settings.misc  (), player);
     _randomizer       = new("cd_Randomizer"      ).init();
-    _randomizerLimits = new("cd_RandomizerLimits").init();
 
-    _settings.read(player);
-    _randomizerLimits.read(player);
+    updateProperties(player);
 
     player.mo.GiveInventoryType("cd_StartGiverCheck");
+  }
+
+  private
+  void initSettings(PlayerInfo player)
+  {
+    _settings         = new("cd_Settings"        ).init(player);
+    _randomizerLimits = new("cd_RandomizerLimits").init(player);
   }
 
   private
@@ -140,6 +147,14 @@ class cd_EventHandler : EventHandler
     cd_Randomizer.randomize(player, _settings, _randomizerLimits);
   }
 
+  private
+  bool isJustLoadedGame()
+  {
+    bool result = !_isNotLoadedGame;
+    _isNotLoadedGame = true;
+    return result;
+  }
+
   // private: //////////////////////////////////////////////////////////////////
 
   private cd_Settings         _settings;
@@ -147,5 +162,7 @@ class cd_EventHandler : EventHandler
   private cd_MiscProperties   _miscProperties;
   private cd_Randomizer       _randomizer;
   private cd_RandomizerLimits _randomizerLimits;
+
+  private transient bool _isNotLoadedGame;
 
 } // class cd_EventHandler

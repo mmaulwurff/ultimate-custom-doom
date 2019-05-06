@@ -48,20 +48,20 @@ class cd_PlayerSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_PlayerSettings init()
+  cd_PlayerSettings init(PlayerInfo p)
   {
-    push(_damageMultiplier      = new("cd_DoubleSetting").init("cd_player_weapon_damage_mult"));
-    push(_damageTakenMultiplier = new("cd_DoubleSetting").init("cd_player_damage_taken_mult" ));
+    push(_damageMultiplier      = new("cd_DoubleSetting").init("cd_player_weapon_damage_mult", p));
+    push(_damageTakenMultiplier = new("cd_DoubleSetting").init("cd_player_damage_taken_mult" , p));
 
-    push(_startType             = new("cd_IntSetting"   ).init("cd_player_start_type"        ));
-    push(_startHealth           = new("cd_IntSetting"   ).init("cd_player_start_health"      ));
-    push(_startArmor            = new("cd_IntSetting"   ).init("cd_player_start_armor"       ));
-    push(_startArmorSavePercent = new("cd_IntSetting"   ).init("cd_player_start_savepercent" ));
+    push(_startType             = new("cd_IntSetting"   ).init("cd_player_start_type"        , p));
+    push(_startHealth           = new("cd_IntSetting"   ).init("cd_player_start_health"      , p));
+    push(_startArmor            = new("cd_IntSetting"   ).init("cd_player_start_armor"       , p));
+    push(_startArmorSavePercent = new("cd_IntSetting"   ).init("cd_player_start_savepercent" , p));
 
-    push(_maxHealth             = new("cd_IntSetting"   ).init("cd_player_max_health"        ));
+    push(_maxHealth             = new("cd_IntSetting"   ).init("cd_player_max_health"        , p));
 
-    push(_speedMultiplier       = new("cd_DoubleSetting").init("cd_player_speed_mult"        ));
-    push(_jumpZMultiplier       = new("cd_DoubleSetting").init("cd_player_jump_mult"         ));
+    push(_speedMultiplier       = new("cd_DoubleSetting").init("cd_player_speed_mult"        , p));
+    push(_jumpZMultiplier       = new("cd_DoubleSetting").init("cd_player_jump_mult"         , p));
 
     return self;
   }

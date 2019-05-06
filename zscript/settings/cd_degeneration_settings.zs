@@ -35,11 +35,12 @@ class cd_DegenerationSettings : cd_SettingsPack
                               , string periodCvar
                               , string amountCvar
                               , string limitCvar
+                              , PlayerInfo p
                               )
   {
-    push(_amount = new("cd_IntSetting"    ).init(amountCvar));
-    push(_limit  = new("cd_IntSetting"    ).init(limitCvar ));
-    push(_period = new("cd_PeriodSettings").init(enabledCvar, periodCvar));
+    push(_amount = new("cd_IntSetting"    ).init(amountCvar, p));
+    push(_limit  = new("cd_IntSetting"    ).init(limitCvar , p));
+    push(_period = new("cd_PeriodSettings").init(enabledCvar, periodCvar, p));
 
     return self;
   }

@@ -35,8 +35,6 @@ class cd_Monsters play
   static
   void applyMonsterMultipliersToAll(cd_MonsterSettings settings)
   {
-    settings.read(null);
-
     let   iterator = ThinkerIterator.Create();
     Actor a;
 

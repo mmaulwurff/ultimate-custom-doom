@@ -38,31 +38,39 @@ class cd_PlayerLimits : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_PlayerLimits init()
+  cd_PlayerLimits init(PlayerInfo p)
   {
     push(_damageMultiplier      = newDoubleSetting( "cd_random_player_weapon_damage_mult_min"
                                                   , "cd_random_player_weapon_damage_mult_max"
+                                                  , p
                                                   ));
     push(_damageTakenMultiplier = newDoubleSetting( "cd_random_player_damage_taken_mult_min"
                                                   , "cd_random_player_damage_taken_mult_max"
+                                                  , p
                                                   ));
     push(_startHealth           = newIntSetting   ( "cd_random_player_start_health_min"
                                                   , "cd_random_player_start_health_max"
+                                                  , p
                                                   ));
     push(_startArmor            = newIntSetting   ( "cd_random_player_start_armor_min"
                                                   , "cd_random_player_start_armor_max"
+                                                  , p
                                                   ));
     push(_savePercent           = newIntSetting   ( "cd_random_player_start_savepercent_min"
                                                   , "cd_random_player_start_savepercent_max"
+                                                  , p
                                                   ));
     push(_maxHealth             = newIntSetting   ( "cd_random_player_max_health_min"
                                                   , "cd_random_player_max_health_max"
+                                                  , p
                                                   ));
     push(_speedMultiplier       = newDoubleSetting( "cd_random_player_speed_mult_min"
                                                   , "cd_random_player_speed_mult_max"
+                                                  , p
                                                   ));
     push(_jumpHeightMultiplier  = newDoubleSetting( "cd_random_player_jump_mult_min"
                                                   , "cd_random_player_jump_mult_max"
+                                                  , p
                                                   ));
 
     return self;
@@ -71,15 +79,15 @@ class cd_PlayerLimits : cd_SettingsPack
   // private: //////////////////////////////////////////////////////////////////
 
   private
-  cd_MinMaxIntSettings newIntSetting(string minCvar, string maxCvar)
+  cd_MinMaxIntSettings newIntSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
-    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar);
+    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
 
   private
-  cd_MinMaxDoubleSettings newDoubleSetting(string minCvar, string maxCvar)
+  cd_MinMaxDoubleSettings newDoubleSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
-    return new("cd_MinMaxDoubleSettings").init(minCvar, maxCvar);
+    return new("cd_MinMaxDoubleSettings").init(minCvar, maxCvar, p);
   }
 
   // private: //////////////////////////////////////////////////////////////////

@@ -30,11 +30,11 @@ class cd_MiscSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_MiscSettings init()
+  cd_MiscSettings init(PlayerInfo p)
   {
-    push(_isEnabled  = new("cd_BoolSetting"  ).init("cd_player_misc_enabled"   ));
-    push(_airControl = new("cd_DoubleSetting").init("cd_player_aircontrol_mult"));
-    push(_friction   = new("cd_DoubleSetting").init("cd_player_friction_mult"  ));
+    push(_isEnabled  = new("cd_BoolSetting"  ).init("cd_player_misc_enabled"   , p));
+    push(_airControl = new("cd_DoubleSetting").init("cd_player_aircontrol_mult", p));
+    push(_friction   = new("cd_DoubleSetting").init("cd_player_friction_mult"  , p));
 
     return self;
   }

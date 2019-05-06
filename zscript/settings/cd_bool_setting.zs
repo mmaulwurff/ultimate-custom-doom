@@ -24,24 +24,12 @@ class cd_BoolSetting : cd_CvarSetting
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  bool value() { return _setting; }
+  bool value() { return variable().GetInt(); }
 
-  cd_BoolSetting init(string cvarName)
+  cd_BoolSetting init(string cvarName, PlayerInfo p)
   {
-    super.init(cvarName);
+    super.init(cvarName, p);
     return self;
   }
-
-  // public: ///////////////////////////////////////////////////////////////////
-
-  override
-  void read(PlayerInfo p)
-  {
-    _setting = Cvar.GetCvar(cvarName(), p).GetInt();
-  }
-
-  // private: //////////////////////////////////////////////////////////////////
-
-  private bool _setting;
 
 } // class cd_BoolSetting

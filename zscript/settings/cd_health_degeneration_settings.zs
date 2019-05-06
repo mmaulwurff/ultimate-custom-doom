@@ -24,12 +24,13 @@ class cd_HealthDegenerationSettings : cd_DegenerationSettings
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_HealthDegenerationSettings init()
+  cd_HealthDegenerationSettings init(PlayerInfo p)
   {
     super.init( "cd_health_degen_enabled"
               , "cd_health_degen_freq"
               , "cd_health_degen_amount"
               , "cd_health_degen_limit"
+              , p
               );
 
     return self;

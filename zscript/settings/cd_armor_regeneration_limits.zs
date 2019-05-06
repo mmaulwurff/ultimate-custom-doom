@@ -31,12 +31,12 @@ class cd_ArmorRegenerationLimits : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_ArmorRegenerationLimits init()
+  cd_ArmorRegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_armor_regen_amount_min", "cd_random_armor_regen_amount_max"));
-    push(_period = newSetting("cd_random_armor_regen_freq_min"  , "cd_random_armor_regen_freq_max"  ));
-    push(_min    = newSetting("cd_random_armor_regen_min_min"   , "cd_random_armor_regen_min_max"   ));
-    push(_cap    = newSetting("cd_random_armor_regen_cap_min"   , "cd_random_armor_regen_cap_max"   ));
+    push(_amount = newSetting("cd_random_armor_regen_amount_min", "cd_random_armor_regen_amount_max", p));
+    push(_period = newSetting("cd_random_armor_regen_freq_min"  , "cd_random_armor_regen_freq_max"  , p));
+    push(_min    = newSetting("cd_random_armor_regen_min_min"   , "cd_random_armor_regen_min_max"   , p));
+    push(_cap    = newSetting("cd_random_armor_regen_cap_min"   , "cd_random_armor_regen_cap_max"   , p));
 
     return self;
   }
@@ -44,9 +44,9 @@ class cd_ArmorRegenerationLimits : cd_SettingsPack
   // private: //////////////////////////////////////////////////////////////////
 
   private
-  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar)
+  cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
-    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar);
+    return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
 
   // private: //////////////////////////////////////////////////////////////////

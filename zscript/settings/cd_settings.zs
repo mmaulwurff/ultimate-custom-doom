@@ -44,22 +44,22 @@ class cd_Settings : cd_SettingsPack
   /**
    * Initiate cd_Settings instance.
    */
-  cd_Settings init()
+  cd_Settings init(PlayerInfo p)
   {
-    push(_player             = new("cd_PlayerSettings" ).init());
-    push(_misc               = new("cd_MiscSettings"   ).init());
-    push(_monster            = new("cd_MonsterSettings").init());
+    push(_player             = new("cd_PlayerSettings" ).init(p));
+    push(_misc               = new("cd_MiscSettings"   ).init(p));
+    push(_monster            = new("cd_MonsterSettings").init(p));
 
-    push(_healthRegeneration = new("cd_HealthRegenerationSettings").init());
-    push(_armorRegeneration  = new("cd_ArmorRegenerationSettings" ).init());
-    push(_ammoRegeneration   = new("cd_AmmoRegenerationSettings"  ).init());
+    push(_healthRegeneration = new("cd_HealthRegenerationSettings").init(p));
+    push(_armorRegeneration  = new("cd_ArmorRegenerationSettings" ).init(p));
+    push(_ammoRegeneration   = new("cd_AmmoRegenerationSettings"  ).init(p));
 
-    push(_healthDegeneration = new("cd_HealthDegenerationSettings").init());
-    push(_armorDegeneration  = new("cd_ArmorDegenerationSettings" ).init());
+    push(_healthDegeneration = new("cd_HealthDegenerationSettings").init(p));
+    push(_armorDegeneration  = new("cd_ArmorDegenerationSettings" ).init(p));
 
-    push(_permanentPowerup   = new("cd_PermanentPowerupSettings"  ).init());
+    push(_permanentPowerup   = new("cd_PermanentPowerupSettings"  ).init(p));
 
-    push(_randomizer         = new("cd_RandomizerSettings"        ).init());
+    push(_randomizer         = new("cd_RandomizerSettings"        ).init(p));
 
     return self;
   }

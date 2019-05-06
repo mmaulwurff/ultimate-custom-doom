@@ -26,10 +26,10 @@ class cd_MonsterSettings : cd_SettingsPack
 
   // public: ///////////////////////////////////////////////////////////////////
 
-  cd_MonsterSettings init()
+  cd_MonsterSettings init(PlayerInfo p)
   {
-    push(_healthMultiplier = new("cd_DoubleSetting").init("cd_monster_health_mult"));
-    push(_speedMultiplier  = new("cd_DoubleSetting").init("cd_monster_speed_mult" ));
+    push(_healthMultiplier = new("cd_DoubleSetting").init("cd_monster_health_mult", p));
+    push(_speedMultiplier  = new("cd_DoubleSetting").init("cd_monster_speed_mult" , p));
 
     return self;
   }
