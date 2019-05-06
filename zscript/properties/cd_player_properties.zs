@@ -65,13 +65,14 @@ class cd_PlayerProperties play
   private
   void rememberOriginals(PlayerInfo player)
   {
-    PlayerPawn pawn = player.mo;
+    class<PlayerPawn>    type      = player.mo.GetClassName();
+    readonly<PlayerPawn> default   = GetDefaultByType(type);
 
-    _originalDamageMultiplier      = pawn.DamageMultiply;
-    _originalDamageTakenMultiplier = pawn.DamageFactor;
-    _originalMaxHealth             = pawn.MaxHealth;
-    _originalSpeed                 = pawn.Speed;
-    _originalJumpZ                 = pawn.JumpZ;
+    _originalDamageMultiplier      = default.DamageMultiply;
+    _originalDamageTakenMultiplier = default.DamageFactor;
+    _originalMaxHealth             = default.MaxHealth;
+    _originalSpeed                 = default.Speed;
+    _originalJumpZ                 = default.JumpZ;
   }
 
   // private: //////////////////////////////////////////////////////////////////
