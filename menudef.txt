@@ -13,10 +13,7 @@ OptionMenu CustomDoomMenu
 
   Title       "$CD_MAIN_TITLE"
 
-  StaticText  "$CD_LINE_LONG"                    , CDLightBlue
-  StaticText  "Welcome to Ultimate Custom Doom!" , CDLightBlue
-  StaticText  "$CD_LINE_LONG"                    , CDLightBlue
-  StaticText  ""
+  cd_FramedText "Welcome to Ultimate Custom Doom!"
 
   SubMenu     "Player Options"            , PlayerOptionsMenu
   SubMenu     "$CD_MONSTER_OPTIONS_TITLE" , MonsterOptionsMenu
@@ -43,20 +40,13 @@ OptionMenu PlayerOptionsMenu
   Title      "Player Options"
 
   StaticText "All modifiers are zero-terminated."         , Gold
-  StaticText ""
-  StaticText "========================================"   , CDLightBlue
-  StaticText "Basic Player Options"                       , CDLightBlue
-  StaticText "========================================"   , CDLightBlue
-  StaticText ""
+
+  cd_FramedText "Basic Player Options"
 
   TextField  "$CD_PLAYER_WEAPON_MULTIPLIER_CAPTION"       , cd_player_weapon_damage_mult
   TextField  "$CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION" , cd_player_damage_taken_mult
 
-  StaticText ""
-  StaticText "========================================"   , CDLightBlue
-  StaticText "Advanced Player Options"                    , CDLightBlue
-  StaticText "========================================"   , CDLightBlue
-  StaticText ""
+  cd_FramedText "Advanced Player Options"
 
   Option     "Starting items type"      , cd_player_start_type, cd_player_start_type_values
   TextField  "$CD_START_HEALTH_CAPTION" , cd_player_start_health
@@ -71,11 +61,7 @@ OptionMenu PlayerOptionsMenu
   TextField  "$CD_SPEED_MULTIPLIER_CAPTION"  , cd_player_speed_mult
   TextField  "$CD_JUMP_Z_MULTIPLIER_CAPTION" , cd_player_jump_mult
 
-  StaticText ""
-  StaticText "========================================", CDLightBlue
-  StaticText "Misc Player Options", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Misc Player Options"
 
   Option     "Enable Miscellaneous Options", cd_player_misc_enabled, OnOff
   StaticText "Toggles the options below on or off.", White
@@ -100,10 +86,8 @@ OptionMenu MonsterOptionsMenu
 
   StaticText "$CD_ON_LEVEL_OR_MANUAL_1" , Gold
   StaticText "$CD_ON_LEVEL_OR_MANUAL_2" , Gold
-  StaticText ""
-  StaticText "========================================" , CDLightBlue
-  StaticText "$CD_MONSTER_OPTIONS_TITLE"                , CDLightBlue
-  StaticText "========================================" , CDLightBlue
+
+  cd_FramedText "$CD_MONSTER_OPTIONS_TITLE"
 
   TextField  "$CD_MONSTER_HEALTH" , cd_monster_health_mult
   TextField  "$CD_MONSTER_SPEED"  , cd_monster_speed_mult
@@ -118,9 +102,7 @@ OptionMenu RegenerationMenu
 
   Title      "$CD_REGENERATION_TITLE"
 
-  StaticText "$CD_LINE_SHORT"                  , CDLightBlue
-  StaticText "$CD_HEALTH_REGENERATION_CAPTION" , CDLightBlue
-  StaticText "$CD_LINE_SHORT"                  , CDLightBlue
+  cd_FramedText "$CD_HEALTH_REGENERATION_CAPTION"
 
   Option     "$CD_ENABLED_CAPTION", cd_health_regen_enabled, OnOff
   StaticText ""
@@ -151,11 +133,8 @@ OptionMenu RegenerationMenu
   Slider     "Blue"      , cd_health_blend_color_b,   0, 255, 15, 0
   Slider     "Intensity" , cd_health_blend_color_int, 0, 1, 0.05, 2
   StaticText "Changes blend color and intensity.", White
-  StaticText ""
 
-  StaticText "========================================" , CDLightBlue
-  StaticText "Armor Regeneration"                       , CDLightBlue
-  StaticText "========================================" , CDLightBlue
+  cd_FramedText "Armor Regeneration"
 
   Option     "Enable Armor Regeneration", cd_armor_regen_enabled, OnOff
   StaticText ""
@@ -191,11 +170,8 @@ OptionMenu RegenerationMenu
   Slider     "Blue"      , cd_armor_blend_color_b,   0, 255, 15, 0
   Slider     "Intensity" , cd_armor_blend_color_int, 0, 1, 0.05, 2
   StaticText "Changes blend color and intensity."
-  StaticText ""
 
-  StaticText "========================================" , CDLightBlue
-  StaticText "Ammo Regeneration"                        , CDLightBlue
-  StaticText "========================================" , CDLightBlue
+  cd_FramedText "Ammo Regeneration"
 
   Option     "Enable Ammo Regeneration", "cd_ammo_regen_enabled", OnOff
   StaticText ""
@@ -231,10 +207,7 @@ OptionMenu DegenerationMenu
 
   Title      "Degeneration Options"
 
-  StaticText "========================================", CDLightBlue
-  StaticText "Health Degeneration", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Health Degeneration"
 
   Option     "Enable Health Degeneration", "cd_health_degen_enabled", OnOff
   StaticText ""
@@ -250,12 +223,8 @@ OptionMenu DegenerationMenu
   TextField  "$CD_LIMIT_CAPTION", "cd_health_degen_limit"
   StaticText "Health will not degenerate further if it is", White
   StaticText "below this number. Caps at 1.", White
-  StaticText ""
 
-  StaticText "========================================", CDLightBlue
-  StaticText "Armor Degeneration", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Armor Degeneration"
 
   Option     "Enable Armor Degeneration", "cd_armor_degen_enabled", OnOff
   StaticText ""
@@ -340,11 +309,7 @@ OptionMenu RandomizerMenu
   Option "Notification Sound", "cd_random_notification_sound_enabled", OnOff
   Slider "Notification Volume", "cd_random_notification_volume", 0.00, 1.00, 0.05, 2
 
-  StaticText ""
-  StaticText "========================================", CDLightBlue
-  StaticText "Basic Player Options", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Basic Player Options"
 
   TextField "Weapon Damage Min", cd_random_player_weapon_damage_mult_min
   TextField "Weapon Damage Max", cd_random_player_weapon_damage_mult_max
@@ -352,11 +317,7 @@ OptionMenu RandomizerMenu
   TextField "Damage Taken Min", cd_random_player_damage_taken_mult_min
   TextField "Damage Taken Max", cd_random_player_damage_taken_mult_max
 
-  StaticText ""
-  StaticText "========================================", CDLightBlue
-  StaticText "Advanced Player Options", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Advanced Player Options"
 
   TextField "Starting Health Min", "cd_random_player_start_health_min"
   TextField "Starting Health Max", "cd_random_player_start_health_max"
@@ -370,11 +331,7 @@ OptionMenu RandomizerMenu
   TextField "Jump Multiplier Min", "cd_random_player_jump_mult_min"
   TextField "Jump Multiplier Max", "cd_random_player_jump_mult_max"
 
-  StaticText ""
-  StaticText "========================================", CDLightBlue
-  StaticText "Regeneration Options", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Regeneration Options"
 
   TextField "Health Amount Min", "cd_random_health_regen_amount_min"
   TextField "Health Amount Max", "cd_random_health_regen_amount_max"
@@ -423,11 +380,7 @@ OptionMenu RandomizerMenu
   TextField "Ammo Frequency Min", "cd_random_ammo_regen_freq_min"
   TextField "Ammo Frequency Max", "cd_random_ammo_regen_freq_max"
 
-  StaticText ""
-  StaticText "========================================", CDLightBlue
-  StaticText "Degeneration Options", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+  cd_FramedText "Degeneration Options"
 
   TextField "Health Amount Min", "cd_random_health_degen_amount_min"
   TextField "Health Amount Max", "cd_random_health_degen_amount_max"
@@ -470,11 +423,8 @@ OptionMenu ManualMenu
   StaticText "This is Ultimate Custom Doom reference page.", CDLightBlue
   StaticText "All useful information regarding the mod is here.", CDLightBlue
   StaticText "=======================================================================", CDLightBlue
-  StaticText ""
-  StaticText "========================================", CDLightBlue
-  StaticText "Zero-terminated modifiers.", CDLightBlue
-  StaticText "========================================", CDLightBlue
-  StaticText ""
+
+  cd_FramedText "Zero-terminated modifiers."
   StaticText "These modifiers have a default value of 0. They will not do", White
   StaticText "anything until you change their values to something positive.", White
   StaticText ""

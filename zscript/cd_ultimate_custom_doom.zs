@@ -29,6 +29,6 @@ class cd_UltimateCustomDoom
   // public: ///////////////////////////////////////////////////////////////////
 
   static string getTitle()   { return StringTable.Localize("$CD_MAIN_TITLE"); }
-  static string getVersion() { return "0.1"; }
+  static string getVersion() { return "0.2"; }
 
 } // class cd_UltimateCustomDoom
