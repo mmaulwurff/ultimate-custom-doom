@@ -185,8 +185,8 @@ OptionMenu RegenerationMenu
   StaticText "Ammo regeneration amount.", White
   StaticText ""
 
-  TextField  "Frequency", cd_ammo_regen_freq
-  StaticText "Ammo regeneration frequency, in seconds.", White
+  TextField  "Period", cd_ammo_regen_freq
+  StaticText "Ammo regeneration period, in seconds.", White
   StaticText ""
 
   Option     "Blend Pulse", cd_ammo_regen_pulse, OnOff
@@ -217,7 +217,7 @@ OptionMenu DegenerationMenu
   StaticText ""
 
   TextField  "$CD_PERIOD_CAPTION", "cd_health_degen_freq"
-  StaticText "Health degeneration frequency, in seconds.", White
+  StaticText "Health degeneration period, in seconds.", White
   StaticText ""
 
   TextField  "$CD_LIMIT_CAPTION", "cd_health_degen_limit"
@@ -300,7 +300,7 @@ OptionMenu RandomizerMenu
   Option "Enable Randomizer", "cd_random_enabled", OnOff
   StaticText ""
 
-  TextField "Frequency", "cd_random_frequency"
+  TextField "Period", "cd_random_frequency"
   StaticText "How often the randomizer will shift the values, in seconds.", White
   StaticText ""
 
@@ -338,8 +338,8 @@ OptionMenu RandomizerMenu
 
   StaticText ""
 
-  TextField "Health Frequency Min", "cd_random_health_regen_freq_min"
-  TextField "Health Frequency Max", "cd_random_health_regen_freq_max"
+  TextField "Health Period Min", "cd_random_health_regen_freq_min"
+  TextField "Health Period Max", "cd_random_health_regen_freq_max"
 
   StaticText ""
 
@@ -355,8 +355,8 @@ OptionMenu RandomizerMenu
 
   StaticText ""
 
-  TextField "Armor Frequency Min", "cd_random_armor_regen_freq_min"
-  TextField "Armor Frequency Max", "cd_random_armor_regen_freq_max"
+  TextField "Armor Period Min", "cd_random_armor_regen_freq_min"
+  TextField "Armor Period Max", "cd_random_armor_regen_freq_max"
 
   StaticText ""
 
@@ -377,8 +377,8 @@ OptionMenu RandomizerMenu
 
   StaticText ""
 
-  TextField "Ammo Frequency Min", "cd_random_ammo_regen_freq_min"
-  TextField "Ammo Frequency Max", "cd_random_ammo_regen_freq_max"
+  TextField "Ammo Period Min", "cd_random_ammo_regen_freq_min"
+  TextField "Ammo Period Max", "cd_random_ammo_regen_freq_max"
 
   cd_FramedText "Degeneration Options"
 
@@ -387,8 +387,8 @@ OptionMenu RandomizerMenu
 
   StaticText ""
 
-  TextField "Health Frequency Min", "cd_random_health_degen_freq_min"
-  TextField "Health Frequency Max", "cd_random_health_degen_freq_max"
+  TextField "Health Period Min", "cd_random_health_degen_freq_min"
+  TextField "Health Period Max", "cd_random_health_degen_freq_max"
 
   StaticText ""
 
@@ -404,8 +404,8 @@ OptionMenu RandomizerMenu
 
   StaticText ""
 
-  TextField "Armor Frequency Min", "cd_random_armor_degen_freq_min"
-  TextField "Armor Frequency Max", "cd_random_armor_degen_freq_max"
+  TextField "Armor Period Min", "cd_random_armor_degen_freq_min"
+  TextField "Armor Period Max", "cd_random_armor_degen_freq_max"
 
   StaticText ""
 
