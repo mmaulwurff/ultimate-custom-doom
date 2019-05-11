@@ -40,6 +40,8 @@ class OptionMenuItemCd_FramedText : OptionMenuItemStaticText
       // self is now here
       desc.mItems.insert(selfIndex + 3, after );
       desc.mItems.insert(selfIndex + 4, space2);
+
+      return -1;
     }
 
     return Super.Draw(desc, y, indent, selected);
