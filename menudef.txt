@@ -64,18 +64,15 @@ OptionMenu PlayerOptionsMenu
   cd_FramedText "Misc Player Options"
 
   Option     "Enable Miscellaneous Options", cd_player_misc_enabled, OnOff
-  StaticText "Toggles the options below on or off.", White
+  cd_Hint    "Toggles the options below on or off."
 
-  StaticText ""
   StaticText "----------", CDLightBlue
   StaticText ""
 
   TextField  "$CD_AIR_CONTROL_CAPTION", cd_player_aircontrol_mult
-  StaticText "Use very large values for visible change.", White
-  StaticText ""
+  cd_Hint    "Use very large values for visible change."
 
   Slider     "$CD_FRICTION_CAPTION", "cd_player_friction_mult", 0.95, 1.25, 0.01, 2
-  StaticText ""
 
 } // OptionMenu PlayerOptionsMenu
 
@@ -108,31 +105,26 @@ OptionMenu RegenerationMenu
   StaticText ""
 
   TextField  "$CD_AMOUNT_CAPTION", cd_health_regen_amount
-  StaticText "Health regeneration amount.", White
-  StaticText ""
+  cd_Hint    "Health regeneration amount."
 
   TextField  "$CD_PERIOD_CAPTION", cd_health_regen_freq
-  StaticText "Health regeneration period, in seconds.", White
-  StaticText ""
+  cd_Hint    "Health regeneration period, in seconds."
 
   TextField  "$CD_CAP_AMOUNT_CAPTION", cd_health_regen_cap
-  StaticText "Regeneration stops if your health exceeds this number.", White
-  StaticText "0 = until you reach max health.", White
-  StaticText ""
+  cd_Hint    "Regeneration stops if your health exceeds this number."
+  cd_Hint    "0 = until you reach max health."
 
   Option     "Sound Effect", cd_health_sound_enabled, OnOff
-  StaticText "Toggles heartbeat sound on or off.", White
-  StaticText ""
+  cd_Hint    "Toggles heartbeat sound on or off."
 
   Option     "Blend Pulse", cd_health_regen_pulse, OnOff
-  StaticText "Toggles blend pulse on regeneration on or off.", White
-  StaticText ""
+  cd_Hint    "Toggles blend pulse on regeneration on or off."
 
   Slider     "Red"       , cd_health_blend_color_r,   0, 255, 15, 0
   Slider     "Green"     , cd_health_blend_color_g,   0, 255, 15, 0
   Slider     "Blue"      , cd_health_blend_color_b,   0, 255, 15, 0
   Slider     "Intensity" , cd_health_blend_color_int, 0, 1, 0.05, 2
-  StaticText "Changes blend color and intensity.", White
+  cd_Hint    "Changes blend color and intensity.", 4
 
   cd_FramedText "Armor Regeneration"
 
@@ -140,36 +132,30 @@ OptionMenu RegenerationMenu
   StaticText ""
 
   TextField  "$CD_AMOUNT_CAPTION", cd_armor_regen_amount
-  StaticText "Armor regeneration amount.", White
-  StaticText ""
+  cd_Hint    "Armor regeneration amount."
 
   TextField  "$CD_PERIOD_CAPTION", cd_armor_regen_freq
-  StaticText "Armor regeneration period, in seconds.", White
-  StaticText ""
+  cd_Hint    "Armor regeneration period, in seconds."
 
   TextField  "$CD_MIN_AMOUNT_CAPTION", cd_armor_regen_min
-  StaticText "Regeneration stops if your armor is below this number.", White
-  StaticText "0 = no limit.", White
-  StaticText ""
+  cd_Hint    "Regeneration stops if your armor is below this number."
+  cd_Hint    "0 = no limit."
 
   TextField  "$CD_CAP_AMOUNT_CAPTION", cd_armor_regen_cap
-  StaticText "Regeneration stops if your armor exceeds this number.", White
-  StaticText "0 = no limit.", White
-  StaticText ""
+  cd_Hint    "Regeneration stops if your armor exceeds this number."
+  cd_Hint    "0 = no limit."
 
   Option     "Sound Effect", cd_armor_sound_enabled, OnOff
-  StaticText "Toggles shard sound on or off.", White
-  StaticText ""
+  cd_Hint    "Toggles shard sound on or off."
 
   Option     "Blend Pulse", cd_armor_regen_pulse, OnOff
-  StaticText "Toggles blend pulse on regeneration on or off.", White
-  StaticText ""
+  cd_Hint    "Toggles blend pulse on regeneration on or off."
 
   Slider     "Red"       , cd_armor_blend_color_r,   0, 255, 15, 0
   Slider     "Green"     , cd_armor_blend_color_g,   0, 255, 15, 0
   Slider     "Blue"      , cd_armor_blend_color_b,   0, 255, 15, 0
   Slider     "Intensity" , cd_armor_blend_color_int, 0, 1, 0.05, 2
-  StaticText "Changes blend color and intensity."
+  cd_Hint    "Changes blend color and intensity.", 4
 
   cd_FramedText "Ammo Regeneration"
 
@@ -177,28 +163,23 @@ OptionMenu RegenerationMenu
   StaticText ""
 
   Option     "Backpack Requirement", "cd_ammo_regen_backpack_req", OnOff
-  StaticText "Toggles if you regenerate ammo only after", White
-  StaticText "having picked up your first backpack.", White
-  StaticText ""
+  cd_Hint    "Toggles if you regenerate ammo only after"
+  cd_Hint    "having picked up your first backpack."
 
   TextField  "Amount", cd_ammo_regen_amount
-  StaticText "Ammo regeneration amount.", White
-  StaticText ""
+  cd_Hint    "Ammo regeneration amount."
 
   TextField  "Period", cd_ammo_regen_freq
-  StaticText "Ammo regeneration period, in seconds.", White
-  StaticText ""
+  cd_Hint    "Ammo regeneration period, in seconds."
 
   Option     "Blend Pulse", cd_ammo_regen_pulse, OnOff
-  StaticText "Toggles blend pulse on regeneration on or off.", White
-  StaticText ""
+  cd_Hint    "Toggles blend pulse on regeneration on or off."
 
   Slider     "Red"       , cd_ammo_blend_color_r,   0, 255, 15, 0
   Slider     "Green"     , cd_ammo_blend_color_g,   0, 255, 15, 0
   Slider     "Blue"      , cd_ammo_blend_color_b,   0, 255, 15, 0
   Slider     "Intensity" , cd_ammo_blend_color_int, 0, 1, 0.05, 2
-  StaticText "Changes blend color and intensity.", White
-  StaticText ""
+  cd_Hint    "Changes blend color and intensity.", 4
 
 } // OptionMenu RegenerationMenu
 
@@ -213,16 +194,14 @@ OptionMenu DegenerationMenu
   StaticText ""
 
   TextField  "$CD_AMOUNT_CAPTION", "cd_health_degen_amount"
-  StaticText "Health degeneration amount.", White
-  StaticText ""
+  cd_Hint    "Health degeneration amount."
 
   TextField  "$CD_PERIOD_CAPTION", "cd_health_degen_freq"
-  StaticText "Health degeneration period, in seconds.", White
-  StaticText ""
+  cd_Hint    "Health degeneration period, in seconds."
 
   TextField  "$CD_LIMIT_CAPTION", "cd_health_degen_limit"
-  StaticText "Health will not degenerate further if it is", White
-  StaticText "below this number. Caps at 1.", White
+  cd_Hint    "Health will not degenerate further if it is"
+  cd_Hint    "below this number. Caps at 1."
 
   cd_FramedText "Armor Degeneration"
 
@@ -230,17 +209,14 @@ OptionMenu DegenerationMenu
   StaticText ""
 
   TextField  "$CD_AMOUNT_CAPTION", "cd_armor_degen_amount"
-  StaticText "Armor degeneration amount.", White
-  StaticText ""
+  cd_Hint    "Armor degeneration amount."
 
   TextField  "$CD_PERIOD_CAPTION", "cd_armor_degen_freq"
-  StaticText "Armor degeneration period, in seconds.", White
-  StaticText ""
+  cd_Hint    "Armor degeneration period, in seconds."
 
   TextField  "$CD_LIMIT_CAPTION", "cd_armor_degen_limit"
-  StaticText "Armor will not degenerate further if it is", White
-  StaticText "below this number.", White
-  StaticText ""
+  cd_Hint    "Armor will not degenerate further if it is"
+  cd_Hint    "below this number."
 
 } // OptionMenu DegenerationMenu
 
@@ -301,8 +277,7 @@ OptionMenu RandomizerMenu
   StaticText ""
 
   TextField "Period", "cd_random_frequency"
-  StaticText "How often the randomizer will shift the values, in seconds.", White
-  StaticText ""
+  cd_Hint    "How often the randomizer will shift the values, in seconds."
 
   Option "Show Timer", "cd_random_timer_enabled", OnOff
   Option "Notification Type", "cd_random_notification_type", "NotificationType"

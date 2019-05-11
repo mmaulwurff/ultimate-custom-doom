@@ -50,7 +50,6 @@ class OptionMenuItemCd_FramedText : OptionMenuItemStaticText
   private
   bool shouldInsertFrame(OptionMenuDescriptor desc)
   {
-
     int selfIndex = desc.mItems.find(self);
     int size      = desc.mItems.size();
 
