@@ -28,18 +28,14 @@ class OptionMenuItemCd_FramedText : OptionMenuItemStaticText
     {
       mColor = Font.FindFontColor("CDLightBlue");
 
-      let space1 = new("OptionMenuItemStaticText").InitDirect("",     mColor);
       let before = new("OptionMenuItemStaticText").InitDirect(_frame, mColor);
       let after  = new("OptionMenuItemStaticText").InitDirect(_frame, mColor);
-      let space2 = new("OptionMenuItemStaticText").InitDirect("",     mColor);
 
       int selfIndex = desc.mItems.find(self);
 
-      desc.mItems.insert(selfIndex,     space1);
-      desc.mItems.insert(selfIndex + 1, before);
+      desc.mItems.insert(selfIndex, before);
       // self is now here
-      desc.mItems.insert(selfIndex + 3, after );
-      desc.mItems.insert(selfIndex + 4, space2);
+      desc.mItems.insert(selfIndex + 2, after );
 
       return -1;
     }

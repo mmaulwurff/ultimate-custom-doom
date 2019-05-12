@@ -2,424 +2,535 @@
 
 AddOptionMenu OptionsMenu
 {
-  StaticText  ""
-  SubMenu     "$CD_MAIN_TITLE", CustomDoomMenu
+  StaticText    ""
+  SubMenu       "$CD_MAIN_TITLE", cd_Menu
 }
 
 // Menus ///////////////////////////////////////////////////////////////////////
 
-OptionMenu CustomDoomMenu
+OptionMenu cd_Menu
 {
-
-  Title       "$CD_MAIN_TITLE"
 
   cd_FramedText "Welcome to Ultimate Custom Doom!"
 
-  SubMenu     "Player Options"            , PlayerOptionsMenu
-  SubMenu     "$CD_MONSTER_OPTIONS_TITLE" , MonsterOptionsMenu
-  SubMenu     "$CD_REGENERATION_TITLE"    , RegenerationMenu
-  SubMenu     "Degeneration Options"      , DegenerationMenu
-  SubMenu     "Powerup Options"           , PowerupMenu
-  SubMenu     "Randomizer Options"        , RandomizerMenu
+  StaticText    ""
+  StaticText    "Player Options"            , White
+  SubMenu       "Basic"                     , cd_BasicPlayer
+  SubMenu       "Advanced"                  , cd_AdvancedPlayer
+  SubMenu       "Miscellaneous"             , cd_MiscPlayer
 
-  StaticText  ""
-  SubMenu     "The Manual", ManualMenu
-  StaticText  ""
+  StaticText    ""
+  StaticText    "Regeneration Options"      , White
+  SubMenu       "Health"                    , cd_HealthRegeneration
+  SubMenu       "Armor"                     , cd_ArmorRegeneration
+  SubMenu       "Ammo"                      , cd_AmmoRegeneration
 
-  StaticText  ""
-  SafeCommand "Kill Player", kill, "This will kill the player. Use if stuck in death exit."
+  StaticText    ""
+  StaticText    "Degeneration Options"      , White
+  SubMenu       "Health"                    , HealthDegenerationMenu
+  SubMenu       "Armor"                     , ArmorDegenerationMenu
 
-  StaticText  ""
-  SafeCommand "Reset to defaults", cd_reset_to_defaults, "This will reset all values to their defaults."
+  StaticText    ""
+  SubMenu       "$CD_MONSTER_OPTIONS_TITLE" , cd_Monster
+  SubMenu       "Powerup Options"           , cd_Powerup
+  SubMenu       "Randomizer Options"        , cd_Randomizer
 
-} // OptionMenu CustomDoomMenu
+  StaticText    ""
+  SubMenu       "The Manual"                , cd_Manual
 
-OptionMenu PlayerOptionsMenu
+  StaticText    ""
+  SubMenu       "Commands"                  , cd_Commands
+
+} // OptionMenu cd_Menu
+
+OptionMenu cd_Commands
 {
 
-  Title      "Player Options"
+  cd_FramedText "Ultimate Custom Doom Commands"
 
-  StaticText "All modifiers are zero-terminated."         , Gold
+  StaticText    ""
+  SafeCommand   "Kill Player", kill, "This will kill the player. Use if stuck in death exit."
+
+  StaticText    ""
+  SafeCommand   "Reset option values to defaults", cd_reset_to_defaults, "This will reset all option values to their defaults."
+  cd_Hint       "This doesn't reset the Randomizer min/max values."
+
+  SafeCommand   "Reset Randomizer min/max to zero", cd_reset_random_to_defaults, "This will set all randomizer min/max values to zero."
+
+} // OptionMenu cd_Commands
+
+OptionMenu cd_BasicPlayer
+{
 
   cd_FramedText "Basic Player Options"
 
-  TextField  "$CD_PLAYER_WEAPON_MULTIPLIER_CAPTION"       , cd_player_weapon_damage_mult
-  TextField  "$CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION" , cd_player_damage_taken_mult
+  StaticText    "All modifiers are zero-terminated."         , CDLightBlue
+  StaticText    "========================================"   , CDLightBlue
+
+  StaticText    ""
+  TextField     "$CD_PLAYER_WEAPON_MULTIPLIER_CAPTION"       , cd_player_weapon_damage_mult
+  TextField     "$CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION" , cd_player_damage_taken_mult
+
+} // OptionMenu cd_BasicPlayer
+
+OptionMenu cd_AdvancedPlayer
+{
 
   cd_FramedText "Advanced Player Options"
 
-  Option     "Starting items type"      , cd_player_start_type, cd_player_start_type_values
-  TextField  "$CD_START_HEALTH_CAPTION" , cd_player_start_health
-  TextField  "$CD_START_ARMOR_CAPTION"  , cd_player_start_armor
-  Slider     "Save Percent"             , cd_player_start_savepercent, 1, 100, 1, 0
+  StaticText    "All modifiers are zero-terminated."       , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
 
-  StaticText ""
-  StaticText "----------", CDLightBlue
-  StaticText ""
+  StaticText    ""
+  Option        "Starting items type"      , cd_player_start_type, cd_player_start_type_values
+  TextField     "$CD_START_HEALTH_CAPTION" , cd_player_start_health
+  TextField     "$CD_START_ARMOR_CAPTION"  , cd_player_start_armor
+  Slider        "Save Percent"             , cd_player_start_savepercent, 1, 100, 1, 0
 
-  TextField  "$CD_MAX_HEALTH_CAPTION"        , cd_player_max_health
-  TextField  "$CD_SPEED_MULTIPLIER_CAPTION"  , cd_player_speed_mult
-  TextField  "$CD_JUMP_Z_MULTIPLIER_CAPTION" , cd_player_jump_mult
+  StaticText    ""
+  TextField     "$CD_MAX_HEALTH_CAPTION"        , cd_player_max_health
+  TextField     "$CD_SPEED_MULTIPLIER_CAPTION"  , cd_player_speed_mult
+  TextField     "$CD_JUMP_Z_MULTIPLIER_CAPTION" , cd_player_jump_mult
 
-  cd_FramedText "Misc Player Options"
+} // OptionMenu cd_AdvancedPlayer
 
-  Option     "Enable Miscellaneous Options", cd_player_misc_enabled, OnOff
-  cd_Hint    "Toggles the options below on or off."
-
-  StaticText "----------", CDLightBlue
-  StaticText ""
-
-  TextField  "$CD_AIR_CONTROL_CAPTION", cd_player_aircontrol_mult
-  cd_Hint    "Use very large values for visible change."
-
-  Slider     "$CD_FRICTION_CAPTION", "cd_player_friction_mult", 0.95, 1.25, 0.01, 2
-
-} // OptionMenu PlayerOptionsMenu
-
-OptionMenu MonsterOptionsMenu
+OptionMenu cd_MiscPlayer
 {
 
-  Title      "$CD_MONSTER_OPTIONS_TITLE"
+  cd_FramedText "Miscellaneous Player Options"
 
-  StaticText "$CD_ON_LEVEL_OR_MANUAL_1" , Gold
-  StaticText "$CD_ON_LEVEL_OR_MANUAL_2" , Gold
+  StaticText    "All modifiers are zero-terminated."       , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+  StaticText    ""
+
+  Option        "Enable", cd_player_misc_enabled, OnOff
+  cd_Hint       "Toggles the options below on or off."
+
+  TextField     "$CD_AIR_CONTROL_CAPTION", cd_player_aircontrol_mult
+  cd_Hint       "Use very large values for visible change."
+
+  Slider        "$CD_FRICTION_CAPTION", cd_player_friction_mult, 0.95, 1.25, 0.01, 2
+
+} // OptionMenu cd_MiscPlayer
+
+OptionMenu cd_Monster
+{
 
   cd_FramedText "$CD_MONSTER_OPTIONS_TITLE"
 
-  TextField  "$CD_MONSTER_HEALTH" , cd_monster_health_mult
-  TextField  "$CD_MONSTER_SPEED"  , cd_monster_speed_mult
+  StaticText    "$CD_ON_LEVEL_OR_MANUAL_1"                 , CDLightBlue
+  StaticText    "$CD_ON_LEVEL_OR_MANUAL_2"                 , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+  StaticText    ""
 
-  StaticText ""
-  Command    "$CD_APPLY_MONSTER_CAPTION", cd_reset_monster_settings
+  TextField     "$CD_MONSTER_HEALTH" , cd_monster_health_mult
+  TextField     "$CD_MONSTER_SPEED"  , cd_monster_speed_mult
 
-} // OptionMenu MonsterOptionsMenu
+  StaticText    ""
+  Command       "$CD_APPLY_MONSTER_CAPTION", cd_reset_monster_settings
 
-OptionMenu RegenerationMenu
+} // OptionMenu cd_Monster
+
+OptionMenu cd_HealthRegeneration
 {
 
-  Title      "$CD_REGENERATION_TITLE"
+  cd_FramedText "Health Regeneration Options"
 
-  cd_FramedText "$CD_HEALTH_REGENERATION_CAPTION"
+  StaticText    ""
+  Option        "Enable"                 , cd_health_regen_enabled, OnOff
 
-  Option     "$CD_ENABLED_CAPTION", cd_health_regen_enabled, OnOff
-  StaticText ""
+  StaticText    ""
+  TextField     "$CD_AMOUNT_CAPTION"     , cd_health_regen_amount
+  cd_Hint       "Health regeneration amount."
 
-  TextField  "$CD_AMOUNT_CAPTION", cd_health_regen_amount
-  cd_Hint    "Health regeneration amount."
+  TextField     "$CD_PERIOD_CAPTION"     , cd_health_regen_freq
+  cd_Hint       "Health regeneration period in seconds."
 
-  TextField  "$CD_PERIOD_CAPTION", cd_health_regen_freq
-  cd_Hint    "Health regeneration period, in seconds."
+  TextField     "$CD_CAP_AMOUNT_CAPTION" , cd_health_regen_cap
+  cd_Hint       "Regeneration stops if your health exceeds this number."
+  cd_Hint       "0 = until you reach max health."
 
-  TextField  "$CD_CAP_AMOUNT_CAPTION", cd_health_regen_cap
-  cd_Hint    "Regeneration stops if your health exceeds this number."
-  cd_Hint    "0 = until you reach max health."
+  Option        "Sound Effect"           , cd_health_sound_enabled, OnOff
+  cd_Hint       "Toggles heartbeat sound on or off."
 
-  Option     "Sound Effect", cd_health_sound_enabled, OnOff
-  cd_Hint    "Toggles heartbeat sound on or off."
+  Option        "Blend Pulse"            , cd_health_regen_pulse, OnOff
+  cd_Hint       "Toggles blend pulse on regeneration on or off."
 
-  Option     "Blend Pulse", cd_health_regen_pulse, OnOff
-  cd_Hint    "Toggles blend pulse on regeneration on or off."
+  Slider        "Red"       , cd_health_blend_color_r,   0, 255, 15, 0
+  Slider        "Green"     , cd_health_blend_color_g,   0, 255, 15, 0
+  Slider        "Blue"      , cd_health_blend_color_b,   0, 255, 15, 0
+  Slider        "Intensity" , cd_health_blend_color_int, 0, 1, 0.05, 2
+  cd_Hint       "Changes blend color and intensity.", 4
 
-  Slider     "Red"       , cd_health_blend_color_r,   0, 255, 15, 0
-  Slider     "Green"     , cd_health_blend_color_g,   0, 255, 15, 0
-  Slider     "Blue"      , cd_health_blend_color_b,   0, 255, 15, 0
-  Slider     "Intensity" , cd_health_blend_color_int, 0, 1, 0.05, 2
-  cd_Hint    "Changes blend color and intensity.", 4
+} // OptionMenu cd_HealthRegeneration
 
-  cd_FramedText "Armor Regeneration"
+OptionMenu cd_ArmorRegeneration
+{
 
-  Option     "Enable Armor Regeneration", cd_armor_regen_enabled, OnOff
-  StaticText ""
+  cd_FramedText "Armor Regeneration Options"
 
-  TextField  "$CD_AMOUNT_CAPTION", cd_armor_regen_amount
-  cd_Hint    "Armor regeneration amount."
+  StaticText    ""
+  Option        "Enable"                 , cd_armor_regen_enabled, OnOff
 
-  TextField  "$CD_PERIOD_CAPTION", cd_armor_regen_freq
-  cd_Hint    "Armor regeneration period, in seconds."
+  StaticText    ""
+  TextField     "$CD_AMOUNT_CAPTION"     , cd_armor_regen_amount
+  cd_Hint       "Armor regeneration amount."
 
-  TextField  "$CD_MIN_AMOUNT_CAPTION", cd_armor_regen_min
-  cd_Hint    "Regeneration stops if your armor is below this number."
-  cd_Hint    "0 = no limit."
+  TextField     "$CD_PERIOD_CAPTION"     , cd_armor_regen_freq
+  cd_Hint       "Armor regeneration period in seconds."
 
-  TextField  "$CD_CAP_AMOUNT_CAPTION", cd_armor_regen_cap
-  cd_Hint    "Regeneration stops if your armor exceeds this number."
-  cd_Hint    "0 = no limit."
+  TextField     "$CD_MIN_AMOUNT_CAPTION" , cd_armor_regen_min
+  cd_Hint       "Regeneration stops if your armor is below this number."
+  cd_Hint       "0 = no limit."
 
-  Option     "Sound Effect", cd_armor_sound_enabled, OnOff
-  cd_Hint    "Toggles shard sound on or off."
+  TextField     "$CD_CAP_AMOUNT_CAPTION" , cd_armor_regen_cap
+  cd_Hint       "Regeneration stops if your armor exceeds this number."
+  cd_Hint       "0 = no limit."
 
-  Option     "Blend Pulse", cd_armor_regen_pulse, OnOff
-  cd_Hint    "Toggles blend pulse on regeneration on or off."
+  Option        "Sound Effect"           , cd_armor_sound_enabled, OnOff
+  cd_Hint       "Toggles shard sound on or off."
 
-  Slider     "Red"       , cd_armor_blend_color_r,   0, 255, 15, 0
-  Slider     "Green"     , cd_armor_blend_color_g,   0, 255, 15, 0
-  Slider     "Blue"      , cd_armor_blend_color_b,   0, 255, 15, 0
-  Slider     "Intensity" , cd_armor_blend_color_int, 0, 1, 0.05, 2
-  cd_Hint    "Changes blend color and intensity.", 4
+  Option        "Blend Pulse"            , cd_armor_regen_pulse, OnOff
+  cd_Hint       "Toggles blend pulse on regeneration on or off."
 
-  cd_FramedText "Ammo Regeneration"
+  Slider        "Red"       , cd_armor_blend_color_r,   0, 255, 15, 0
+  Slider        "Green"     , cd_armor_blend_color_g,   0, 255, 15, 0
+  Slider        "Blue"      , cd_armor_blend_color_b,   0, 255, 15, 0
+  Slider        "Intensity" , cd_armor_blend_color_int, 0, 1, 0.05, 2
+  cd_Hint       "Changes blend color and intensity.", 4
 
-  Option     "Enable Ammo Regeneration", "cd_ammo_regen_enabled", OnOff
-  StaticText ""
+} // OptionMenu cd_ArmorRegeneration
 
-  Option     "Backpack Requirement", "cd_ammo_regen_backpack_req", OnOff
-  cd_Hint    "Toggles if you regenerate ammo only after"
-  cd_Hint    "having picked up your first backpack."
+OptionMenu cd_AmmoRegeneration
+{
 
-  TextField  "Amount", cd_ammo_regen_amount
-  cd_Hint    "Ammo regeneration amount."
+  cd_FramedText "Ammo Regeneration Options"
 
-  TextField  "Period", cd_ammo_regen_freq
-  cd_Hint    "Ammo regeneration period, in seconds."
+  StaticText    ""
+  Option        "Enable"               , cd_ammo_regen_enabled, OnOff
 
-  Option     "Blend Pulse", cd_ammo_regen_pulse, OnOff
-  cd_Hint    "Toggles blend pulse on regeneration on or off."
+  StaticText    ""
+  Option        "Backpack Requirement" , cd_ammo_regen_backpack_req, OnOff
+  cd_Hint       "Toggles if you regenerate ammo only after"
+  cd_Hint       "having picked up your first backpack."
 
-  Slider     "Red"       , cd_ammo_blend_color_r,   0, 255, 15, 0
-  Slider     "Green"     , cd_ammo_blend_color_g,   0, 255, 15, 0
-  Slider     "Blue"      , cd_ammo_blend_color_b,   0, 255, 15, 0
-  Slider     "Intensity" , cd_ammo_blend_color_int, 0, 1, 0.05, 2
-  cd_Hint    "Changes blend color and intensity.", 4
+  TextField     "Amount"               , cd_ammo_regen_amount
+  cd_Hint       "Ammo regeneration amount."
+
+  TextField     "Period"               , cd_ammo_regen_freq
+  cd_Hint       "Ammo regeneration period in seconds."
+
+  Option        "Blend Pulse"          , cd_ammo_regen_pulse, OnOff
+  cd_Hint       "Toggles blend pulse on regeneration on or off."
+
+  Slider        "Red"       , cd_ammo_blend_color_r,   0, 255, 15, 0
+  Slider        "Green"     , cd_ammo_blend_color_g,   0, 255, 15, 0
+  Slider        "Blue"      , cd_ammo_blend_color_b,   0, 255, 15, 0
+  Slider        "Intensity" , cd_ammo_blend_color_int, 0, 1, 0.05, 2
+  cd_Hint       "Changes blend color and intensity.", 4
 
 } // OptionMenu RegenerationMenu
 
-OptionMenu DegenerationMenu
+OptionMenu HealthDegenerationMenu
 {
 
-  Title      "Degeneration Options"
+  cd_FramedText "Health Degeneration Options"
 
-  cd_FramedText "Health Degeneration"
+  StaticText    ""
+  Option        "Enable"             , cd_health_degen_enabled, OnOff
 
-  Option     "Enable Health Degeneration", "cd_health_degen_enabled", OnOff
-  StaticText ""
+  StaticText    ""
+  TextField     "$CD_AMOUNT_CAPTION" , cd_health_degen_amount
+  cd_Hint       "Health degeneration amount."
 
-  TextField  "$CD_AMOUNT_CAPTION", "cd_health_degen_amount"
-  cd_Hint    "Health degeneration amount."
+  TextField     "$CD_PERIOD_CAPTION" , cd_health_degen_freq
+  cd_Hint       "Health degeneration period in seconds."
 
-  TextField  "$CD_PERIOD_CAPTION", "cd_health_degen_freq"
-  cd_Hint    "Health degeneration period, in seconds."
+  TextField     "$CD_LIMIT_CAPTION"  , cd_health_degen_limit
+  cd_Hint       "Health will not degenerate further if it is"
+  cd_Hint       "below this number. Caps at 1."
 
-  TextField  "$CD_LIMIT_CAPTION", "cd_health_degen_limit"
-  cd_Hint    "Health will not degenerate further if it is"
-  cd_Hint    "below this number. Caps at 1."
+} // OptionMenu HealthDegenerationMenu
 
-  cd_FramedText "Armor Degeneration"
+OptionMenu ArmorDegenerationMenu
+{
 
-  Option     "Enable Armor Degeneration", "cd_armor_degen_enabled", OnOff
-  StaticText ""
+  cd_FramedText "Armor Degeneration Options"
 
-  TextField  "$CD_AMOUNT_CAPTION", "cd_armor_degen_amount"
-  cd_Hint    "Armor degeneration amount."
+  StaticText    ""
+  Option        "Enable"             , cd_armor_degen_enabled, OnOff
 
-  TextField  "$CD_PERIOD_CAPTION", "cd_armor_degen_freq"
-  cd_Hint    "Armor degeneration period, in seconds."
+  StaticText    ""
+  TextField     "$CD_AMOUNT_CAPTION" , cd_armor_degen_amount
+  cd_Hint       "Armor degeneration amount."
 
-  TextField  "$CD_LIMIT_CAPTION", "cd_armor_degen_limit"
-  cd_Hint    "Armor will not degenerate further if it is"
-  cd_Hint    "below this number."
+  TextField     "$CD_PERIOD_CAPTION" , cd_armor_degen_freq
+  cd_Hint       "Armor degeneration period in seconds."
+
+  TextField     "$CD_LIMIT_CAPTION"  , cd_armor_degen_limit
+  cd_Hint       "Armor will not degenerate further if it is"
+  cd_Hint       "below this number."
 
 } // OptionMenu DegenerationMenu
 
-OptionMenu PowerupMenu
+OptionMenu cd_Powerup
 {
 
-  Title "Powerup Options"
+  cd_FramedText "Powerup Options"
 
-  Option "Permanent Invisibility"        , cd_power_invisibility_permanent      , OnOff
-  Option "Permanent Invulnerability"     , cd_power_invulnerability_permanent   , OnOff
-  Option "Permanent Iron Feet"           , cd_power_ironfeet_permanent          , OnOff
-  Option "Permanent Light Amp"           , cd_power_lightamp_permanent          , OnOff
-  Option "Permanent Drain"               , cd_power_drain_permanent             , OnOff
-  Option "Permanent High Jump"           , cd_power_highjump_permanent          , OnOff
-  Option "Permanent Infinite Ammo"       , cd_power_infiniteammo_permanent      , OnOff
-  Option "Permanent Protection"          , cd_power_protecton_permanent         , OnOff
-  Option "Permanent Regeneration"        , cd_power_regeneraton_permanent       , OnOff
-  Option "Permanent Speed"               , cd_power_speed_permanent             , OnOff
-  Option "Permanent Strength"            , cd_power_strength_permanent          , OnOff
-  Option "Permanent Time Freeze"         , cd_power_timefreezer_permanent       , OnOff
-  Option "Permanent Double Firing Speed" , cd_power_doublefiringspeed_permanent , OnOff
-  Option "Permanent Flight"              , cd_power_flight_permanent            , OnOff
-  Option "Permanent Frightener"          , cd_power_frightener_permanent        , OnOff
-  Option "Permanent Scanner"             , cd_power_scanner_permanent           , OnOff
-  Option "Permanent Damage"              , cd_power_damage_permanent            , OnOff
-  Option "Permanent Ghost"               , cd_power_ghost_permanent             , OnOff
-  Option "Permanent Shadow"              , cd_power_shadow_permanent            , OnOff
-  Option "Permanent Torch"               , cd_power_torch_permanent             , OnOff
-  Option "Permanent Minotaur"            , cd_power_minotaur_permanent          , OnOff
-  Option "Permanent Morph"               , cd_power_morph_permanent             , OnOff
-  Option "Permanent Mask"                , cd_power_mask_permanent              , OnOff
-  Option "Permanent Weapon Level 2"      , cd_power_weaponlevel2_permanent      , OnOff
-  Option "Permanent Targeter"            , cd_power_targeter_permanent          , OnOff
-  Option "Permanent Buddha"              , cd_power_buddha_permanent            , OnOff
+  StaticText    ""
+  Option        "Permanent Invisibility"        , cd_power_invisibility_permanent      , OnOff
+  Option        "Permanent Invulnerability"     , cd_power_invulnerability_permanent   , OnOff
+  Option        "Permanent Iron Feet"           , cd_power_ironfeet_permanent          , OnOff
+  Option        "Permanent Light Amp"           , cd_power_lightamp_permanent          , OnOff
+  Option        "Permanent Drain"               , cd_power_drain_permanent             , OnOff
+  Option        "Permanent High Jump"           , cd_power_highjump_permanent          , OnOff
+  Option        "Permanent Infinite Ammo"       , cd_power_infiniteammo_permanent      , OnOff
+  Option        "Permanent Protection"          , cd_power_protecton_permanent         , OnOff
+  Option        "Permanent Regeneration"        , cd_power_regeneraton_permanent       , OnOff
+  Option        "Permanent Speed"               , cd_power_speed_permanent             , OnOff
+  Option        "Permanent Strength"            , cd_power_strength_permanent          , OnOff
+  Option        "Permanent Time Freeze"         , cd_power_timefreezer_permanent       , OnOff
+  Option        "Permanent Double Firing Speed" , cd_power_doublefiringspeed_permanent , OnOff
+  Option        "Permanent Flight"              , cd_power_flight_permanent            , OnOff
+  Option        "Permanent Frightener"          , cd_power_frightener_permanent        , OnOff
+  Option        "Permanent Scanner"             , cd_power_scanner_permanent           , OnOff
+  Option        "Permanent Damage"              , cd_power_damage_permanent            , OnOff
+  Option        "Permanent Ghost"               , cd_power_ghost_permanent             , OnOff
+  Option        "Permanent Shadow"              , cd_power_shadow_permanent            , OnOff
+  Option        "Permanent Torch"               , cd_power_torch_permanent             , OnOff
+  Option        "Permanent Minotaur"            , cd_power_minotaur_permanent          , OnOff
+  Option        "Permanent Morph"               , cd_power_morph_permanent             , OnOff
+  Option        "Permanent Mask"                , cd_power_mask_permanent              , OnOff
+  Option        "Permanent Weapon Level 2"      , cd_power_weaponlevel2_permanent      , OnOff
+  Option        "Permanent Targeter"            , cd_power_targeter_permanent          , OnOff
+  Option        "Permanent Buddha"              , cd_power_buddha_permanent            , OnOff
 
-} // OptionMenu PowerupMenu
+} // OptionMenu cd_Powerup
 
-OptionMenu RandomizerMenu
+OptionMenu cd_Randomizer
 {
 
-  Title "Randomizer Options"
+  cd_FramedText "Randomizer Options"
 
-  StaticText "=================================================="      , CDLightBlue
-  StaticText "The Randomizer works by shifting the options between"    , CDLightBlue
-  StaticText "the corresponding min and max values every n seconds."   , CDLightBlue
-  StaticText "'Reset to defaults' does not reset the min/max values!"  , CDLightBlue
-  StaticText ""
-  StaticText "Leaving both fields at 0 will disable randomization for" , CDLightBlue
-  StaticText "that option."                                            , CDLightBlue
-  StaticText "Min must be smaller than Max!"                           , CDLightBlue
-  StaticText "=================================================="      , CDLightBlue
+  StaticText    "The Randomizer works by shifting the options between"  , CDLightBlue
+  StaticText    "the corresponding min and max values every n seconds." , CDLightBlue
+  StaticText    "========================================"              , CDLightBlue
 
-  StaticText ""
-  SafeCommand "Reset to zero", "cd_reset_random_to_defaults", "This will set all values in this menu to zero."
-  StaticText ""
+  StaticText    ""
+  Option        "Enable Randomizer"    , cd_random_enabled, OnOff
 
-  Option "Enable Randomizer", "cd_random_enabled", OnOff
-  StaticText ""
+  StaticText    ""
+  TextField     "Period"               , cd_random_frequency
+  cd_Hint       "How often the randomizer will shift the values in seconds."
 
-  TextField "Period", "cd_random_frequency"
-  cd_Hint    "How often the randomizer will shift the values, in seconds."
+  Option        "Show Timer"           , cd_random_timer_enabled, OnOff
+  Option        "Notification Type"    , cd_random_notification_type, "NotificationType"
+  Option        "Notification Sound"   , cd_random_notification_sound_enabled, OnOff
+  Slider        "Notification Volume"  , cd_random_notification_volume, 0.0, 1.0, 0.05, 2
 
-  Option "Show Timer", "cd_random_timer_enabled", OnOff
-  Option "Notification Type", "cd_random_notification_type", "NotificationType"
-  Option "Notification Sound", "cd_random_notification_sound_enabled", OnOff
-  Slider "Notification Volume", "cd_random_notification_volume", 0.00, 1.00, 0.05, 2
+  StaticText    ""
+  StaticText    "Player Options"       , White
+  SubMenu       "Basic"                , cd_RandomizerBasicPlayer
+  SubMenu       "Advanced"             , cd_RandomizerAdvancedPlayer
 
-  cd_FramedText "Basic Player Options"
+  StaticText    ""
+  StaticText    "Regeneration Options" , White
+  SubMenu       "Health"               , cd_RandomizerHealthRegeneration
+  SubMenu       "Armor"                , cd_RandomizerArmorRegeneration
+  SubMenu       "Ammo"                 , cd_RandomizerAmmoRegeneration
 
-  TextField "Weapon Damage Min", cd_random_player_weapon_damage_mult_min
-  TextField "Weapon Damage Max", cd_random_player_weapon_damage_mult_max
-  StaticText ""
-  TextField "Damage Taken Min", cd_random_player_damage_taken_mult_min
-  TextField "Damage Taken Max", cd_random_player_damage_taken_mult_max
+  StaticText    ""
+  StaticText    "Degeneration Options" , White
+  SubMenu       "Health"               , cd_RandomizerHealthDegeneration
+  SubMenu       "Armor"                , cd_RandomizerArmorDegeneration
 
-  cd_FramedText "Advanced Player Options"
+} // OptionMenu cd_Randomizer
 
-  TextField "Starting Health Min", "cd_random_player_start_health_min"
-  TextField "Starting Health Max", "cd_random_player_start_health_max"
-  StaticText ""
-  TextField "Max Health Min", "cd_random_player_max_health_min"
-  TextField "Max Health Max", "cd_random_player_max_health_max"
-  StaticText ""
-  TextField "Speed Multiplier Min", "cd_random_player_speed_mult_min"
-  TextField "Speed Multiplier Max", "cd_random_player_speed_mult_max"
-  StaticText ""
-  TextField "Jump Multiplier Min", "cd_random_player_jump_mult_min"
-  TextField "Jump Multiplier Max", "cd_random_player_jump_mult_max"
-
-  cd_FramedText "Regeneration Options"
-
-  TextField "Health Amount Min", "cd_random_health_regen_amount_min"
-  TextField "Health Amount Max", "cd_random_health_regen_amount_max"
-
-  StaticText ""
-
-  TextField "Health Period Min", "cd_random_health_regen_freq_min"
-  TextField "Health Period Max", "cd_random_health_regen_freq_max"
-
-  StaticText ""
-
-  TextField "Health Cap Amount Min", "cd_random_health_regen_cap_min"
-  TextField "Health Cap Amount Max", "cd_random_health_regen_cap_max"
-
-  StaticText ""
-  StaticText "----------", CDLightBlue
-  StaticText ""
-
-  TextField "Armor Amount Min", "cd_random_armor_regen_amount_min"
-  TextField "Armor Amount Max", "cd_random_armor_regen_amount_max"
-
-  StaticText ""
-
-  TextField "Armor Period Min", "cd_random_armor_regen_freq_min"
-  TextField "Armor Period Max", "cd_random_armor_regen_freq_max"
-
-  StaticText ""
-
-  TextField "Armor Min Amount Min", "cd_random_armor_regen_min_min"
-  TextField "Armor Min Amount Max", "cd_random_armor_regen_min_max"
-
-  StaticText ""
-
-  TextField "Armor Cap Amount Min", "cd_random_armor_regen_cap_min"
-  TextField "Armor Cap Amount Max", "cd_random_armor_regen_cap_max"
-
-  StaticText ""
-  StaticText "----------", CDLightBlue
-  StaticText ""
-
-  TextField "Ammo Amount Min", "cd_random_ammo_regen_amount_min"
-  TextField "Ammo Amount Max", "cd_random_ammo_regen_amount_max"
-
-  StaticText ""
-
-  TextField "Ammo Period Min", "cd_random_ammo_regen_freq_min"
-  TextField "Ammo Period Max", "cd_random_ammo_regen_freq_max"
-
-  cd_FramedText "Degeneration Options"
-
-  TextField "Health Amount Min", "cd_random_health_degen_amount_min"
-  TextField "Health Amount Max", "cd_random_health_degen_amount_max"
-
-  StaticText ""
-
-  TextField "Health Period Min", "cd_random_health_degen_freq_min"
-  TextField "Health Period Max", "cd_random_health_degen_freq_max"
-
-  StaticText ""
-
-  TextField "Health Limit Min", "cd_random_health_degen_limit_min"
-  TextField "Health Limit Max", "cd_random_health_degen_limit_max"
-
-  StaticText ""
-  StaticText "----------", CDLightBlue
-  StaticText ""
-
-  TextField "Armor Amount Min", "cd_random_armor_degen_amount_min"
-  TextField "Armor Amount Max", "cd_random_armor_degen_amount_max"
-
-  StaticText ""
-
-  TextField "Armor Period Min", "cd_random_armor_degen_freq_min"
-  TextField "Armor Period Max", "cd_random_armor_degen_freq_max"
-
-  StaticText ""
-
-  TextField "Armor Limit Min", "cd_random_armor_degen_limit_min"
-  TextField "Armor Limit Max", "cd_random_armor_degen_limit_max"
-
-} // OptionMenu RandomizerMenu
-
-OptionMenu ManualMenu
+OptionMenu cd_RandomizerBasicPlayer
 {
 
-  Title "The Manual"
+  cd_FramedText "Randomizer Basic Player Options"
 
-  StaticText "=======================================================================", CDLightBlue
-  StaticText "This is Ultimate Custom Doom reference page.", CDLightBlue
-  StaticText "All useful information regarding the mod is here.", CDLightBlue
-  StaticText "=======================================================================", CDLightBlue
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Weapon Damage Min" , cd_random_player_weapon_damage_mult_min
+  TextField     "Weapon Damage Max" , cd_random_player_weapon_damage_mult_max
+  StaticText    ""
+  TextField     "Damage Taken Min"  , cd_random_player_damage_taken_mult_min
+  TextField     "Damage Taken Max"  , cd_random_player_damage_taken_mult_max
+
+} // OptionMenu cd_RandomizerBasicPlayer
+
+OptionMenu cd_RandomizerAdvancedPlayer
+{
+
+  cd_FramedText "Randomizer Advanced Player Options"
+
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Starting Health Min"  , cd_random_player_start_health_min
+  TextField     "Starting Health Max"  , cd_random_player_start_health_max
+  StaticText    ""
+  TextField     "Max Health Min"       , cd_random_player_max_health_min
+  TextField     "Max Health Max"       , cd_random_player_max_health_max
+  StaticText    ""
+  TextField     "Speed Multiplier Min" , cd_random_player_speed_mult_min
+  TextField     "Speed Multiplier Max" , cd_random_player_speed_mult_max
+  StaticText    ""
+  TextField     "Jump Multiplier Min"  , cd_random_player_jump_mult_min
+  TextField     "Jump Multiplier Max"  , cd_random_player_jump_mult_max
+
+} // OptionMenu cd_RandomizerAdvancedPlayer
+
+OptionMenu cd_RandomizerHealthRegeneration
+{
+
+  cd_FramedText "Randomizer Health Regeneration Options"
+
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Health Amount Min"     , cd_random_health_regen_amount_min
+  TextField     "Health Amount Max"     , cd_random_health_regen_amount_max
+
+  StaticText    ""
+  TextField     "Health Period Min"     , cd_random_health_regen_freq_min
+  TextField     "Health Period Max"     , cd_random_health_regen_freq_max
+
+  StaticText    ""
+  TextField     "Health Cap Amount Min" , cd_random_health_regen_cap_min
+  TextField     "Health Cap Amount Max" , cd_random_health_regen_cap_max
+
+} // OptionMenu cd_RandomizerHealthRegeneration
+
+OptionMenu cd_RandomizerArmorRegeneration
+{
+
+  cd_FramedText "Randomizer Armor Regeneration Options"
+
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Armor Amount Min"     , cd_random_armor_regen_amount_min
+  TextField     "Armor Amount Max"     , cd_random_armor_regen_amount_max
+
+  StaticText    ""
+  TextField     "Armor Period Min"     , cd_random_armor_regen_freq_min
+  TextField     "Armor Period Max"     , cd_random_armor_regen_freq_max
+
+  StaticText    ""
+  TextField     "Armor Min Amount Min" , cd_random_armor_regen_min_min
+  TextField     "Armor Min Amount Max" , cd_random_armor_regen_min_max
+
+  StaticText    ""
+  TextField     "Armor Cap Amount Min" , cd_random_armor_regen_cap_min
+  TextField     "Armor Cap Amount Max" , cd_random_armor_regen_cap_max
+
+} // OptionMenu cd_RandomizerArmorRegeneration
+
+OptionMenu cd_RandomizerAmmoRegeneration
+{
+
+  cd_FramedText "Randomizer Ammo Regeneration Options"
+
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Ammo Amount Min" , cd_random_ammo_regen_amount_min
+  TextField     "Ammo Amount Max" , cd_random_ammo_regen_amount_max
+
+  StaticText    ""
+  TextField     "Ammo Period Min" , cd_random_ammo_regen_freq_min
+  TextField     "Ammo Period Max" , cd_random_ammo_regen_freq_max
+
+} // OptionMenu RandomizerAmmoRegenerationOptionsMenu
+
+OptionMenu cd_RandomizerHealthDegeneration
+{
+
+  cd_FramedText "Randomizer Health Degeneration Options"
+
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Health Amount Min" , cd_random_health_degen_amount_min
+  TextField     "Health Amount Max" , cd_random_health_degen_amount_max
+
+  StaticText    ""
+  TextField     "Health Period Min" , cd_random_health_degen_freq_min
+  TextField     "Health Period Max" , cd_random_health_degen_freq_max
+
+  StaticText    ""
+  TextField     "Health Limit Min"  , cd_random_health_degen_limit_min
+  TextField     "Health Limit Max"  , cd_random_health_degen_limit_max
+
+} // OptionMenu cd_RandomizerHealthDegeneration
+
+OptionMenu cd_RandomizerArmorDegeneration
+{
+
+  cd_FramedText "Randomizer Armor Degeneration Options"
+
+  StaticText    "Min must be smaller than max."            , CDLightBlue
+  StaticText    ""
+  StaticText    "Leaving both fields at 0 will disable"    , CDLightBlue
+  StaticText    "randomization for that option."           , CDLightBlue
+  StaticText    "========================================" , CDLightBlue
+
+  StaticText    ""
+  TextField     "Armor Amount Min" , cd_random_armor_degen_amount_min
+  TextField     "Armor Amount Max" , cd_random_armor_degen_amount_max
+
+  StaticText    ""
+  TextField     "Armor Period Min" , cd_random_armor_degen_freq_min
+  TextField     "Armor Period Max" , cd_random_armor_degen_freq_max
+
+  StaticText    ""
+  TextField     "Armor Limit Min"  , cd_random_armor_degen_limit_min
+  TextField     "Armor Limit Max"  , cd_random_armor_degen_limit_max
+
+} // OptionMenu cd_RandomizerArmorDegeneration
+
+OptionMenu cd_Manual
+{
+
+  cd_FramedText "The Manual"
+
+  StaticText    "This is Ultimate Custom Doom reference page."      , CDLightBlue
+  StaticText    "All useful information regarding the mod is here." , CDLightBlue
 
   cd_FramedText "Zero-terminated modifiers."
-  StaticText "These modifiers have a default value of 0. They will not do", White
-  StaticText "anything until you change their values to something positive.", White
-  StaticText ""
-  StaticText "Such are the monster modifiers, almost all player modifiers", White
-  StaticText "and all randomizer options.", White
-  StaticText ""
-  StaticText "These options can be enabled individually by using any", White
-  StaticText "number above 0.", White
-  StaticText ""
-  StaticText "Switching to 0 from a positive number during gameplay", White
-  StaticText "will not revert the changes done.", White
-  StaticText ""
-  StaticText "To do that, you must set value to its default (most often 1),", White
-  StaticText "exit the menu, wait until the change is in effect, then zero-", White
-  StaticText "terminate the modifier,", White
-  StaticText ""
-  StaticText "0 means that other mods' effects will not be overridden", White
-  StaticText "by Ultimate Custom Doom.", White
 
-} // OptionMenu ManualMenu
+  StaticText    "$CD_MANUAL", White
+
+} // OptionMenu cd_Manual
 
 // Option Values ///////////////////////////////////////////////////////////////
 

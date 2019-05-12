@@ -32,8 +32,8 @@ CD_APPLY_MONSTER_CAPTION = "Apply Monster Options now";
 
 // Common /////////////////////////////////////////////////////////////////////
 
-CD_ON_LEVEL_OR_MANUAL_1 = "All modifiers are zero-terminated and applied once per level,";
-CD_ON_LEVEL_OR_MANUAL_2 = "or manually by the command below.";
+CD_ON_LEVEL_OR_MANUAL_1 = "All modifiers are zero-terminated and applied";
+CD_ON_LEVEL_OR_MANUAL_2 = "once per level or manually by the command below.";
 
 CD_ENABLED_CAPTION    = "Enabled";
 CD_AMOUNT_CAPTION     = "Amount";
@@ -50,3 +50,7 @@ CD_ZERO_FIXED_MESSAGE     = " cannot be zero. Fixed.";
 CD_REGENERATION_TITLE = "Regeneration Options";
 
 CD_HEALTH_REGENERATION_CAPTION = "Health Regeneration";
+
+// Manual
+
+CD_MANUAL = "These modifiers have a default value of 0. They will not do\nanything until you change their values to something positive.\n\nSuch are the monster modifiers, almost all player modifiers\nand all randomizer options.\n\nThese options can be enabled individually by using any\nnumber above 0.\n\nSwitching to 0 from a positive number during gameplay\nwill not revert the changes done.\n\nTo do that, you must set value to its default (most often 1),\nexit the menu, wait until the change is in effect, then zero-\nterminate the modifier,\n\n0 means that other mods' effects will not be overridden\nby Ultimate Custom Doom.";
