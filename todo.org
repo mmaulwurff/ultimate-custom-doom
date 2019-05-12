@@ -31,17 +31,17 @@
 * DONE Add IDCLEVer Starter compatibility
 * DONE optimize images
 * DONE Convert mp3 to ogg
-* TODO Publish v0.1
+* [Won't do] Publish v0.1
+* DONE implement NashGore-like option hint system
+* DONE publish v0.2
 * TODO check default CVar values for sanity
 * TODO implement cvar validation
 * TODO check with a mod that changes max health of the player
 * TODO check with a Dehacked mod that changes max health of the player
-* TODO implement NashGore-like option hint system
 * TODO write documentation for all public methods
 * TODO Move all strings to language.enu
 * TODO review the code
 * TODO playtest
-* TODO publish v0.2
 * TODO Merge with Armament Tuning
 * TODO Add 10x functionality
 * TODO publish 0.3

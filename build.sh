@@ -29,4 +29,4 @@ gzdoom -iwad $IWAD \
        ~/Programs/Games/wads/maps/DOOMTEST.wad \
        "$1" "$2" \
        +map test \
-       +notarget +openmenu CustomDoomMenu
+       +notarget +openmenu cd_Menu
