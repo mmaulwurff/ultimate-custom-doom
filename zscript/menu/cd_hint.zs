@@ -18,17 +18,21 @@
 
 /**
  * This class provides the Hint Option Menu item.
- *
- * Hint item is visible only when the item right above it is selected.
+ * Hint is a static text that is visible only if the items above are selected.
+ * The number of items above is configurable, and by default is 1.
  */
 class OptionMenuItemCd_Hint : OptionMenuItemStaticText
 {
 
   // public: ///////////////////////////////////////////////////////////////////
 
+  /**
+   * nAbove means for how many selectable items above this hint should appear.
+   */
   OptionMenuItemCd_Hint Init(String label, int nAbove = 1)
   {
     Super.InitDirect(label, Font.CR_WHITE);
+    if (nAbove < 1) { nAbove = 1; }
     _nAbove = nAbove;
     return self;
   }
@@ -53,7 +57,17 @@ class OptionMenuItemCd_Hint : OptionMenuItemStaticText
 
     while (aboveEnd >= 0 && !desc.mItems[aboveEnd].Selectable()) { --aboveEnd; }
 
-    int  aboveBegin      = aboveEnd - _nAbove;
+    int aboveBegin      = aboveEnd;
+    int foundSelectable = 0;
+    for (; aboveBegin >= 0 && foundSelectable < _nAbove; --aboveBegin)
+    {
+      if (desc.mItems[aboveBegin].Selectable())
+      {
+        ++foundSelectable;
+      }
+    }
+    ++aboveBegin;
+
     int  selected        = desc.mSelectedItem;
     bool isAboveSelected = (aboveBegin <= selected && selected <= aboveEnd);
 
