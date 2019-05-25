@@ -41,7 +41,10 @@ class cd_PlayerArmor
     if (!isRegenerate) { return; }
 
     int maxRegenAmount = settings.amount();
-    int regenAmount    = min(max - armor, maxRegenAmount);
+    int regenAmount    = max
+                       ? min(max - armor, maxRegenAmount)
+                       : maxRegenAmount
+                       ;
 
     if (regenAmount <= 0) { return; }
 
@@ -73,9 +76,9 @@ class cd_PlayerArmor
   static private
   bool isRegenerate(int health, int armor, int min, int max)
   {
-    bool isAlive      = (health > 0);
-    bool isEnough     = (armor >= min);
-    bool isNotTooMuch = (armor < max);
+    bool isAlive      = (health >    0);
+    bool isEnough     = (armor  >= min);
+    bool isNotTooMuch = (armor  <  max || max == 0);
     bool isRegenerate = isAlive && isEnough && isNotTooMuch;
 
     return isRegenerate;
