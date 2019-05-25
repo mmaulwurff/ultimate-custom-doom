@@ -32,7 +32,7 @@ class cd_PlayerHealth
     if (pawn == null) { return; }
 
     int health    = pawn.Health;
-    int maxHealth = pawn.SpawnHealth();
+    int maxHealth = pawn.MaxHealth;
     int cap       = settings.cap();
     if (cap == 0) { cap = maxHealth; }
 
