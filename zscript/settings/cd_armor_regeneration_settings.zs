@@ -47,14 +47,18 @@ class cd_ArmorRegenerationSettings : cd_SettingsPack
 
     push(_isSoundEnabled = new("cd_BoolSetting").init("cd_armor_sound_enabled", p));
 
-    push(_period = new("cd_PeriodSettings").init("cd_armor_regen_enabled", "cd_health_regen_freq", p));
+    push(_period = new("cd_PeriodSettings").init( "cd_armor_regen_enabled"
+                                                , "cd_armor_regen_freq"
+                                                , p
+                                                ));
+
     push(_blend  = new("cd_BlendSettings" ).init( "cd_armor_regen_pulse"
-                                           , "cd_armor_blend_color_r"
-                                           , "cd_armor_blend_color_g"
-                                           , "cd_armor_blend_color_b"
-                                           , "cd_armor_blend_color_int"
-                                           , p
-                                           ));
+                                                , "cd_armor_blend_color_r"
+                                                , "cd_armor_blend_color_g"
+                                                , "cd_armor_blend_color_b"
+                                                , "cd_armor_blend_color_int"
+                                                , p
+                                                ));
     return self;
   }
 
