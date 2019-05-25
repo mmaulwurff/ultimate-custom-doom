@@ -42,7 +42,7 @@ class cd_PermanentPowerupSettings : cd_SettingsPack
   bool torch            () { return _torch            .value(); }
   bool minotaur         () { return _minotaur         .value(); }
   bool morph            () { return _morph            .value(); }
-  bool protecton        () { return _protecton        .value(); }
+  bool protection       () { return _protection       .value(); }
   bool regeneraton      () { return _regeneraton      .value(); }
   bool scanner          () { return _scanner          .value(); }
   bool speed            () { return _speed            .value(); }
@@ -73,7 +73,7 @@ class cd_PermanentPowerupSettings : cd_SettingsPack
     push(_torch             = new("cd_BoolSetting").init("cd_power_torch_permanent"            , p));
     push(_minotaur          = new("cd_BoolSetting").init("cd_power_minotaur_permanent"         , p));
     push(_morph             = new("cd_BoolSetting").init("cd_power_morph_permanent"            , p));
-    push(_protecton         = new("cd_BoolSetting").init("cd_power_protecton_permanent"        , p));
+    push(_protection        = new("cd_BoolSetting").init("cd_power_protecton_permanent"        , p));
     push(_regeneraton       = new("cd_BoolSetting").init("cd_power_regeneraton_permanent"      , p));
     push(_scanner           = new("cd_BoolSetting").init("cd_power_scanner_permanent"          , p));
     push(_speed             = new("cd_BoolSetting").init("cd_power_speed_permanent"            , p));
@@ -105,7 +105,7 @@ class cd_PermanentPowerupSettings : cd_SettingsPack
   private cd_BoolSetting _torch;
   private cd_BoolSetting _minotaur;
   private cd_BoolSetting _morph;
-  private cd_BoolSetting _protecton;
+  private cd_BoolSetting _protection;
   private cd_BoolSetting _regeneraton;
   private cd_BoolSetting _scanner;
   private cd_BoolSetting _speed;
