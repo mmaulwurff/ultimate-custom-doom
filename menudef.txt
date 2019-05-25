@@ -82,7 +82,7 @@ OptionMenu cd_AdvancedPlayer
   StaticText    "========================================" , CDLightBlue
 
   StaticText    ""
-  Option        "Starting items type"      , cd_player_start_type, cd_player_start_type_values
+  Option        "Set start values"         , cd_player_start_type, cd_player_start_type_values
   TextField     "$CD_START_HEALTH_CAPTION" , cd_player_start_health
   TextField     "$CD_START_ARMOR_CAPTION"  , cd_player_start_armor
   Slider        "Save Percent"             , cd_player_start_savepercent, 1, 100, 1, 0
