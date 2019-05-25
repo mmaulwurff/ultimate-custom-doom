@@ -35,13 +35,13 @@ class cd_Time
   {
     if (!settings.isEnabled()) { return null; }
 
-    int  periodTicks = settings.period() * Thinker.TICRATE;
-    bool isTimeNow   = ((level.time % periodTicks) == 0);
+    int periodTicks = settings.period() * Thinker.TICRATE;
+    if (periodTicks == 0) { return null; }
 
+    bool isTimeNow = ((level.time % periodTicks) == 0);
     if (!isTimeNow) { return null; }
 
     PlayerPawn pawn = player.mo;
-
     return pawn;
   }
 
