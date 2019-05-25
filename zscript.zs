@@ -99,5 +99,4 @@ version "3.7"
 
 // Menu ////////////////////////////////////////////////////////////////////////
 
-#include "zscript/menu/cd_framed_text.zs"
 #include "zscript/menu/cd_hint.zs"
