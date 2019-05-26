@@ -100,3 +100,4 @@ version "3.7"
 // Menu ////////////////////////////////////////////////////////////////////////
 
 #include "zscript/menu/cd_hint.zs"
+#include "zscript/menu/cd_min_field.zs"
