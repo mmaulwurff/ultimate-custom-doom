@@ -24,12 +24,19 @@ It's basically a "make your own difficulty" kind of mod which lets you modify th
 * Randomization!
 * Monster manipulation! (Limited options)
 
+# Thanks
+
+* Beed28 for bug reports;
+* przemko27 for feature suggestions and bug reports;
+* DabbingSquidward for bug reports.
+
 # Custom Doom Credits
 
 * Base idea: Lud (Accensus).
 * Sounds: YouTube (Heartbeat), Quake 2 (Armor Shard), Unreal Tournament '99 (Notification).
 
 ## ===Special Thanks===
+
 * JudgeGroovy - Suggestions.
 * Doctrine Dark - Suggestions & Debugging.
 * Zhs2 - Suggestions & Advice.
@@ -39,6 +46,7 @@ It's basically a "make your own difficulty" kind of mod which lets you modify th
 * FoxBoy - Suggestions.
 
 ## ==Unusually Special Thanks==
+
 * Eruanna - Attempting to write a script for exporting/importing
 CustomDoom settings into an external config file, thus creating a sort
 of a profile system.
