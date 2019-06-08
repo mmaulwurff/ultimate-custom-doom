@@ -26,9 +26,7 @@ class cd_PlayerProperties play
 
   cd_PlayerProperties init(cd_PlayerSettings settings, PlayerInfo player)
   {
-    rememberOriginals(player);
     maybeSetStartingProperties(settings, player);
-
     return self;
   }
 
@@ -37,45 +35,76 @@ class cd_PlayerProperties play
    */
   void update(cd_PlayerSettings settings, PlayerInfo player)
   {
-    PlayerPawn pawn = player.mo;
+    PlayerPawn           pawn      = player.mo;
+    class<PlayerPawn>    type      = pawn.GetClassName();
+    readonly<PlayerPawn> default   = GetDefaultByType(type);
+
+    double originalDamageMultiplier      = default.DamageMultiply;
+    double originalDamageTakenMultiplier = default.DamageFactor;
+    double originalSpeed                 = default.Speed;
+    double originalJumpZ                 = default.JumpZ;
 
     pawn.DamageMultiply = settings.damageMultiplier()
-      ? _originalDamageMultiplier * settings.damageMultiplier()
-      : _originalDamageMultiplier;
+      ? originalDamageMultiplier * settings.damageMultiplier()
+      : originalDamageMultiplier;
 
     pawn.DamageFactor = settings.damageTakenMultiplier()
-      ? _originalDamageTakenMultiplier * settings.damageTakenMultiplier()
-      : _originalDamageTakenMultiplier;
+      ? originalDamageTakenMultiplier * settings.damageTakenMultiplier()
+      : originalDamageTakenMultiplier;
 
-    pawn.MaxHealth = settings.maxHealth()
-      ? settings.maxHealth()
-      : _originalMaxHealth;
+    updateMaxHealth(settings, pawn, default);
 
     pawn.Speed = settings.speedMultiplier()
-      ? _originalSpeed * settings.speedMultiplier()
-      : _originalSpeed;
+      ? originalSpeed * settings.speedMultiplier()
+      : originalSpeed;
 
     pawn.JumpZ = settings.jumpZMultiplier()
-      ? _originalJumpZ * settings.jumpZMultiplier()
-      : _originalJumpZ;
+      ? originalJumpZ * settings.jumpZMultiplier()
+      : originalJumpZ;
   }
 
   // private: //////////////////////////////////////////////////////////////////
 
   private
-  void rememberOriginals(PlayerInfo player)
+  void updateMaxHealth(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
   {
-    class<PlayerPawn>    type      = player.mo.GetClassName();
-    readonly<PlayerPawn> default   = GetDefaultByType(type);
+    int    originalMaxHealth = default.MaxHealth;
+    double newMaxHealth      = settings.maxHealth();
 
-    _originalDamageMultiplier      = default.DamageMultiply;
-    _originalDamageTakenMultiplier = default.DamageFactor;
-    _originalMaxHealth             = default.MaxHealth;
-    _originalSpeed                 = default.Speed;
-    _originalJumpZ                 = default.JumpZ;
+    if (newMaxHealth != _oldMaxHealth)
+    {
+      double realMaxHealth  = pawn.MaxHealth ? pawn.MaxHealth : 100;
+      double relativeHealth = pawn.health / realMaxHealth;
+
+      pawn.MaxHealth = newMaxHealth
+        ? newMaxHealth
+        : originalMaxHealth;
+
+      realMaxHealth = pawn.MaxHealth ? pawn.MaxHealth : 100;
+      pawn.A_SetHealth(relativeHealth * realMaxHealth);
+
+      _oldMaxHealth = newMaxHealth;
+
+      let healthFinder = ThinkerIterator.Create("Health", Thinker.STAT_DEFAULT);
+      Health mo;
+      while (mo = Health(healthFinder.Next()))
+      {
+        if (newMaxHealth)
+        {
+          // Zero max amount means no limit, leave it so.
+          if (mo.MaxAmount) { mo.MaxAmount = newMaxHealth + OVERHEAL; }
+        }
+        else // restore default
+        {
+          class<Health>    type             = mo.GetClassName();
+          readonly<Health> defaultHealth    = GetDefaultByType(type);
+          int              defaultMaxAmount = defaultHealth.MaxAmount;
+
+          mo.MaxAmount = defaultMaxAmount;
+        }
+      }
+    }
   }
-
-  // private: //////////////////////////////////////////////////////////////////
 
   private static
   void maybeSetStartingProperties(cd_PlayerSettings settings, PlayerInfo player)
@@ -117,17 +146,16 @@ class cd_PlayerProperties play
   private static
   bool isNewGame(PlayerInfo player)
   {
-    bool isNewGame = (player.mo.FindInventory("cd_StartGiverCheck") == null);
-
+    bool isNewGame = (player.mo.FindInventory("cd_StartGiverCheck") == NULL);
     return isNewGame;
   }
 
   // private: //////////////////////////////////////////////////////////////////
 
-  private double _originalDamageMultiplier;
-  private double _originalDamageTakenMultiplier;
-  private int    _originalMaxHealth;
-  private double _originalSpeed;
-  private double _originalJumpZ;
+  private double _oldMaxHealth;
+
+  // private: //////////////////////////////////////////////////////////////////
+
+  const OVERHEAL = 100;
 
 } // class cd_PlayerProperties

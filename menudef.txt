@@ -95,6 +95,8 @@ OptionMenu cd_AdvancedPlayer
 
   StaticText  ""
   cd_MinField "$CD_MAX_HEALTH_CAPTION"        , cd_player_max_health , 0
+  cd_Hint     "Bonus items overheal up to max + 100."
+
   cd_MinField "$CD_SPEED_MULTIPLIER_CAPTION"  , cd_player_speed_mult , 0
   cd_MinField "$CD_JUMP_Z_MULTIPLIER_CAPTION" , cd_player_jump_mult  , 0
 
