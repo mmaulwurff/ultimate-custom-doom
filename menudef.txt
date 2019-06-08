@@ -108,17 +108,13 @@ OptionMenu cd_MiscPlayer
   StaticText  "========================================" , CDLightBlue
   StaticText  "Miscellaneous Player Options"             , CDLightBlue
   StaticText  "========================================" , CDLightBlue
-  StaticText  "All modifiers are zero-terminated."       , CDLightBlue
-  StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
   Option      "Enable", cd_player_misc_enabled, OnOff
   cd_Hint     "Toggles the options below on or off."
 
-  cd_MinField "$CD_AIR_CONTROL_CAPTION", cd_player_aircontrol_mult, 0
-  cd_Hint     "Use very large values for visible change."
-
-  Slider      "$CD_FRICTION_CAPTION", cd_player_friction_mult, 0.95, 1.25, 0.01, 2
+  cd_MinField "$CD_AIR_CONTROL_CAPTION" , cd_player_aircontrol_mult, 0
+  Slider      "$CD_FRICTION_CAPTION"    , cd_player_friction_mult, 0.95, 1.25, 0.01, 2
 
 } // OptionMenu cd_MiscPlayer
 

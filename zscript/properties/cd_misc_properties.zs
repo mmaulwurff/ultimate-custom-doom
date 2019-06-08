@@ -33,19 +33,36 @@ class cd_MiscProperties play
 
   void update(cd_MiscSettings settings, PlayerInfo player)
   {
-    PlayerPawn pawn      = player.mo;
-    bool       isEnabled = settings.isEnabled();
-
-    level.airControl = isEnabled
-      ? _originalAirControl * settings.airControl()
-      : _originalAirControl;
-
-    pawn.friction = isEnabled
-      ? _originalFriction * settings.friction()
-      : _originalFriction;
+    updateAirControl(settings);
+    updateFriction(settings, player);
   }
 
   // private: //////////////////////////////////////////////////////////////////
+
+  private
+  void updateAirControl(cd_MiscSettings settings)
+  {
+    if (level.airControl != _airControl) // something changed the level air control
+    {
+      _originalAirControl = level.airControl;
+    }
+
+    level.airControl = settings.isEnabled()
+      ? _originalAirControl * settings.airControl()
+      : _originalAirControl;
+
+    _airControl = level.airControl;
+  }
+
+  private
+  void updateFriction(cd_MiscSettings settings, PlayerInfo player)
+  {
+    PlayerPawn pawn = player.mo;
+
+    pawn.friction = settings.isEnabled()
+      ? _originalFriction * settings.friction()
+      : _originalFriction;
+  }
 
   private
   void rememberOriginals(PlayerInfo player)
@@ -54,11 +71,16 @@ class cd_MiscProperties play
 
     _originalAirControl = level.airControl;
     _originalFriction   = pawn.friction;
+    _airControl         = _originalAirControl;
   }
 
   // private: //////////////////////////////////////////////////////////////////
 
   private double _originalAirControl;
   private double _originalFriction;
+
+  // level air control can be changed without UCD knowing about it,
+  // so better save the value for checks.
+  private double _airControl;
 
 } // class cd_MiscProperties
