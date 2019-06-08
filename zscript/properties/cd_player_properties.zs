@@ -27,6 +27,7 @@ class cd_PlayerProperties play
   cd_PlayerProperties init(cd_PlayerSettings settings, PlayerInfo player)
   {
     maybeSetStartingProperties(settings, player);
+    _jumpZ = player.mo.jumpZ;
     return self;
   }
 
@@ -35,35 +36,65 @@ class cd_PlayerProperties play
    */
   void update(cd_PlayerSettings settings, PlayerInfo player)
   {
-    PlayerPawn           pawn      = player.mo;
-    class<PlayerPawn>    type      = pawn.GetClassName();
-    readonly<PlayerPawn> default   = GetDefaultByType(type);
+    PlayerPawn           pawn    = player.mo;
+    class<PlayerPawn>    type    = pawn.GetClassName();
+    readonly<PlayerPawn> default = GetDefaultByType(type);
 
-    double originalDamageMultiplier      = default.DamageMultiply;
-    double originalDamageTakenMultiplier = default.DamageFactor;
-    double originalSpeed                 = default.Speed;
-    double originalJumpZ                 = default.JumpZ;
+    updateDamageMultiply(settings, pawn, default);
+    updateDamageFactor  (settings, pawn, default);
+    updateMaxHealth     (settings, pawn, default);
+    updateSpeed         (settings, pawn, default);
+    updateJumpZ         (settings, pawn, default);
+  }
+
+  // private: //////////////////////////////////////////////////////////////////
+
+  private static
+  void updateDamageMultiply(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
+  {
+    double originalDamageMultiplier = default.DamageMultiply;
 
     pawn.DamageMultiply = settings.damageMultiplier()
       ? originalDamageMultiplier * settings.damageMultiplier()
       : originalDamageMultiplier;
+  }
+
+  private static
+  void updateDamageFactor(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
+  {
+    double originalDamageTakenMultiplier = default.DamageFactor;
 
     pawn.DamageFactor = settings.damageTakenMultiplier()
       ? originalDamageTakenMultiplier * settings.damageTakenMultiplier()
       : originalDamageTakenMultiplier;
+  }
 
-    updateMaxHealth(settings, pawn, default);
+  private static
+  void updateSpeed(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
+  {
+    double originalSpeed = default.Speed;
 
     pawn.Speed = settings.speedMultiplier()
       ? originalSpeed * settings.speedMultiplier()
       : originalSpeed;
+  }
+
+  private
+  void updateJumpZ(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
+  {
+    double originalJumpZ = default.JumpZ;
+
+    if (pawn.JumpZ != _jumpZ) // something changed the jump height
+    {
+      originalJumpZ = pawn.JumpZ;
+    }
 
     pawn.JumpZ = settings.jumpZMultiplier()
       ? originalJumpZ * settings.jumpZMultiplier()
       : originalJumpZ;
-  }
 
-  // private: //////////////////////////////////////////////////////////////////
+    _jumpZ = pawn.JumpZ;
+  }
 
   private
   void updateMaxHealth(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
@@ -153,6 +184,10 @@ class cd_PlayerProperties play
   // private: //////////////////////////////////////////////////////////////////
 
   private double _oldMaxHealth;
+
+  // level air control can be changed without UCD knowing about it,
+  // so better save the value and check it.
+  private double _jumpZ;
 
   // private: //////////////////////////////////////////////////////////////////
 

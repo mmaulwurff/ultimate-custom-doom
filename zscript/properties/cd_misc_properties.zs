@@ -80,7 +80,7 @@ class cd_MiscProperties play
   private double _originalFriction;
 
   // level air control can be changed without UCD knowing about it,
-  // so better save the value for checks.
+  // so better save the value and check it.
   private double _airControl;
 
 } // class cd_MiscProperties
