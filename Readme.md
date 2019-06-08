@@ -28,7 +28,14 @@ It's basically a "make your own difficulty" kind of mod which lets you modify th
 
 * Beed28 for bug reports;
 * przemko27 for feature suggestions and bug reports;
-* DabbingSquidward for bug reports.
+* DabbingSquidward for bug reports;
+* drogga (Commado Pen) for bug reports;
+* Nems for bug reports.
+
+# Links
+
+* [Git repository](https://github.com/mmaulwurff/ultimate-custom-doom)
+* [Forum](https://forum.zdoom.org/viewtopic.php?f=43&t=64678#p1103556)
 
 # Custom Doom Credits
 
