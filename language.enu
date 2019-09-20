@@ -7,6 +7,7 @@ CD_KEYS_MENU  = "Open Configuration Menu";
 
 CD_PLAYER_WEAPON_MULTIPLIER_CAPTION       = "Weapon damage multiplier";
 CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION = "Damage taken multiplier";
+CD_PLAYER_MAX_VIEW_PITCH                  = "Max view pitch";
 
 CD_START_TYPE_OPTION_GAME  = "Per game";
 CD_START_TYPE_OPTION_LEVEL = "Per level/respawn";

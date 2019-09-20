@@ -76,6 +76,11 @@ OptionMenu cd_BasicPlayer
   cd_MinField "$CD_PLAYER_WEAPON_MULTIPLIER_CAPTION"       , cd_player_weapon_damage_mult , 0
   cd_MinField "$CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION" , cd_player_damage_taken_mult  , 0
 
+  StaticText  ""
+  Slider      "$CD_PLAYER_MAX_VIEW_PITCH"                  , maxviewpitch, 0, 90, 5
+  cd_Hint     "0 is not recommended without autoaim."
+  cd_Hint     "90 is the default."
+
 } // OptionMenu cd_BasicPlayer
 
 OptionMenu cd_AdvancedPlayer
