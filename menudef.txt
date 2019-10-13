@@ -2,7 +2,6 @@
 
 AddOptionMenu OptionsMenu
 {
-  StaticText  ""
   SubMenu     "$CD_MAIN_TITLE", cd_Menu
 }
 
