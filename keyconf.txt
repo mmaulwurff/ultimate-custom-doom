@@ -7,7 +7,5 @@ alias menu_custom                 "openmenu cd_Menu"
 
 // Keys ////////////////////////////////////////////////////////////////////////
 
-DefaultBind o "menu_custom"
-
-AddKeySection "$CD_KEYS_TITLE" "CustomDoomKeys"
-AddMenuKey    "$CD_KEYS_MENU"  "menu_custom"
+AddKeySection "$CD_KEYS_TITLE" CustomDoomKeys
+AddMenuKey    "$CD_KEYS_MENU"  menu_custom
