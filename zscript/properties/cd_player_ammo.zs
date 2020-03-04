@@ -35,7 +35,11 @@ class cd_PlayerAmmo
 
     int amount = settings.amount();
 
-    pawn.GiveInventory("Backpack", amount);
+    // Backpack cannot be given N times in one call for some reason.
+    for (int i = 0; i < amount; ++i)
+    {
+      pawn.GiveInventory("Backpack", 1);
+    }
 
     cd_Effects.maybeBlend(pawn, settings.blend());
   }
