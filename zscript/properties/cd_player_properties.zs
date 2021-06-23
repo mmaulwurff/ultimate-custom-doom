@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -22,11 +22,10 @@
 class cd_PlayerProperties play
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
-  cd_PlayerProperties init(cd_PlayerSettings settings, PlayerInfo player)
+  cd_PlayerProperties init(PlayerInfo player)
   {
-    maybeSetStartingProperties(settings, player);
     _jumpZ = player.mo.jumpZ;
     return self;
   }
@@ -47,7 +46,25 @@ class cd_PlayerProperties play
     updateJumpZ         (settings, pawn, default);
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+  static
+  void maybeSetStartingProperties(cd_PlayerSettings settings, PlayerInfo player)
+  {
+    switch (settings.startType())
+    {
+    case cd_PlayerSettings.PER_GAME:
+      if (isNewGame(player)) { setStartingProperties(settings, player); }
+      break;
+
+    case cd_PlayerSettings.PER_LEVEL:
+      setStartingProperties(settings, player);
+      break;
+
+    case cd_PlayerSettings.NEVER:
+      break;
+    }
+  }
+
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private static
   void updateDamageMultiply(cd_PlayerSettings settings, PlayerPawn pawn, readonly<PlayerPawn> default)
@@ -102,56 +119,38 @@ class cd_PlayerProperties play
     int    originalMaxHealth = default.MaxHealth;
     double newMaxHealth      = settings.maxHealth();
 
-    if (newMaxHealth != _oldMaxHealth)
+    if (newMaxHealth == _oldMaxHealth) return;
+
+    double realMaxHealth  = pawn.MaxHealth ? pawn.MaxHealth : 100;
+    double relativeHealth = pawn.health / realMaxHealth;
+
+    pawn.MaxHealth = newMaxHealth
+      ? newMaxHealth
+      : originalMaxHealth;
+
+    realMaxHealth = pawn.MaxHealth ? pawn.MaxHealth : 100;
+    pawn.A_SetHealth(relativeHealth * realMaxHealth);
+
+    _oldMaxHealth = newMaxHealth;
+
+    let healthFinder = ThinkerIterator.Create("Health", Thinker.STAT_DEFAULT);
+    Health mo;
+    while (mo = Health(healthFinder.Next()))
     {
-      double realMaxHealth  = pawn.MaxHealth ? pawn.MaxHealth : 100;
-      double relativeHealth = pawn.health / realMaxHealth;
-
-      pawn.MaxHealth = newMaxHealth
-        ? newMaxHealth
-        : originalMaxHealth;
-
-      realMaxHealth = pawn.MaxHealth ? pawn.MaxHealth : 100;
-      pawn.A_SetHealth(relativeHealth * realMaxHealth);
-
-      _oldMaxHealth = newMaxHealth;
-
-      let healthFinder = ThinkerIterator.Create("Health", Thinker.STAT_DEFAULT);
-      Health mo;
-      while (mo = Health(healthFinder.Next()))
+      if (newMaxHealth)
       {
-        if (newMaxHealth)
-        {
-          // Zero max amount means no limit, leave it so.
-          if (mo.MaxAmount) { mo.MaxAmount = newMaxHealth + OVERHEAL; }
-        }
-        else // restore default
-        {
-          class<Health>    type             = mo.GetClassName();
-          readonly<Health> defaultHealth    = GetDefaultByType(type);
-          int              defaultMaxAmount = defaultHealth.MaxAmount;
-
-          mo.MaxAmount = defaultMaxAmount;
-        }
+        // Zero max amount means no limit, leave it so.
+        if (mo.MaxAmount) { mo.MaxAmount = newMaxHealth + OVERHEAL; }
       }
-    }
-  }
+      else
+      {
+        // Restore default.
+        class<Health>    type             = mo.GetClassName();
+        readonly<Health> defaultHealth    = GetDefaultByType(type);
+        int              defaultMaxAmount = defaultHealth.MaxAmount;
 
-  private static
-  void maybeSetStartingProperties(cd_PlayerSettings settings, PlayerInfo player)
-  {
-    switch (settings.startType())
-    {
-    case cd_PlayerSettings.PER_GAME:
-      if (isNewGame(player)) { setStartingProperties(settings, player); }
-      break;
-
-    case cd_PlayerSettings.PER_LEVEL:
-      setStartingProperties(settings, player);
-      break;
-
-    case cd_PlayerSettings.NEVER:
-      break;
+        mo.MaxAmount = defaultMaxAmount;
+      }
     }
   }
 
@@ -181,15 +180,11 @@ class cd_PlayerProperties play
     return isNewGame;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
-
   private double _oldMaxHealth;
 
   // level air control can be changed without UCD knowing about it,
   // so better save the value and check it.
   private double _jumpZ;
-
-  // private: //////////////////////////////////////////////////////////////////
 
   const OVERHEAL = 100;
 

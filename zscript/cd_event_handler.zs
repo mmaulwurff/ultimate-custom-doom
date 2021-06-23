@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -22,7 +22,7 @@
 class cd_EventHandler : EventHandler
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
   override void PlayerEntered  (PlayerEvent event) { initEvent(event); }
   override void PlayerRespawned(PlayerEvent event) { initEvent(event); }
@@ -73,7 +73,7 @@ class cd_EventHandler : EventHandler
     _randomizer.show(players[consolePlayer], _settings.randomizer());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private
   void resetMonsterSettings()
@@ -109,11 +109,12 @@ class cd_EventHandler : EventHandler
   {
     initSettings(player);
 
-    _playerProperties = new("cd_PlayerProperties").init(_settings.player(), player);
-    _miscProperties   = new("cd_MiscProperties"  ).init(_settings.misc  (), player);
+    _playerProperties = new("cd_PlayerProperties").init(player);
+    _miscProperties   = new("cd_MiscProperties"  ).init(_settings.misc(), player);
     _randomizer       = new("cd_Randomizer"      ).init();
 
     updateProperties(player);
+    _playerProperties.maybeSetStartingProperties(_settings.player(), player);
 
     player.mo.GiveInventoryType("cd_StartGiverCheck");
   }
@@ -154,8 +155,6 @@ class cd_EventHandler : EventHandler
     _isNotLoadedGame = true;
     return result;
   }
-
-  // private: //////////////////////////////////////////////////////////////////
 
   private cd_Settings         _settings;
   private cd_PlayerProperties _playerProperties;
