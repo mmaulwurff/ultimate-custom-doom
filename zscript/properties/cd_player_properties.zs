@@ -124,12 +124,10 @@ class cd_PlayerProperties play
     double realMaxHealth  = pawn.MaxHealth ? pawn.MaxHealth : 100;
     double relativeHealth = pawn.health / realMaxHealth;
 
-    pawn.MaxHealth = newMaxHealth
-      ? newMaxHealth
-      : originalMaxHealth;
+    pawn.MaxHealth = int(newMaxHealth ? newMaxHealth : originalMaxHealth);
 
     realMaxHealth = pawn.MaxHealth ? pawn.MaxHealth : 100;
-    pawn.A_SetHealth(relativeHealth * realMaxHealth);
+    pawn.A_SetHealth(int(relativeHealth * realMaxHealth));
 
     _oldMaxHealth = newMaxHealth;
 
@@ -140,7 +138,7 @@ class cd_PlayerProperties play
       if (newMaxHealth)
       {
         // Zero max amount means no limit, leave it so.
-        if (mo.MaxAmount) { mo.MaxAmount = newMaxHealth + OVERHEAL; }
+        if (mo.MaxAmount) { mo.MaxAmount = int(newMaxHealth + OVERHEAL); }
       }
       else
       {
