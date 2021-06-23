@@ -8,7 +8,8 @@ Custom Doom is [mentioned in 2016 Cacowards under Neat Stuff Safari!](http://www
 
 # What this mod does
 
-It's basically a "make your own difficulty" kind of mod which lets you modify the following:
+It's basically a "make your own difficulty" kind of mod which lets you modify
+the following:
 
 * Damage done!
 * Damage taken!
@@ -26,11 +27,10 @@ It's basically a "make your own difficulty" kind of mod which lets you modify th
 
 # Thanks
 
-* Beed28 for bug reports;
-* przemko27 for feature suggestions and bug reports;
-* DabbingSquidward for bug reports;
-* drogga (Commado Pen) for bug reports;
-* Nems for bug reports.
+To those who reported bugs: Beed28, przemko27, DabbingSquidward, drogga (Commado
+Pen), Nems, HexFlareheart, kondoriyano,  Spaceman333, ghost.
+
+To those who suggested new features: przemko27.
 
 # Links
 
