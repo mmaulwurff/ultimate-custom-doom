@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filename=ultimate-custom-doom-$(git describe --abbrev=0 --tags).pk3
+filename=build/ultimate-custom-doom-$(git describe --abbrev=0 --tags).pk3
 
 mkdir -p build
 scripts/make_changelog.sh
