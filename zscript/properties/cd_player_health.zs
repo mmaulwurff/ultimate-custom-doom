@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -22,14 +22,14 @@
 class cd_PlayerHealth
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
   static play
   void regenerate(PlayerInfo player, cd_HealthRegenerationSettings settings)
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
 
-    if (pawn == null) { return; }
+    if (pawn == null || pawn.Health <= 0) { return; }
 
     int health    = pawn.Health;
     int maxHealth = pawn.MaxHealth ? pawn.MaxHealth : 100;
@@ -57,7 +57,7 @@ class cd_PlayerHealth
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
 
-    if (pawn == null) { return; }
+    if (pawn == null || pawn.Health <= 0) { return; }
 
     int oldHealth = pawn.health;
     int newHealth = max(settings.limit(), oldHealth - settings.amount());
@@ -67,7 +67,7 @@ class cd_PlayerHealth
     pawn.A_SetHealth(newHealth);
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private static
   bool isRegenerate(int health, int maxHealth, int cap)
@@ -87,8 +87,6 @@ class cd_PlayerHealth
 
     if (isSoundEnabled) { pawn.A_PlaySound(REGEN_SOUND, CHAN_AUTO); }
   }
-
-  // private: //////////////////////////////////////////////////////////////////
 
   const REGEN_SOUND = "Regeneration/Heartbeat";
 
