@@ -19,17 +19,11 @@
 # OGG sounds
 !**.ogg
 
-# Emacs Org Mode documents
-!**.org
-
 # ZScript source code
 !**.zs
 
 # Shell scripts
 !**.sh
-
-# GZDoom language lumps
-!**.enu
 
 # But still ignore the following files: ########################################
 
