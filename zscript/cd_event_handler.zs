@@ -37,7 +37,7 @@ class cd_EventHandler : EventHandler
 
     updateProperties(player);
 
-    bool isTimeToPulse = ((level.time % Thinker.TICRATE) == 0);
+    bool isTimeToPulse = (level.time != 0) && ((level.time % Thinker.TICRATE) == 0);
     if (isTimeToPulse) { pulse(player); }
   }
 

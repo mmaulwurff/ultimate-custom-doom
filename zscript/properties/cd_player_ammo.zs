@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,12 +19,12 @@
 /**
  * This class provides the player ammo manipulation functions.
  */
-class cd_PlayerAmmo
+class cd_PlayerAmmo play
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
-  static play
+  static
   void regenerate(PlayerInfo player, cd_AmmoRegenerationSettings settings)
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
@@ -35,16 +35,17 @@ class cd_PlayerAmmo
 
     int amount = settings.amount();
 
-    // Backpack cannot be given N times in one call for some reason.
     for (int i = 0; i < amount; ++i)
     {
-      pawn.GiveInventory("Backpack", 1);
+      let aBackpack = Inventory(Actor.spawn("Backpack", replace: ALLOW_REPLACE));
+      aBackpack.clearCounters();
+      if (!aBackpack.CallTryPickup(pawn)) aBackpack.destroy();
     }
 
     cd_Effects.maybeBlend(pawn, settings.blend());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private static
   bool isAllowedToRegenerate(PlayerPawn pawn, cd_AmmoRegenerationSettings settings)
