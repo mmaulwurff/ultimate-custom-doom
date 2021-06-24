@@ -169,10 +169,10 @@ OptionMenu cd_HealthRegeneration
   Option      "Blend Pulse"            , cd_health_regen_pulse, OnOff
   cd_Hint     "Toggles blend pulse on regeneration on or off."
 
-  Slider      "Red"       , cd_health_blend_color_r,   0, 255, 15, 0
-  Slider      "Green"     , cd_health_blend_color_g,   0, 255, 15, 0
-  Slider      "Blue"      , cd_health_blend_color_b,   0, 255, 15, 0
-  Slider      "Intensity" , cd_health_blend_color_int, 0, 1, 0.05, 2
+  Slider      "$PLYRMNU_RED"   , cd_health_blend_color_r,   0, 255, 15, 0
+  Slider      "$PLYRMNU_GREEN" , cd_health_blend_color_g,   0, 255, 15, 0
+  Slider      "$PLYRMNU_BLUE"  , cd_health_blend_color_b,   0, 255, 15, 0
+  Slider      "Intensity"      , cd_health_blend_color_int, 0, 1, 0.05, 2
   cd_Hint     "Changes blend color and intensity.", 4
 
 } // OptionMenu cd_HealthRegeneration
@@ -208,10 +208,10 @@ OptionMenu cd_ArmorRegeneration
   Option      "Blend Pulse"            , cd_armor_regen_pulse, OnOff
   cd_Hint     "Toggles blend pulse on regeneration on or off."
 
-  Slider      "Red"       , cd_armor_blend_color_r,   0, 255, 15, 0
-  Slider      "Green"     , cd_armor_blend_color_g,   0, 255, 15, 0
-  Slider      "Blue"      , cd_armor_blend_color_b,   0, 255, 15, 0
-  Slider      "Intensity" , cd_armor_blend_color_int, 0, 1, 0.05, 2
+  Slider      "$PLYRMNU_RED"   , cd_armor_blend_color_r,   0, 255, 15, 0
+  Slider      "$PLYRMNU_GREEN" , cd_armor_blend_color_g,   0, 255, 15, 0
+  Slider      "$PLYRMNU_BLUE"  , cd_armor_blend_color_b,   0, 255, 15, 0
+  Slider      "Intensity"      , cd_armor_blend_color_int, 0, 1, 0.05, 2
   cd_Hint     "Changes blend color and intensity.", 4
 
 } // OptionMenu cd_ArmorRegeneration
@@ -240,10 +240,10 @@ OptionMenu cd_AmmoRegeneration
   Option      "Blend Pulse"          , cd_ammo_regen_pulse, OnOff
   cd_Hint     "Toggles blend pulse on regeneration on or off."
 
-  Slider      "Red"       , cd_ammo_blend_color_r,   0, 255, 15, 0
-  Slider      "Green"     , cd_ammo_blend_color_g,   0, 255, 15, 0
-  Slider      "Blue"      , cd_ammo_blend_color_b,   0, 255, 15, 0
-  Slider      "Intensity" , cd_ammo_blend_color_int, 0, 1, 0.05, 2
+  Slider      "$PLYRMNU_RED"   , cd_ammo_blend_color_r,   0, 255, 15, 0
+  Slider      "$PLYRMNU_GREEN" , cd_ammo_blend_color_g,   0, 255, 15, 0
+  Slider      "$PLYRMNU_BLUE"  , cd_ammo_blend_color_b,   0, 255, 15, 0
+  Slider      "Intensity"      , cd_ammo_blend_color_int, 0, 1, 0.05, 2
   cd_Hint     "Changes blend color and intensity.", 4
 
 } // OptionMenu RegenerationMenu
