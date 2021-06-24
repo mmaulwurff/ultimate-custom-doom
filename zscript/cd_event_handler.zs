@@ -24,8 +24,11 @@ class cd_EventHandler : EventHandler
 
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
-  override void PlayerEntered  (PlayerEvent event) { initEvent(event); }
-  override void PlayerRespawned(PlayerEvent event) { initEvent(event); }
+  override
+  void PlayerEntered(PlayerEvent event)
+  {
+    initEvent(event);
+  }
 
   override
   void WorldTick()
