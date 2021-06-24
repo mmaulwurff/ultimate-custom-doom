@@ -53,6 +53,20 @@ CD_HEALTH_REGENERATION_CAPTION = "Health Regeneration";
 
 CD_MANUAL = "These modifiers have a default value of 0. They will not do\nanything until you change their values to something positive.\n\nSuch are the monster modifiers, almost all player modifiers\nand all randomizer options.\n\nThese options can be enabled individually by using any\nnumber above 0.\n\nSwitching to 0 from a positive number during gameplay\nwill not revert the changes done.\n\nTo do that, you must set value to its default (most often 1),\nexit the menu, wait until the change is in effect, then zero-\nterminate the modifier,\n\n0 means that other mods' effects will not be overridden\nby Ultimate Custom Doom.";
 
+// Commands
+
+CD_COMMANDS_TITLE = "Ultimate Custom Doom Commands";
+CD_KILL = "Kill Player";
+CD_KILL_CONFIRMATION = "This will kill the player. Are you sure?";
+CD_KILL_HINT = "Use if stuck in death exit.";
+
+CD_RESET_OPTIONS = "Reset option values to defaults";
+CD_RESET_OPTIONS_CONFIRMATION = "This will reset all option values to their defaults.";
+CD_RESET_OPTIONS_HINT = "This doesn't reset the Randomizer min/max values.";
+
+CD_RESET_RANDOMIZER = "Reset Randomizer min/max to zero";
+CD_RESET_RANDOMIZER_CONFIRMATION = "This will set all randomizer min/max values to zero.";
+
 [ru]
 
 CD_KEYS_TITLE = "Клавиши Ultimate Custom Doom";

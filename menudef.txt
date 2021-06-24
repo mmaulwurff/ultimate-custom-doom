@@ -48,17 +48,17 @@ OptionMenu cd_Commands
 {
 
   StaticText  "========================================" , CDLightBlue
-  StaticText  "Ultimate Custom Doom Commands"            , CDLightBlue
+  StaticText  "$CD_COMMANDS_TITLE"                       , CDLightBlue
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  SafeCommand "Kill Player", kill, "This will kill the player. Use if stuck in death exit."
+  SafeCommand "$CD_KILL", kill, "$CD_KILL_CONFIRMATION"
+  cd_Hint     "$CD_KILL_HINT"
 
-  StaticText  ""
-  SafeCommand "Reset option values to defaults", cd_reset_to_defaults, "This will reset all option values to their defaults."
-  cd_Hint     "This doesn't reset the Randomizer min/max values."
+  SafeCommand "$CD_RESET_OPTIONS", cd_reset_to_defaults, "$CD_RESET_OPTIONS_CONFIRMATION"
+  cd_Hint     "$CD_RESET_OPTIONS_HINT"
 
-  SafeCommand "Reset Randomizer min/max to zero", cd_reset_random_to_defaults, "This will set all randomizer min/max values to zero."
+  SafeCommand "$CD_RESET_RANDOMIZER", cd_reset_random_to_defaults, "$CD_RESET_RANDOMIZER_CONFIRMATION"
 
 } // OptionMenu cd_Commands
 
