@@ -2,8 +2,9 @@
 
 alias cd_reset_to_defaults        "netevent cd_reset_cvars_to_defaults"
 alias cd_reset_random_to_defaults "netevent cd_reset_randomizer_cvars"
-alias cd_reset_monster_settings   "netevent cd_reset_monster_settings"
 alias menu_custom                 "openmenu cd_Menu"
+
+alias cd_apply_monster_settings "netevent cd_apply_monster_settings"
 
 // Keys ////////////////////////////////////////////////////////////////////////
 

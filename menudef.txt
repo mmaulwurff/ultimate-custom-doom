@@ -138,7 +138,7 @@ OptionMenu cd_Monster
   cd_MinField "$CD_MONSTER_SPEED"  , cd_monster_speed_mult  , 0
 
   StaticText  ""
-  Command     "$CD_APPLY_MONSTER_CAPTION", cd_reset_monster_settings
+  Command     "$CD_APPLY_MONSTER_CAPTION", cd_apply_monster_settings
 
 } // OptionMenu cd_Monster
 
