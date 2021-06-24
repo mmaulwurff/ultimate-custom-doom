@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,10 @@
 /**
  * What?
  */
-class cd_Randomizer
+class cd_Randomizer play
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
   cd_Randomizer init()
   {
@@ -31,13 +31,8 @@ class cd_Randomizer
     return self;
   }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   static
-  void randomize( PlayerInfo            player
-                , cd_Settings           settings
-                , cd_RandomizerLimits   limits
-                )
+  void randomize(PlayerInfo player, cd_Settings settings, cd_RandomizerLimits limits)
   {
     cd_RandomizerSettings randomizerSettings = settings.randomizer();
 
@@ -49,10 +44,10 @@ class cd_Randomizer
 
     if (randomizerSettings.isNotificationSoundEnabled())
     {
-      pawn.A_PlaySound( RANDOMIZER_NOTIFICATION_SOUND
-                      , CHAN_AUTO
-                      , randomizerSettings.notificationVolume()
-                      );
+      pawn.A_StartSound( RANDOMIZER_NOTIFICATION_SOUND
+                       , CHAN_AUTO
+                       , randomizerSettings.notificationVolume()
+                       );
     }
   }
 
@@ -63,7 +58,7 @@ class cd_Randomizer
     showTimer(player, settings.period());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private ui
   void showTimer(PlayerInfo player, cd_PeriodSettings settings)
@@ -188,11 +183,7 @@ class cd_Randomizer
                       );
   }
 
-  // private: //////////////////////////////////////////////////////////////////
-
   private int _timerColor;
-
-  // private: //////////////////////////////////////////////////////////////////
 
   const TEXT_SCALE  = 1.0;
   const X_CENTER    = 0.5;

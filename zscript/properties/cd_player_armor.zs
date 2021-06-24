@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,12 +19,12 @@
 /**
  * This class provides player armor manipulation functions
  */
-class cd_PlayerArmor
+class cd_PlayerArmor play
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
-  static play
+  static
   void regenerate(PlayerInfo player, cd_ArmorRegenerationSettings settings)
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
@@ -54,7 +54,7 @@ class cd_PlayerArmor
     cd_Effects.maybeBlend(pawn, settings.blend());
   }
 
-  static play
+  static
   void degenerate(PlayerInfo player, cd_ArmorDegenerationSettings settings)
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
@@ -71,7 +71,7 @@ class cd_PlayerArmor
     pawn.TakeInventory("BasicArmor", settings.amount());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   static private
   bool isRegenerate(int health, int armor, int min, int max)
@@ -89,10 +89,8 @@ class cd_PlayerArmor
   {
     bool isSoundEnabled = settings.isSoundEnabled();
 
-    if (isSoundEnabled) { pawn.A_PlaySound(ARMOR_REGEN_SOUND, CHAN_AUTO); }
+    if (isSoundEnabled) { pawn.A_StartSound(ARMOR_REGEN_SOUND, CHAN_AUTO); }
   }
-
-  // private: //////////////////////////////////////////////////////////////////
 
   const ARMOR_REGEN_SOUND = "Regeneration/Armor";
 

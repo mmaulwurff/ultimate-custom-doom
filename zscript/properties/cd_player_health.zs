@@ -19,12 +19,12 @@
 /**
  * This class provides player health manipulation functions.
  */
-class cd_PlayerHealth
+class cd_PlayerHealth play
 {
 
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
-  static play
+  static
   void regenerate(PlayerInfo player, cd_HealthRegenerationSettings settings)
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
@@ -52,7 +52,7 @@ class cd_PlayerHealth
     cd_Effects.maybeBlend(pawn, settings.blend());
   }
 
-  static play
+  static
   void degenerate(PlayerInfo player, cd_HealthDegenerationSettings settings)
   {
     PlayerPawn pawn = cd_Time.now(player, settings.period());
@@ -85,7 +85,7 @@ class cd_PlayerHealth
   {
     bool isSoundEnabled = settings.isSoundEnabled();
 
-    if (isSoundEnabled) { pawn.A_PlaySound(REGEN_SOUND, CHAN_AUTO); }
+    if (isSoundEnabled) { pawn.A_StartSound(REGEN_SOUND, CHAN_AUTO); }
   }
 
   const REGEN_SOUND = "Regeneration/Heartbeat";
