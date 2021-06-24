@@ -76,7 +76,7 @@ OptionMenu cd_BasicPlayer
   cd_MinField "$CD_PLAYER_DAMAGE_TAKEN_MULTIPLIER_CAPTION" , cd_player_damage_taken_mult  , 0
 
   StaticText  ""
-  Slider      "$CD_PLAYER_MAX_VIEW_PITCH"                  , maxviewpitch, 0, 90, 5
+  Slider      "$CD_PLAYER_MAX_VIEW_PITCH"                  , maxViewPitch, 0, 90, 5
   cd_Hint     "0 is not recommended without autoaim."
   cd_Hint     "90 is the default."
 
@@ -95,7 +95,7 @@ OptionMenu cd_AdvancedPlayer
   Option      "Set start values"         , cd_player_start_type, cd_player_start_type_values
   cd_MinField "$CD_START_HEALTH_CAPTION" , cd_player_start_health , 0
   cd_MinField "$CD_START_ARMOR_CAPTION"  , cd_player_start_armor  , 0
-  Slider      "Save Percent"             , cd_player_start_savepercent, 1, 100, 1, 0
+  Slider      "Save Percent"             , cd_player_start_savePercent, 1, 100, 1, 0
 
   StaticText  ""
   cd_MinField "$CD_MAX_HEALTH_CAPTION"        , cd_player_max_health , 0
@@ -117,7 +117,7 @@ OptionMenu cd_MiscPlayer
   Option      "Enable", cd_player_misc_enabled, OnOff
   cd_Hint     "Toggles the options below on or off."
 
-  cd_MinField "$CD_AIR_CONTROL_CAPTION" , cd_player_aircontrol_mult, 0
+  cd_MinField "$CD_AIR_CONTROL_CAPTION" , cd_player_airControl_mult, 0
   Slider      "$CD_FRICTION_CAPTION"    , cd_player_friction_mult, 0.95, 1.25, 0.01, 2
 
 } // OptionMenu cd_MiscPlayer
@@ -304,17 +304,17 @@ OptionMenu cd_Powerup
   StaticText  ""
   Option      "Permanent Invisibility"        , cd_power_invisibility_permanent      , OnOff
   Option      "Permanent Invulnerability"     , cd_power_invulnerability_permanent   , OnOff
-  Option      "Permanent Iron Feet"           , cd_power_ironfeet_permanent          , OnOff
-  Option      "Permanent Light Amp"           , cd_power_lightamp_permanent          , OnOff
+  Option      "Permanent Iron Feet"           , cd_power_ironFeet_permanent          , OnOff
+  Option      "Permanent Light Amp"           , cd_power_lightAmp_permanent          , OnOff
   Option      "Permanent Drain"               , cd_power_drain_permanent             , OnOff
-  Option      "Permanent High Jump"           , cd_power_highjump_permanent          , OnOff
-  Option      "Permanent Infinite Ammo"       , cd_power_infiniteammo_permanent      , OnOff
+  Option      "Permanent High Jump"           , cd_power_highJump_permanent          , OnOff
+  Option      "Permanent Infinite Ammo"       , cd_power_infiniteAmmo_permanent      , OnOff
   Option      "Permanent Protection"          , cd_power_protecton_permanent         , OnOff
   Option      "Permanent Regeneration"        , cd_power_regeneraton_permanent       , OnOff
   Option      "Permanent Speed"               , cd_power_speed_permanent             , OnOff
   Option      "Permanent Strength"            , cd_power_strength_permanent          , OnOff
-  Option      "Permanent Time Freeze"         , cd_power_timefreezer_permanent       , OnOff
-  Option      "Permanent Double Firing Speed" , cd_power_doublefiringspeed_permanent , OnOff
+  Option      "Permanent Time Freeze"         , cd_power_timeFreezer_permanent       , OnOff
+  Option      "Permanent Double Firing Speed" , cd_power_doubleFiringSpeed_permanent , OnOff
   Option      "Permanent Flight"              , cd_power_flight_permanent            , OnOff
   Option      "Permanent Frightener"          , cd_power_frightener_permanent        , OnOff
   Option      "Permanent Scanner"             , cd_power_scanner_permanent           , OnOff
@@ -325,7 +325,7 @@ OptionMenu cd_Powerup
   Option      "Permanent Minotaur"            , cd_power_minotaur_permanent          , OnOff
   Option      "Permanent Morph"               , cd_power_morph_permanent             , OnOff
   Option      "Permanent Mask"                , cd_power_mask_permanent              , OnOff
-  Option      "Permanent Weapon Level 2"      , cd_power_weaponlevel2_permanent      , OnOff
+  Option      "Permanent Weapon Level 2"      , cd_power_weaponLevel2_permanent      , OnOff
   Option      "Permanent Targeter"            , cd_power_targeter_permanent          , OnOff
   Option      "Permanent Buddha"              , cd_power_buddha_permanent            , OnOff
 

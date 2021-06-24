@@ -56,7 +56,7 @@ class cd_PlayerSettings : cd_SettingsPack
     push(_startType             = new("cd_IntSetting"   ).init("cd_player_start_type"        , p));
     push(_startHealth           = new("cd_IntSetting"   ).init("cd_player_start_health"      , p));
     push(_startArmor            = new("cd_IntSetting"   ).init("cd_player_start_armor"       , p));
-    push(_startArmorSavePercent = new("cd_IntSetting"   ).init("cd_player_start_savepercent" , p));
+    push(_startArmorSavePercent = new("cd_IntSetting"   ).init("cd_player_start_savePercent" , p));
 
     push(_maxHealth             = new("cd_IntSetting"   ).init("cd_player_max_health"        , p));
 

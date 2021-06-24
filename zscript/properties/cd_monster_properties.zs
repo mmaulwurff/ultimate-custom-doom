@@ -40,7 +40,7 @@ class cd_Monsters play
 
     while (a = Actor(iterator.Next()))
     {
-      if (!a.bISMONSTER) { continue; }
+      if (!a.bIsMonster) { continue; }
 
       applyMonsterMultipliersTo(a, settings);
     }

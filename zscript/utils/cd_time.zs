@@ -35,7 +35,7 @@ class cd_Time
   {
     if (!settings.isEnabled()) { return null; }
 
-    int periodTicks = settings.period() * Thinker.TICRATE;
+    int periodTicks = settings.period() * TicRate;
     if (periodTicks == 0) { return null; }
 
     bool isTimeNow = ((level.time % periodTicks) == 0);

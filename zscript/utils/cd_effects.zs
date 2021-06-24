@@ -43,6 +43,6 @@ class cd_Effects
 
   // private: //////////////////////////////////////////////////////////////////
 
-  const BLEND_DURATION = Thinker.TICRATE / 2;
+  const BLEND_DURATION = TicRate / 2;
 
 } // class cd_Effects

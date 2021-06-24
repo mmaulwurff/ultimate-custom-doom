@@ -56,8 +56,8 @@ class cd_PlayerLimits : cd_SettingsPack
                                                   , "cd_random_player_start_armor_max"
                                                   , p
                                                   ));
-    push(_savePercent           = newIntSetting   ( "cd_random_player_start_savepercent_min"
-                                                  , "cd_random_player_start_savepercent_max"
+    push(_savePercent           = newIntSetting   ( "cd_random_player_start_savePercent_min"
+                                                  , "cd_random_player_start_savePercent_max"
                                                   , p
                                                   ));
     push(_maxHealth             = newIntSetting   ( "cd_random_player_max_health_min"

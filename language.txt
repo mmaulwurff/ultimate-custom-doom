@@ -51,7 +51,24 @@ CD_HEALTH_REGENERATION_CAPTION = "Health Regeneration";
 
 // Manual
 
-CD_MANUAL = "These modifiers have a default value of 0. They will not do\nanything until you change their values to something positive.\n\nSuch are the monster modifiers, almost all player modifiers\nand all randomizer options.\n\nThese options can be enabled individually by using any\nnumber above 0.\n\nSwitching to 0 from a positive number during gameplay\nwill not revert the changes done.\n\nTo do that, you must set value to its default (most often 1),\nexit the menu, wait until the change is in effect, then zero-\nterminate the modifier,\n\n0 means that other mods' effects will not be overridden\nby Ultimate Custom Doom.";
+CD_MANUAL = "These modifiers have a default value of 0. They will not do\
+anything until you change their values to something positive.\
+\
+Such are the monster modifiers, almost all player modifiers\
+and all randomizer options.\
+\
+These options can be enabled individually by using any\
+number above 0.\
+\
+Switching to 0 from a positive number during gameplay\
+will not revert the changes done.\
+\
+To do that, you must set value to its default (most often 1),\
+exit the menu, wait until the change is in effect, then zero-\
+terminate the modifier,\
+\
+0 means that other mods' effects will not be overridden\
+by Ultimate Custom Doom.";
 
 // Commands
 

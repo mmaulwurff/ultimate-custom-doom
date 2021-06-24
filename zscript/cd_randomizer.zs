@@ -46,7 +46,7 @@ class cd_Randomizer play
     {
       pawn.A_StartSound( RANDOMIZER_NOTIFICATION_SOUND
                        , CHAN_AUTO
-                       , randomizerSettings.notificationVolume()
+                       , int(randomizerSettings.notificationVolume())
                        );
     }
   }
@@ -66,13 +66,13 @@ class cd_Randomizer play
     if (!settings.isEnabled()) { return; }
 
     int    periodSeconds        = settings.period();
-    int    goneSeconds          = (level.time / Thinker.TICRATE) % periodSeconds;
+    int    goneSeconds          = (level.time / TicRate) % periodSeconds;
     int    remainingSeconds     = periodSeconds - goneSeconds;
     int    remainingMinutes     = remainingSeconds / 60;
     int    remainingSecondsOnly = remainingSeconds % 60;
     string timerString          = String.Format("%02d:%02d", remainingMinutes, remainingSecondsOnly);
 
-    drawTextCenter(timerString, _timerColor, TEXT_SCALE, X_CENTER, TIMER_Y, TIMER_FONT);
+    drawTextCenter(timerString, _timerColor, TEXT_SCALE, X_CENTER, TIMER_Y, BigFont);
   }
 
   private ui
@@ -80,7 +80,7 @@ class cd_Randomizer play
   {
     if (!settings.period().isEnabled()) { return; }
 
-    int  periodTicks   = settings.period().period() * Thinker.TICRATE;
+    int  periodTicks   = settings.period().period() * TicRate;
     int  ticsFromReset = level.time % periodTicks;
     bool shouldShow    = (ticsFromReset < NOTIFICATION_TIME);
 
@@ -99,7 +99,7 @@ class cd_Randomizer play
                     , TEXT_SCALE
                     , X_CENTER
                     , NOTIFICATION_Y
-                    , NOTIFICATION_FONT
+                    , SmallFont
                     );
       break;
 
@@ -189,17 +189,15 @@ class cd_Randomizer play
   const X_CENTER    = 0.5;
 
   const TIMER_Y     = 0.1;
-  const TIMER_FONT  = "BIGFONT";
 
   const NOTIFICATION_COLOR   = Font.CR_RED;
   const NOTIFICATION_Y       = 0.37;
-  const NOTIFICATION_FONT    = "SMALLFONT";
   const NOTIFICATION_IMAGE_Y = 0.25;
 
   const RANDOMIZER_NOTIFICATION_SOUND = "Randomizer/Notification";
 
   const FADE_IN_TIME      = 8; // time when fade in stops, tics
   const FADE_OUT_TIME     = NOTIFICATION_TIME - 8; // time when fade out begins, tics
-  const NOTIFICATION_TIME = 3 * Thinker.TICRATE;
+  const NOTIFICATION_TIME = 3 * TicRate;
 
 } // class cd_Randomizer

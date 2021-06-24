@@ -13,14 +13,14 @@ server int   cd_player_start_type = 2;
 
 server int   cd_player_start_health      = 0;
 server int   cd_player_start_armor       = 0;
-server int   cd_player_start_savepercent = 33;
+server int   cd_player_start_savePercent = 33;
 
 server int   cd_player_max_health = 0;
 server float cd_player_speed_mult = 0;
 server float cd_player_jump_mult  = 0;
 
 server bool  cd_player_misc_enabled    = false;
-server float cd_player_aircontrol_mult = 1;
+server float cd_player_airControl_mult = 1;
 server float cd_player_friction_mult   = 1;
 
 // Monster menu CVARs //////////////////////////////////////////////////////////
@@ -90,17 +90,17 @@ server int   cd_armor_degen_limit   = 0;
 
 server bool  cd_power_invisibility_permanent      = false;
 server bool  cd_power_invulnerability_permanent   = false;
-server bool  cd_power_ironfeet_permanent          = false;
-server bool  cd_power_lightamp_permanent          = false;
+server bool  cd_power_ironFeet_permanent          = false;
+server bool  cd_power_lightAmp_permanent          = false;
 server bool  cd_power_drain_permanent             = false;
-server bool  cd_power_highjump_permanent          = false;
-server bool  cd_power_infiniteammo_permanent      = false;
+server bool  cd_power_highJump_permanent          = false;
+server bool  cd_power_infiniteAmmo_permanent      = false;
 server bool  cd_power_protecton_permanent         = false;
 server bool  cd_power_regeneraton_permanent       = false;
 server bool  cd_power_speed_permanent             = false;
 server bool  cd_power_strength_permanent          = false;
-server bool  cd_power_timefreezer_permanent       = false;
-server bool  cd_power_doublefiringspeed_permanent = false;
+server bool  cd_power_timeFreezer_permanent       = false;
+server bool  cd_power_doubleFiringSpeed_permanent = false;
 server bool  cd_power_flight_permanent            = false;
 server bool  cd_power_frightener_permanent        = false;
 server bool  cd_power_scanner_permanent           = false;
@@ -111,7 +111,7 @@ server bool  cd_power_torch_permanent             = false;
 server bool  cd_power_minotaur_permanent          = false;
 server bool  cd_power_morph_permanent             = false;
 server bool  cd_power_mask_permanent              = false;
-server bool  cd_power_weaponlevel2_permanent      = false;
+server bool  cd_power_weaponLevel2_permanent      = false;
 server bool  cd_power_targeter_permanent          = false;
 server bool  cd_power_buddha_permanent            = false;
 
@@ -145,8 +145,8 @@ server int   cd_random_player_start_health_max;
 server int   cd_random_player_start_armor_min;
 server int   cd_random_player_start_armor_max;
 
-server int   cd_random_player_start_savepercent_min;
-server int   cd_random_player_start_savepercent_max;
+server int   cd_random_player_start_savePercent_min;
+server int   cd_random_player_start_savePercent_max;
 
 server int   cd_random_player_max_health_min;
 server int   cd_random_player_max_health_max;

@@ -21,7 +21,7 @@ class cd_StartArmorBonus : cd_ArmorBonus
 
   override void BeginPlay()
   {
-    SavePercent = GetCVAR("cd_player_start_savepercent");
+    SavePercent = GetCVAR("cd_player_start_savePercent");
   }
 
 } // class cd_StartArmorBonus

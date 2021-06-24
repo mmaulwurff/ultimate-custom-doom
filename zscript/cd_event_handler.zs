@@ -40,7 +40,7 @@ class cd_EventHandler : EventHandler
 
     updateProperties(player);
 
-    bool isTimeToPulse = (level.time != 0) && ((level.time % Thinker.TICRATE) == 0);
+    bool isTimeToPulse = (level.time != 0) && ((level.time % TicRate) == 0);
     if (isTimeToPulse) { pulse(player); }
   }
 
@@ -50,7 +50,7 @@ class cd_EventHandler : EventHandler
     Actor thing = event.Thing;
     if (thing == null) { return; }
 
-    bool isMonster = thing.bISMONSTER;
+    bool isMonster = thing.bIsMonster;
     if (!isMonster) { return; }
 
     cd_Monsters.applyMonsterMultipliersTo(thing, _settings.monster());
