@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -22,19 +22,7 @@
 class cd_SettingsPack : cd_SettingsBase
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
-
-  override
-  void resetCvarsToDefaults()
-  {
-    int nSettings = _settings.size();
-    for (int i = 0; i < nSettings; ++i)
-    {
-      _settings[i].resetCvarsToDefaults();
-    }
-  }
-
-  // protected: ////////////////////////////////////////////////////////////////
+// protected: //////////////////////////////////////////////////////////////////////////////////////
 
   protected
   void push(cd_SettingsBase setting)
@@ -42,8 +30,8 @@ class cd_SettingsPack : cd_SettingsBase
     _settings.push(setting);
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private Array<cd_SettingsBase> _settings;
 
-} // class cd_SettingsPack : cd_SettingsBase
+} // class cd_SettingsPack

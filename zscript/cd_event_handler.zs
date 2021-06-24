@@ -63,9 +63,7 @@ class cd_EventHandler : EventHandler
 
     string name = event.name;
 
-    if      (name == "cd_apply_monster_settings" ) { applyMonsterSettings(); }
-    else if (name == "cd_reset_cvars_to_defaults") { resetCvarsToDefaults(); }
-    else if (name == "cd_reset_randomizer_cvars" ) { resetRandomizerCvars(); }
+    if (name == "cd_apply_monster_settings") applyMonsterSettings();
   }
 
   override
@@ -82,18 +80,6 @@ class cd_EventHandler : EventHandler
   void applyMonsterSettings()
   {
     cd_Monsters.applyMonsterMultipliersToAll(_settings.monster());
-  }
-
-  private
-  void resetCvarsToDefaults()
-  {
-    _settings.resetCvarsToDefaults();
-  }
-
-  private
-  void resetRandomizerCvars()
-  {
-    _randomizerLimits.resetCvarsToDefaults();
   }
 
   private

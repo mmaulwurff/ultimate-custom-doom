@@ -2,6 +2,8 @@
 // Ultimate Custom Doom configuration variables
 // =============================================================================
 
+// When adding new CVARs, don't forget to add them to reset commands in keyconf.
+
 // Player menu CVARs ///////////////////////////////////////////////////////////
 
 server float cd_player_weapon_damage_mult = 0;

@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -16,21 +16,7 @@
  * Ultimate Custom Doom.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
- * This class provides the base functions for various settings classes.
- */
-class cd_SettingsBase
+class cd_SettingsBase abstract
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
-
-  /**
-   * Reset CVars to their default values.
-   */
-  virtual
-  void resetCvarsToDefaults()
-  {
-    console.printf("%s: reset is not implemented!", GetClassName());
-  }
 
 } // class cd_SettingsBase
