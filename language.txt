@@ -31,6 +31,9 @@ CD_SELF_DAMAGE         = "Self damage multiplier";
 // Monster Options Menu ////////////////////////////////////////////////////////
 
 CD_MONSTER_OPTIONS_TITLE = "Monster Options";
+CD_MONSTER_NOTE1         = "All modifiers are zero-terminated.";
+CD_MONSTER_NOTE2         = "They are applied once per level or";
+CD_MONSTER_NOTE3         = "manually by the command below.";
 
 CD_MONSTER_HEALTH        = "Health multiplier";
 CD_MONSTER_SPEED         = "Speed multiplier";

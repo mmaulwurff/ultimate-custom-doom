@@ -129,9 +129,9 @@ OptionMenu cd_Monster
   StaticText  "========================================" , CDLightBlue
   StaticText  "$CD_MONSTER_OPTIONS_TITLE"                , CDLightBlue
   StaticText  "========================================" , CDLightBlue
-  StaticText  "All modifiers are zero-terminated."       , CDLightBlue
-  StaticText  "They are applied once per level or"       , CDLightBlue
-  StaticText  "manually by the command below."           , CDLightBlue
+  StaticText  "$CD_MONSTER_NOTE1"                        , CDLightBlue
+  StaticText  "$CD_MONSTER_NOTE2"                        , CDLightBlue
+  StaticText  "$CD_MONSTER_NOTE3"                        , CDLightBlue
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
