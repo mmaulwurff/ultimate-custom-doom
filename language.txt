@@ -22,6 +22,7 @@ CD_JUMP_Z_MULTIPLIER_CAPTION = "Jump multiplier";
 
 CD_AIR_CONTROL_CAPTION = "Air control multiplier";
 CD_FRICTION_CAPTION    = "Friction multiplier";
+CD_SELF_DAMAGE         = "Self damage multiplier";
 
 // Monster Options Menu ////////////////////////////////////////////////////////
 

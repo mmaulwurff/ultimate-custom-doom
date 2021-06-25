@@ -19,9 +19,10 @@ server int   cd_player_max_health = 0;
 server float cd_player_speed_mult = 0;
 server float cd_player_jump_mult  = 0;
 
-server bool  cd_player_misc_enabled    = false;
-server float cd_player_airControl_mult = 1;
-server float cd_player_friction_mult   = 1;
+server bool  cd_player_misc_enabled     = false;
+server float cd_player_airControl_mult  = 1;
+server float cd_player_friction_mult    = 1;
+server float cd_player_self_damage_mult = 1;
 
 // Monster menu CVARs //////////////////////////////////////////////////////////
 

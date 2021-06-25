@@ -35,6 +35,7 @@ class cd_MiscProperties play
   {
     updateAirControl(settings);
     updateFriction(settings, player);
+    updateSelfDamage(settings, player);
   }
 
   // private: //////////////////////////////////////////////////////////////////
@@ -65,6 +66,16 @@ class cd_MiscProperties play
   }
 
   private
+  void updateSelfDamage(cd_MiscSettings settings, PlayerInfo player)
+  {
+    PlayerPawn pawn = player.mo;
+
+    pawn.selfDamageFactor = settings.isEnabled()
+      ? _originalSelfDamage * settings.selfDamage()
+      : _originalSelfDamage;
+  }
+
+  private
   void rememberOriginals(PlayerInfo player)
   {
     PlayerPawn pawn = player.mo;
@@ -72,12 +83,14 @@ class cd_MiscProperties play
     _originalAirControl = level.airControl;
     _originalFriction   = pawn.friction;
     _airControl         = _originalAirControl;
+    _originalSelfDamage = pawn.selfDamageFactor;
   }
 
   // private: //////////////////////////////////////////////////////////////////
 
   private double _originalAirControl;
   private double _originalFriction;
+  private double _originalSelfDamage;
 
   // level air control can be changed without UCD knowing about it,
   // so better save the value and check it.

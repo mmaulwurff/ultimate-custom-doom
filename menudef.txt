@@ -119,6 +119,7 @@ OptionMenu cd_MiscPlayer
 
   cd_MinField "$CD_AIR_CONTROL_CAPTION" , cd_player_airControl_mult, 0
   Slider      "$CD_FRICTION_CAPTION"    , cd_player_friction_mult, 0.95, 1.25, 0.01, 2
+  cd_MinField "$CD_SELF_DAMAGE"         , cd_player_self_damage_mult, 0
 
 } // OptionMenu cd_MiscPlayer
 
