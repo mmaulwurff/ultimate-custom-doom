@@ -21,11 +21,13 @@ class cd_MonsterSettings
 
   double healthMultiplier() { return _healthMultiplier.value(); }
   double speedMultiplier () { return _speedMultiplier .value(); }
+  int    healthCap       () { return _healthCap       .value(); }
 
   cd_MonsterSettings init(PlayerInfo p)
   {
     _healthMultiplier = new("cd_DoubleSetting").init("cd_monster_health_mult", p);
     _speedMultiplier  = new("cd_DoubleSetting").init("cd_monster_speed_mult" , p);
+    _healthCap        = new("cd_IntSetting"   ).init("cd_monster_health_cap" , p);
 
     return self;
   }
@@ -34,5 +36,6 @@ class cd_MonsterSettings
 
   private cd_DoubleSetting _healthMultiplier;
   private cd_DoubleSetting _speedMultiplier;
+  private cd_IntSetting    _healthCap;
 
 } // class cd_MonsterSettings

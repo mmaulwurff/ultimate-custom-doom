@@ -28,6 +28,7 @@ server float cd_player_self_damage_mult = 1;
 
 server float cd_monster_health_mult = 0;
 server float cd_monster_speed_mult  = 0;
+server int   cd_monster_health_cap  = 0;
 
 // Health regeneration menu CVARs //////////////////////////////////////////////
 

@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -23,12 +23,10 @@
 class cd_Monsters play
 {
 
-  // public: //////////////////////////////////////////////////////////////////
-
   static
   void applyMonsterMultipliersTo(Actor thing, cd_MonsterSettings settings)
   {
-    applyHealthMultiplierTo(thing, settings.healthMultiplier());
+    applyHealthMultiplierTo(thing, settings.healthMultiplier(), settings.healthCap());
     applySpeedMultiplierTo (thing, settings.speedMultiplier ());
   }
 
@@ -46,10 +44,10 @@ class cd_Monsters play
     }
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private static
-  void applyHealthMultiplierTo(Actor thing, double multiplier)
+  void applyHealthMultiplierTo(Actor thing, double multiplier, int cap)
   {
     if (multiplier <= 0) { multiplier = 1; }
 
@@ -64,6 +62,9 @@ class cd_Monsters play
 
     int    newStartHealth = cd_math.round(defStartHealth * multiplier * ldlMultiplier);
     int    newHealth      = cd_math.round(newStartHealth * relativeHealth);
+
+    if (cap > 0 && newStartHealth > cap) newStartHealth = cap;
+    if (cap > 0 && newHealth      > cap) newHealth      = cap;
 
     thing.StartHealth = newStartHealth;
     thing.A_SetHealth(newHealth);

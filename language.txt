@@ -34,6 +34,7 @@ CD_MONSTER_OPTIONS_TITLE = "Monster Options";
 
 CD_MONSTER_HEALTH        = "Health multiplier";
 CD_MONSTER_SPEED         = "Speed multiplier";
+CD_MONSTER_HEALTH_CAP    = "Health cap";
 CD_APPLY_MONSTER_CAPTION = "Apply Monster Options now";
 
 // Common /////////////////////////////////////////////////////////////////////

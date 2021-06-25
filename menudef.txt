@@ -135,8 +135,9 @@ OptionMenu cd_Monster
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  cd_MinField "$CD_MONSTER_HEALTH" , cd_monster_health_mult , 0
-  cd_MinField "$CD_MONSTER_SPEED"  , cd_monster_speed_mult  , 0
+  cd_MinField "$CD_MONSTER_HEALTH"     , cd_monster_health_mult , 0
+  cd_MinField "$CD_MONSTER_SPEED"      , cd_monster_speed_mult  , 0
+  cd_MinField "$CD_MONSTER_HEALTH_CAP" , cd_monster_health_cap  , 0
 
   StaticText  ""
   Command     "$CD_APPLY_MONSTER_CAPTION", cd_apply_monster_settings
