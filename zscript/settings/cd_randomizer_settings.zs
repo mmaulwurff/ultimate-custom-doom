@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,9 +19,8 @@
 /**
  * What?
  */
-class cd_RandomizerSettings : cd_SettingsPack
+class cd_RandomizerSettings
 {
-  // public: ///////////////////////////////////////////////////////////////////
 
   enum NotificationTypes
   {
@@ -30,8 +29,6 @@ class cd_RandomizerSettings : cd_SettingsPack
     IMAGE,
   }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_PeriodSettings period() { return _period; }
 
   bool   isTimerEnabled            () { return _isTimerEnabled            .value(); }
@@ -39,21 +36,19 @@ class cd_RandomizerSettings : cd_SettingsPack
   bool   isNotificationSoundEnabled() { return _isNotificationSoundEnabled.value(); }
   double notificationVolume        () { return _notificationVolume        .value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_RandomizerSettings init(PlayerInfo p)
   {
-    push(_period                     = new("cd_PeriodSettings").init("cd_random_enabled", "cd_random_frequency", p));
+    _period                     = new("cd_PeriodSettings").init("cd_random_enabled", "cd_random_frequency", p);
 
-    push(_isTimerEnabled             = new("cd_BoolSetting"   ).init("cd_random_timer_enabled"             , p));
-    push(_notificationType           = new("cd_IntSetting"    ).init("cd_random_notification_type"         , p));
-    push(_isNotificationSoundEnabled = new("cd_BoolSetting"   ).init("cd_random_notification_sound_enabled", p));
-    push(_notificationVolume         = new("cd_DoubleSetting" ).init("cd_random_notification_volume"       , p));
+    _isTimerEnabled             = new("cd_BoolSetting"   ).init("cd_random_timer_enabled"             , p);
+    _notificationType           = new("cd_IntSetting"    ).init("cd_random_notification_type"         , p);
+    _isNotificationSoundEnabled = new("cd_BoolSetting"   ).init("cd_random_notification_sound_enabled", p);
+    _notificationVolume         = new("cd_DoubleSetting" ).init("cd_random_notification_volume"       , p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_PeriodSettings _period;
 

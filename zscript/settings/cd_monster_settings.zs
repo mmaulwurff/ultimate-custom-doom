@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -16,25 +16,21 @@
  * Ultimate Custom Doom.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-class cd_MonsterSettings : cd_SettingsPack
+class cd_MonsterSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   double healthMultiplier() { return _healthMultiplier.value(); }
   double speedMultiplier () { return _speedMultiplier .value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_MonsterSettings init(PlayerInfo p)
   {
-    push(_healthMultiplier = new("cd_DoubleSetting").init("cd_monster_health_mult", p));
-    push(_speedMultiplier  = new("cd_DoubleSetting").init("cd_monster_speed_mult" , p));
+    _healthMultiplier = new("cd_DoubleSetting").init("cd_monster_health_mult", p);
+    _speedMultiplier  = new("cd_DoubleSetting").init("cd_monster_speed_mult" , p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_DoubleSetting _healthMultiplier;
   private cd_DoubleSetting _speedMultiplier;

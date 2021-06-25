@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,22 +19,18 @@
 /**
  * This class provides settings for periodic events.
  */
-class cd_PeriodSettings : cd_SettingsPack
+class cd_PeriodSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   bool isEnabled() { return _isEnabled.value(); }
 
   /// In seconds.
   int  period   () { return _period   .value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_PeriodSettings init(string isEnabledCvar, string periodCvar, PlayerInfo p)
   {
-    push(_isEnabled = new("cd_BoolSetting").init(isEnabledCvar, p));
-    push(_period    = new("cd_IntSetting" ).init(periodCvar   , p));
+    _isEnabled = new("cd_BoolSetting").init(isEnabledCvar, p);
+    _period    = new("cd_IntSetting" ).init(periodCvar   , p);
 
     return self;
   }
@@ -44,7 +40,7 @@ class cd_PeriodSettings : cd_SettingsPack
     _period.randomize(p, limits);
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_BoolSetting _isEnabled;
   private cd_IntSetting  _period;

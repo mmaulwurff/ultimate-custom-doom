@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -22,13 +22,11 @@
 class cd_ArmorDegenerationLimits : cd_DegenerationLimits
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_ArmorDegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_armor_degen_amount_min", "cd_random_armor_degen_amount_max", p));
-    push(_period = newSetting("cd_random_armor_degen_freq_min"  , "cd_random_armor_degen_freq_max"  , p));
-    push(_limit  = newSetting("cd_random_armor_degen_limit_min" , "cd_random_armor_degen_limit_max" , p));
+    _amount = newSetting("cd_random_armor_degen_amount_min", "cd_random_armor_degen_amount_max", p);
+    _period = newSetting("cd_random_armor_degen_freq_min"  , "cd_random_armor_degen_freq_max"  , p);
+    _limit  = newSetting("cd_random_armor_degen_limit_min" , "cd_random_armor_degen_limit_max" , p);
 
     return self;
   }

@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,25 +19,21 @@
 /**
  * This class provides a pair of minimal and maximal integer values.
  */
-class cd_MinMaxIntSettings : cd_SettingsPack
+class cd_MinMaxIntSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   int min() { return _min.value(); }
   int max() { return _max.value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_MinMaxIntSettings init(string minCvar, string maxCvar, PlayerInfo p)
   {
-    push(_min = new("cd_IntSetting").init(minCvar, p));
-    push(_max = new("cd_IntSetting").init(maxCvar, p));
+    _min = new("cd_IntSetting").init(minCvar, p);
+    _max = new("cd_IntSetting").init(maxCvar, p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_IntSetting _min;
   private cd_IntSetting _max;

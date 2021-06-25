@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,25 +19,21 @@
 /**
  * This class provides a pair of minimal and maximal double values.
  */
-class cd_MinMaxDoubleSettings : cd_SettingsPack
+class cd_MinMaxDoubleSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   double min() { return _min.value(); }
   double max() { return _max.value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_MinMaxDoubleSettings init(string minCvar, string maxCvar, PlayerInfo p)
   {
-    push(_min = new("cd_DoubleSetting").init(minCvar, p));
-    push(_max = new("cd_DoubleSetting").init(maxCvar, p));
+    _min = new("cd_DoubleSetting").init(minCvar, p);
+    _max = new("cd_DoubleSetting").init(maxCvar, p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_DoubleSetting _min;
   private cd_DoubleSetting _max;

@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,10 @@
 /**
  * This class contains all the settings of Ultimate Custom Doom.
  */
-class cd_Settings : cd_SettingsPack
+class cd_Settings
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
   cd_PlayerSettings  player () { return _player ; }
   cd_MiscSettings    misc   () { return _misc   ; }
@@ -39,27 +39,25 @@ class cd_Settings : cd_SettingsPack
 
   cd_RandomizerSettings         randomizer        () { return _randomizer        ; }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   /**
    * Initiate cd_Settings instance.
    */
   cd_Settings init(PlayerInfo p)
   {
-    push(_player             = new("cd_PlayerSettings" ).init(p));
-    push(_misc               = new("cd_MiscSettings"   ).init(p));
-    push(_monster            = new("cd_MonsterSettings").init(p));
+    _player             = new("cd_PlayerSettings" ).init(p);
+    _misc               = new("cd_MiscSettings"   ).init(p);
+    _monster            = new("cd_MonsterSettings").init(p);
 
-    push(_healthRegeneration = new("cd_HealthRegenerationSettings").init(p));
-    push(_armorRegeneration  = new("cd_ArmorRegenerationSettings" ).init(p));
-    push(_ammoRegeneration   = new("cd_AmmoRegenerationSettings"  ).init(p));
+    _healthRegeneration = new("cd_HealthRegenerationSettings").init(p);
+    _armorRegeneration  = new("cd_ArmorRegenerationSettings" ).init(p);
+    _ammoRegeneration   = new("cd_AmmoRegenerationSettings"  ).init(p);
 
-    push(_healthDegeneration = new("cd_HealthDegenerationSettings").init(p));
-    push(_armorDegeneration  = new("cd_ArmorDegenerationSettings" ).init(p));
+    _healthDegeneration = new("cd_HealthDegenerationSettings").init(p);
+    _armorDegeneration  = new("cd_ArmorDegenerationSettings" ).init(p);
 
-    push(_permanentPowerup   = new("cd_PermanentPowerupSettings"  ).init(p));
+    _permanentPowerup   = new("cd_PermanentPowerupSettings"  ).init(p);
 
-    push(_randomizer         = new("cd_RandomizerSettings"        ).init(p));
+    _randomizer         = new("cd_RandomizerSettings"        ).init(p);
 
     return self;
   }
@@ -76,7 +74,7 @@ class cd_Settings : cd_SettingsPack
     _armorDegeneration .randomize(p, limits.armorDegeneration ());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_PlayerSettings  _player;
   private cd_MiscSettings    _misc;

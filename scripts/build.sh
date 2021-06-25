@@ -6,5 +6,5 @@ mkdir -p build
 scripts/make_changelog.sh
 scripts/make_version.sh
 rm  -f "$filename"
-zip -R "$filename" "*.ogg" "*.png" "*.zs" "*.md" "*.txt"
+zip -R "$filename" "*.ogg" "*.png" "*.zs" "*.md" "*.txt" > /dev/null
 gzdoom "$filename" "$@" > output 2>&1; cat output

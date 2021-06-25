@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -20,10 +20,8 @@
  * This class provides the health regeneration settings.
  */
 
-class cd_HealthRegenerationSettings : cd_SettingsPack
+class cd_HealthRegenerationSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   int  amount()         { return _amount        .value(); }
 
@@ -35,22 +33,24 @@ class cd_HealthRegenerationSettings : cd_SettingsPack
   cd_PeriodSettings period() { return _period; }
   cd_BlendSettings  blend () { return _blend;  }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_HealthRegenerationSettings init(PlayerInfo p)
   {
-    push(_amount         = new("cd_IntSetting")    .init("cd_health_regen_amount" , p));
-    push(_cap            = new("cd_IntSetting")    .init("cd_health_regen_cap"    , p));
-    push(_isSoundEnabled = new("cd_BoolSetting")   .init("cd_health_sound_enabled", p));
+    _amount         = new("cd_IntSetting")    .init("cd_health_regen_amount" , p);
+    _cap            = new("cd_IntSetting")    .init("cd_health_regen_cap"    , p);
+    _isSoundEnabled = new("cd_BoolSetting")   .init("cd_health_sound_enabled", p);
 
-    push(_period         = new("cd_PeriodSettings").init("cd_health_regen_enabled", "cd_health_regen_freq", p));
-    push(_blend          = new("cd_BlendSettings" ).init( "cd_health_regen_pulse"
-                                                        , "cd_health_blend_color_r"
-                                                        , "cd_health_blend_color_g"
-                                                        , "cd_health_blend_color_b"
-                                                        , "cd_health_blend_color_int"
-                                                        , p
-                                                        ));
+    _period         = new("cd_PeriodSettings").init( "cd_health_regen_enabled"
+                                                   , "cd_health_regen_freq"
+                                                   , p
+                                                   );
+
+    _blend          = new("cd_BlendSettings" ).init( "cd_health_regen_pulse"
+                                                   , "cd_health_blend_color_r"
+                                                   , "cd_health_blend_color_g"
+                                                   , "cd_health_blend_color_b"
+                                                   , "cd_health_blend_color_int"
+                                                   , p
+                                                   );
     return self;
   }
 
@@ -61,7 +61,7 @@ class cd_HealthRegenerationSettings : cd_SettingsPack
     _cap   .randomize(p, limits.cap   ());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_IntSetting     _amount;
   private cd_IntSetting     _cap;

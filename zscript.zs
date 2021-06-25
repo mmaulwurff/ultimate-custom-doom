@@ -26,9 +26,7 @@ version 4.5
 // Settings ////////////////////////////////////////////////////////////////////
 
 #include "zscript/settings/cd_settings.zs"
-
 #include "zscript/settings/cd_settings_base.zs"
-#include "zscript/settings/cd_settings_pack.zs"
 
 #include "zscript/settings/cd_cvar_setting.zs"
 #include "zscript/settings/cd_bool_setting.zs"

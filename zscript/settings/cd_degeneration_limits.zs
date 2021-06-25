@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,24 +19,20 @@
 /**
  * This class provides value limits for Degeneration Randomization.
  */
-class cd_DegenerationLimits : cd_SettingsPack
+class cd_DegenerationLimits
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   cd_MinMaxIntSettings amount() { return _amount; }
   cd_MinMaxIntSettings period() { return _period; }
   cd_MinMaxIntSettings limit () { return _limit ; }
 
-  // protected: ////////////////////////////////////////////////////////////////
+// protected: //////////////////////////////////////////////////////////////////////////////////////
 
   protected
   cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
     return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
-
-  // protected: ////////////////////////////////////////////////////////////////
 
   protected cd_MinMaxIntSettings _amount;
   protected cd_MinMaxIntSettings _period;

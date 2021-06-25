@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,8 @@
 /**
  * This class provides value limits for Ultimate Custom Doom Randomization.
  */
-class cd_RandomizerLimits : cd_SettingsPack
+class cd_RandomizerLimits
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   cd_PlayerLimits             player            () { return _player            ; }
 
@@ -33,23 +31,21 @@ class cd_RandomizerLimits : cd_SettingsPack
   cd_HealthDegenerationLimits healthDegeneration() { return _healthDegeneration; }
   cd_ArmorDegenerationLimits  armorDegeneration () { return _armorDegeneration ; }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_RandomizerLimits init(PlayerInfo p)
   {
-    push(_player             = new("cd_PlayerLimits"            ).init(p));
+    _player             = new("cd_PlayerLimits"            ).init(p);
 
-    push(_healthRegeneration = new("cd_HealthRegenerationLimits").init(p));
-    push(_armorRegeneration  = new("cd_ArmorRegenerationLimits" ).init(p));
-    push(_ammoRegeneration   = new("cd_AmmoRegenerationLimits"  ).init(p));
+    _healthRegeneration = new("cd_HealthRegenerationLimits").init(p);
+    _armorRegeneration  = new("cd_ArmorRegenerationLimits" ).init(p);
+    _ammoRegeneration   = new("cd_AmmoRegenerationLimits"  ).init(p);
 
-    push(_healthDegeneration = new("cd_HealthDegenerationLimits").init(p));
-    push(_armorDegeneration  = new("cd_ArmorDegenerationLimits" ).init(p));
+    _healthDegeneration = new("cd_HealthDegenerationLimits").init(p);
+    _armorDegeneration  = new("cd_ArmorDegenerationLimits" ).init(p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_PlayerLimits             _player;
 

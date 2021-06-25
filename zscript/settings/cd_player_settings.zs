@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,8 @@
 /**
  * This class contains Player settings of Ultimate Custom Doom.
  */
-class cd_PlayerSettings : cd_SettingsPack
+class cd_PlayerSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   enum StartTypes
   {
@@ -30,8 +28,6 @@ class cd_PlayerSettings : cd_SettingsPack
     PER_LEVEL,
     NEVER,
   };
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   double damageMultiplier     () { return _damageMultiplier     .value(); }
   double damageTakenMultiplier() { return _damageTakenMultiplier.value(); }
@@ -46,22 +42,20 @@ class cd_PlayerSettings : cd_SettingsPack
   double speedMultiplier      () { return _speedMultiplier      .value(); }
   double jumpZMultiplier      () { return _jumpZMultiplier      .value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_PlayerSettings init(PlayerInfo p)
   {
-    push(_damageMultiplier      = new("cd_DoubleSetting").init("cd_player_weapon_damage_mult", p));
-    push(_damageTakenMultiplier = new("cd_DoubleSetting").init("cd_player_damage_taken_mult" , p));
+    _damageMultiplier      = new("cd_DoubleSetting").init("cd_player_weapon_damage_mult", p);
+    _damageTakenMultiplier = new("cd_DoubleSetting").init("cd_player_damage_taken_mult" , p);
 
-    push(_startType             = new("cd_IntSetting"   ).init("cd_player_start_type"        , p));
-    push(_startHealth           = new("cd_IntSetting"   ).init("cd_player_start_health"      , p));
-    push(_startArmor            = new("cd_IntSetting"   ).init("cd_player_start_armor"       , p));
-    push(_startArmorSavePercent = new("cd_IntSetting"   ).init("cd_player_start_savePercent" , p));
+    _startType             = new("cd_IntSetting"   ).init("cd_player_start_type"        , p);
+    _startHealth           = new("cd_IntSetting"   ).init("cd_player_start_health"      , p);
+    _startArmor            = new("cd_IntSetting"   ).init("cd_player_start_armor"       , p);
+    _startArmorSavePercent = new("cd_IntSetting"   ).init("cd_player_start_savePercent" , p);
 
-    push(_maxHealth             = new("cd_IntSetting"   ).init("cd_player_max_health"        , p));
+    _maxHealth             = new("cd_IntSetting"   ).init("cd_player_max_health"        , p);
 
-    push(_speedMultiplier       = new("cd_DoubleSetting").init("cd_player_speed_mult"        , p));
-    push(_jumpZMultiplier       = new("cd_DoubleSetting").init("cd_player_jump_mult"         , p));
+    _speedMultiplier       = new("cd_DoubleSetting").init("cd_player_speed_mult"        , p);
+    _jumpZMultiplier       = new("cd_DoubleSetting").init("cd_player_jump_mult"         , p);
 
     return self;
   }
@@ -81,7 +75,7 @@ class cd_PlayerSettings : cd_SettingsPack
     _jumpZMultiplier      .randomize(p, limits.jumpHeightMultiplier ());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_DoubleSetting _damageMultiplier;
   private cd_DoubleSetting _damageTakenMultiplier;

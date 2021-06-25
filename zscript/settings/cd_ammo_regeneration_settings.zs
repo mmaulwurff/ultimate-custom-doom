@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,8 @@
 /**
  * This class provides the ammo regeneration settings.
  */
-class cd_AmmoRegenerationSettings : cd_SettingsPack
+class cd_AmmoRegenerationSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   bool isBackpackRequired() { return _isBackpackRequired.value(); }
   int  amount()             { return _amount.value();             }
@@ -30,20 +28,21 @@ class cd_AmmoRegenerationSettings : cd_SettingsPack
   cd_PeriodSettings period() { return _period; }
   cd_BlendSettings  blend () { return _blend;  }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_AmmoRegenerationSettings init(PlayerInfo p)
   {
-    push(_isBackpackRequired = new("cd_BoolSetting"   ).init("cd_ammo_regen_backpack_req", p));
-    push(_amount             = new("cd_IntSetting"    ).init("cd_ammo_regen_amount"      , p));
-    push(_period             = new("cd_PeriodSettings").init("cd_ammo_regen_enabled", "cd_ammo_regen_freq", p));
-    push(_blend              = new("cd_BlendSettings" ).init( "cd_ammo_regen_pulse"
-                                                            , "cd_ammo_blend_color_r"
-                                                            , "cd_ammo_blend_color_g"
-                                                            , "cd_ammo_blend_color_b"
-                                                            , "cd_ammo_blend_color_int"
-                                                            , p
-                                                            ));
+    _isBackpackRequired = new("cd_BoolSetting"   ).init("cd_ammo_regen_backpack_req", p);
+    _amount             = new("cd_IntSetting"    ).init("cd_ammo_regen_amount"      , p);
+    _period             = new("cd_PeriodSettings").init( "cd_ammo_regen_enabled"
+                                                       , "cd_ammo_regen_freq"
+                                                       , p
+                                                       );
+    _blend              = new("cd_BlendSettings" ).init( "cd_ammo_regen_pulse"
+                                                       , "cd_ammo_blend_color_r"
+                                                       , "cd_ammo_blend_color_g"
+                                                       , "cd_ammo_blend_color_b"
+                                                       , "cd_ammo_blend_color_int"
+                                                       , p
+                                                       );
     return self;
   }
 
@@ -53,7 +52,7 @@ class cd_AmmoRegenerationSettings : cd_SettingsPack
     _period.randomize(p, limits.period());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_BoolSetting    _isBackpackRequired;
   private cd_IntSetting     _amount;

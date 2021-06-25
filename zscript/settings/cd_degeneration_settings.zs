@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,17 +19,13 @@
 /**
  * This class provides the degeneration settings.
  */
-class cd_DegenerationSettings : cd_SettingsPack
+class cd_DegenerationSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   int amount() { return _amount.value(); }
   int limit () { return _limit .value(); }
 
   cd_PeriodSettings period() { return _period; }
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   cd_DegenerationSettings init( string enabledCvar
                               , string periodCvar
@@ -38,9 +34,9 @@ class cd_DegenerationSettings : cd_SettingsPack
                               , PlayerInfo p
                               )
   {
-    push(_amount = new("cd_IntSetting"    ).init(amountCvar, p));
-    push(_limit  = new("cd_IntSetting"    ).init(limitCvar , p));
-    push(_period = new("cd_PeriodSettings").init(enabledCvar, periodCvar, p));
+    _amount = new("cd_IntSetting"    ).init(amountCvar, p);
+    _limit  = new("cd_IntSetting"    ).init(limitCvar , p);
+    _period = new("cd_PeriodSettings").init(enabledCvar, periodCvar, p);
 
     return self;
   }
@@ -52,7 +48,7 @@ class cd_DegenerationSettings : cd_SettingsPack
     _period.randomize(p, limits.period());
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_IntSetting     _amount;
   private cd_IntSetting     _limit;

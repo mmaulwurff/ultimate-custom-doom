@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,8 @@
 /**
  * This class provides the armor regeneration settings.
  */
-class cd_ArmorRegenerationSettings : cd_SettingsPack
+class cd_ArmorRegenerationSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   int  amount()         { return _amount.value();         }
 
@@ -37,28 +35,26 @@ class cd_ArmorRegenerationSettings : cd_SettingsPack
   cd_PeriodSettings period() { return _period; }
   cd_BlendSettings  blend () { return _blend;  }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_ArmorRegenerationSettings init(PlayerInfo p)
   {
-    push(_amount         = new("cd_IntSetting" ).init("cd_armor_regen_amount" , p));
-    push(_minAmount      = new("cd_IntSetting" ).init("cd_armor_regen_min"    , p));
-    push(_cap            = new("cd_IntSetting" ).init("cd_armor_regen_cap"    , p));
+    _amount         = new("cd_IntSetting" ).init("cd_armor_regen_amount" , p);
+    _minAmount      = new("cd_IntSetting" ).init("cd_armor_regen_min"    , p);
+    _cap            = new("cd_IntSetting" ).init("cd_armor_regen_cap"    , p);
 
-    push(_isSoundEnabled = new("cd_BoolSetting").init("cd_armor_sound_enabled", p));
+    _isSoundEnabled = new("cd_BoolSetting").init("cd_armor_sound_enabled", p);
 
-    push(_period = new("cd_PeriodSettings").init( "cd_armor_regen_enabled"
-                                                , "cd_armor_regen_freq"
-                                                , p
-                                                ));
+    _period = new("cd_PeriodSettings").init( "cd_armor_regen_enabled"
+                                           , "cd_armor_regen_freq"
+                                           , p
+                                           );
 
-    push(_blend  = new("cd_BlendSettings" ).init( "cd_armor_regen_pulse"
-                                                , "cd_armor_blend_color_r"
-                                                , "cd_armor_blend_color_g"
-                                                , "cd_armor_blend_color_b"
-                                                , "cd_armor_blend_color_int"
-                                                , p
-                                                ));
+    _blend  = new("cd_BlendSettings" ).init( "cd_armor_regen_pulse"
+                                           , "cd_armor_blend_color_r"
+                                           , "cd_armor_blend_color_g"
+                                           , "cd_armor_blend_color_b"
+                                           , "cd_armor_blend_color_int"
+                                           , p
+                                           );
     return self;
   }
 

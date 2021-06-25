@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,27 +19,25 @@
 /**
  * This class represents level settings.
  */
-class cd_MiscSettings : cd_SettingsPack
+class cd_MiscSettings
 {
 
-  // public: ///////////////////////////////////////////////////////////////////
+// public: /////////////////////////////////////////////////////////////////////////////////////////
 
   bool   isEnabled () { return _isEnabled .value(); }
   double airControl() { return _airControl.value(); }
   double friction  () { return _friction  .value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
-  cd_MiscSettings init(PlayerInfo p)
+  cd_MiscSettings init(PlayerInfo player)
   {
-    push(_isEnabled  = new("cd_BoolSetting"  ).init("cd_player_misc_enabled"   , p));
-    push(_airControl = new("cd_DoubleSetting").init("cd_player_airControl_mult", p));
-    push(_friction   = new("cd_DoubleSetting").init("cd_player_friction_mult"  , p));
+    _isEnabled  = new("cd_BoolSetting"  ).init("cd_player_misc_enabled"   , player);
+    _airControl = new("cd_DoubleSetting").init("cd_player_airControl_mult", player);
+    _friction   = new("cd_DoubleSetting").init("cd_player_friction_mult"  , player);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_BoolSetting   _isEnabled;
   private cd_DoubleSetting _airControl;

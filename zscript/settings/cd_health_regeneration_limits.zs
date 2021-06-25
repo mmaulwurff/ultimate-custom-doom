@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,34 +19,28 @@
 /**
  * This class provides limits for health regeneration settings.
  */
-class cd_HealthRegenerationLimits : cd_SettingsPack
+class cd_HealthRegenerationLimits
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   cd_MinMaxIntSettings amount() { return _amount; }
   cd_MinMaxIntSettings period() { return _period; }
   cd_MinMaxIntSettings cap   () { return _cap   ; }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_HealthRegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_health_regen_amount_min", "cd_random_health_regen_amount_max", p));
-    push(_period = newSetting("cd_random_health_regen_freq_min"  , "cd_random_health_regen_freq_max"  , p));
-    push(_cap    = newSetting("cd_random_health_regen_cap_min"   , "cd_random_health_regen_cap_max"   , p));
+    _amount = newSetting("cd_random_health_regen_amount_min", "cd_random_health_regen_amount_max", p);
+    _period = newSetting("cd_random_health_regen_freq_min"  , "cd_random_health_regen_freq_max"  , p);
+    _cap    = newSetting("cd_random_health_regen_cap_min"   , "cd_random_health_regen_cap_max"   , p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
     return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
-
-  // private: //////////////////////////////////////////////////////////////////
 
   private cd_MinMaxIntSettings _amount;
   private cd_MinMaxIntSettings _period;

@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,10 +19,8 @@
 /**
  * This class provides the permanent powerup settings.
  */
-class cd_PermanentPowerupSettings : cd_SettingsPack
+class cd_PermanentPowerupSettings
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   bool buddha           () { return _buddha           .value(); }
   bool damage           () { return _damage           .value(); }
@@ -51,41 +49,39 @@ class cd_PermanentPowerupSettings : cd_SettingsPack
   bool timeFreezer      () { return _timeFreezer      .value(); }
   bool weaponLevel2     () { return _weaponLevel2     .value(); }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_PermanentPowerupSettings init(PlayerInfo p)
   {
-    push(_buddha            = new("cd_BoolSetting").init("cd_power_buddha_permanent"           , p));
-    push(_damage            = new("cd_BoolSetting").init("cd_power_damage_permanent"           , p));
-    push(_doubleFiringSpeed = new("cd_BoolSetting").init("cd_power_doubleFiringSpeed_permanent", p));
-    push(_drain             = new("cd_BoolSetting").init("cd_power_drain_permanent"            , p));
-    push(_flight            = new("cd_BoolSetting").init("cd_power_flight_permanent"           , p));
-    push(_frightener        = new("cd_BoolSetting").init("cd_power_frightener_permanent"       , p));
-    push(_highJump          = new("cd_BoolSetting").init("cd_power_highJump_permanent"         , p));
-    push(_infiniteAmmo      = new("cd_BoolSetting").init("cd_power_infiniteAmmo_permanent"     , p));
-    push(_invisibility      = new("cd_BoolSetting").init("cd_power_invisibility_permanent"     , p));
-    push(_ghost             = new("cd_BoolSetting").init("cd_power_ghost_permanent"            , p));
-    push(_shadow            = new("cd_BoolSetting").init("cd_power_shadow_permanent"           , p));
-    push(_invulnerability   = new("cd_BoolSetting").init("cd_power_invulnerability_permanent"  , p));
-    push(_ironFeet          = new("cd_BoolSetting").init("cd_power_ironFeet_permanent"         , p));
-    push(_mask              = new("cd_BoolSetting").init("cd_power_mask_permanent"             , p));
-    push(_lightAmp          = new("cd_BoolSetting").init("cd_power_lightAmp_permanent"         , p));
-    push(_torch             = new("cd_BoolSetting").init("cd_power_torch_permanent"            , p));
-    push(_minotaur          = new("cd_BoolSetting").init("cd_power_minotaur_permanent"         , p));
-    push(_morph             = new("cd_BoolSetting").init("cd_power_morph_permanent"            , p));
-    push(_protection        = new("cd_BoolSetting").init("cd_power_protecton_permanent"        , p));
-    push(_regeneration      = new("cd_BoolSetting").init("cd_power_regeneraton_permanent"      , p));
-    push(_scanner           = new("cd_BoolSetting").init("cd_power_scanner_permanent"          , p));
-    push(_speed             = new("cd_BoolSetting").init("cd_power_speed_permanent"            , p));
-    push(_strength          = new("cd_BoolSetting").init("cd_power_strength_permanent"         , p));
-    push(_targeter          = new("cd_BoolSetting").init("cd_power_targeter_permanent"         , p));
-    push(_timeFreezer       = new("cd_BoolSetting").init("cd_power_timeFreezer_permanent"      , p));
-    push(_weaponLevel2      = new("cd_BoolSetting").init("cd_power_weaponLevel2_permanent"     , p));
+    _buddha            = new("cd_BoolSetting").init("cd_power_buddha_permanent"           , p);
+    _damage            = new("cd_BoolSetting").init("cd_power_damage_permanent"           , p);
+    _doubleFiringSpeed = new("cd_BoolSetting").init("cd_power_doubleFiringSpeed_permanent", p);
+    _drain             = new("cd_BoolSetting").init("cd_power_drain_permanent"            , p);
+    _flight            = new("cd_BoolSetting").init("cd_power_flight_permanent"           , p);
+    _frightener        = new("cd_BoolSetting").init("cd_power_frightener_permanent"       , p);
+    _highJump          = new("cd_BoolSetting").init("cd_power_highJump_permanent"         , p);
+    _infiniteAmmo      = new("cd_BoolSetting").init("cd_power_infiniteAmmo_permanent"     , p);
+    _invisibility      = new("cd_BoolSetting").init("cd_power_invisibility_permanent"     , p);
+    _ghost             = new("cd_BoolSetting").init("cd_power_ghost_permanent"            , p);
+    _shadow            = new("cd_BoolSetting").init("cd_power_shadow_permanent"           , p);
+    _invulnerability   = new("cd_BoolSetting").init("cd_power_invulnerability_permanent"  , p);
+    _ironFeet          = new("cd_BoolSetting").init("cd_power_ironFeet_permanent"         , p);
+    _mask              = new("cd_BoolSetting").init("cd_power_mask_permanent"             , p);
+    _lightAmp          = new("cd_BoolSetting").init("cd_power_lightAmp_permanent"         , p);
+    _torch             = new("cd_BoolSetting").init("cd_power_torch_permanent"            , p);
+    _minotaur          = new("cd_BoolSetting").init("cd_power_minotaur_permanent"         , p);
+    _morph             = new("cd_BoolSetting").init("cd_power_morph_permanent"            , p);
+    _protection        = new("cd_BoolSetting").init("cd_power_protecton_permanent"        , p);
+    _regeneration      = new("cd_BoolSetting").init("cd_power_regeneraton_permanent"      , p);
+    _scanner           = new("cd_BoolSetting").init("cd_power_scanner_permanent"          , p);
+    _speed             = new("cd_BoolSetting").init("cd_power_speed_permanent"            , p);
+    _strength          = new("cd_BoolSetting").init("cd_power_strength_permanent"         , p);
+    _targeter          = new("cd_BoolSetting").init("cd_power_targeter_permanent"         , p);
+    _timeFreezer       = new("cd_BoolSetting").init("cd_power_timeFreezer_permanent"      , p);
+    _weaponLevel2      = new("cd_BoolSetting").init("cd_power_weaponLevel2_permanent"     , p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private cd_BoolSetting _buddha;
   private cd_BoolSetting _damage;

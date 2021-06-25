@@ -1,4 +1,4 @@
-/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019
+/* Copyright Alexander 'm8f' Kromm (mmaulwurff@gmail.com) 2019, 2021
  *
  * This file is a part of Ultimate Custom Doom.
  *
@@ -19,33 +19,27 @@
 /**
  * This class provides value limits for Ammo Regeneration Randomization.
  */
-class cd_AmmoRegenerationLimits : cd_SettingsPack
+class cd_AmmoRegenerationLimits
 {
-
-  // public: ///////////////////////////////////////////////////////////////////
 
   cd_MinMaxIntSettings amount() { return _amount; }
   cd_MinMaxIntSettings period() { return _period; }
 
-  // public: ///////////////////////////////////////////////////////////////////
-
   cd_AmmoRegenerationLimits init(PlayerInfo p)
   {
-    push(_amount = newSetting("cd_random_ammo_regen_amount_min", "cd_random_ammo_regen_amount_max", p));
-    push(_period = newSetting("cd_random_ammo_regen_freq_min"  , "cd_random_ammo_regen_freq_max"  , p));
+    _amount = newSetting("cd_random_ammo_regen_amount_min", "cd_random_ammo_regen_amount_max", p);
+    _period = newSetting("cd_random_ammo_regen_freq_min"  , "cd_random_ammo_regen_freq_max"  , p);
 
     return self;
   }
 
-  // private: //////////////////////////////////////////////////////////////////
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private
   cd_MinMaxIntSettings newSetting(string minCvar, string maxCvar, PlayerInfo p)
   {
     return new("cd_MinMaxIntSettings").init(minCvar, maxCvar, p);
   }
-
-  // private: //////////////////////////////////////////////////////////////////
 
   private cd_MinMaxIntSettings _amount;
   private cd_MinMaxIntSettings _period;
