@@ -110,16 +110,16 @@ OptionMenu cd_MiscPlayer
 {
 
   StaticText  "========================================" , CDLightBlue
-  StaticText  "Miscellaneous Player Options"             , CDLightBlue
+  StaticText  "$CD_MISC_TITLE"                           , CDLightBlue
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  Option      "Enable", cd_player_misc_enabled, OnOff
-  cd_Hint     "Toggles the options below on or off."
+  Option      "$CD_ENABLE", cd_player_misc_enabled, OnOff
+  cd_Hint     "$CD_MISC_ENABLE_CAPTION"
 
-  cd_MinField "$CD_AIR_CONTROL_CAPTION" , cd_player_airControl_mult, 0
-  Slider      "$CD_FRICTION_CAPTION"    , cd_player_friction_mult, 0.95, 1.25, 0.01, 2
-  cd_MinField "$CD_SELF_DAMAGE"         , cd_player_self_damage_mult, 0
+  cd_MinField "$CD_AIR_CONTROL_CAPTION" , cd_player_airControl_mult  , 0
+  Slider      "$CD_FRICTION_CAPTION"    , cd_player_friction_mult    , 0.95, 1.25, 0.01, 2
+  cd_MinField "$CD_SELF_DAMAGE"         , cd_player_self_damage_mult , 0
 
 } // OptionMenu cd_MiscPlayer
 
@@ -151,7 +151,7 @@ OptionMenu cd_HealthRegeneration
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  Option      "Enable"                 , cd_health_regen_enabled, OnOff
+  Option      "$CD_ENABLE"             , cd_health_regen_enabled, OnOff
 
   StaticText  ""
   cd_MinField "$CD_AMOUNT_CAPTION"     , cd_health_regen_amount, 0
@@ -186,7 +186,7 @@ OptionMenu cd_ArmorRegeneration
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  Option      "Enable"                 , cd_armor_regen_enabled, OnOff
+  Option      "$CD_ENABLE"             , cd_armor_regen_enabled, OnOff
 
   StaticText  ""
   cd_MinField "$CD_AMOUNT_CAPTION"     , cd_armor_regen_amount, 0
@@ -225,7 +225,7 @@ OptionMenu cd_AmmoRegeneration
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  Option      "Enable"               , cd_ammo_regen_enabled, OnOff
+  Option      "$CD_ENABLE"           , cd_ammo_regen_enabled, OnOff
 
   StaticText  ""
   Option      "Backpack Requirement" , cd_ammo_regen_backpack_req, OnOff
@@ -257,7 +257,7 @@ OptionMenu HealthDegenerationMenu
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  Option      "Enable"             , cd_health_degen_enabled, OnOff
+  Option      "$CD_ENABLE"         , cd_health_degen_enabled, OnOff
 
   StaticText  ""
   cd_MinField "$CD_AMOUNT_CAPTION" , cd_health_degen_amount, 0
@@ -280,7 +280,7 @@ OptionMenu ArmorDegenerationMenu
   StaticText  "========================================" , CDLightBlue
 
   StaticText  ""
-  Option      "Enable"             , cd_armor_degen_enabled, OnOff
+  Option      "$CD_ENABLE"         , cd_armor_degen_enabled, OnOff
 
   StaticText  ""
   cd_MinField "$CD_AMOUNT_CAPTION" , cd_armor_degen_amount, 0
