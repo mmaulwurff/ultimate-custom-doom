@@ -1,5 +1,7 @@
 # Ultimate Custom Doom
 
+**Project moved** to [Doom Toolbox](https://github.com/mmaulwurff/doom-toolbox) and renamed to Final Custom Doom.
+
 Advanced customization mod for GZDoom.
 
 Based on [Custom Doom](https://forum.zdoom.org/viewtopic.php?f=43&t=51446&hilit=custom+doom#p897234) by Lud (Accensus)
